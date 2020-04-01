@@ -53,9 +53,15 @@
 <script lang="ts">
 import Vue from 'vue'
 import { ProductDetailsSummary } from '~/apollo/queries/product_details_summary.graphql'
-import { ProductDetailsSummaryQueryVariables } from '~/types/types'
+import {
+  ProductDetailsSummaryQueryVariables,
+  AddToCartMutationVariables,
+  ConfigurableInput,
+} from '~/types/types'
 import { IsLoadingMixin } from '~/components/mixins/Loading'
 import { EventBus } from '~/utils/event-bus'
+import { authStore, cartStore } from '~/store'
+import { AddToCart } from '~/apollo/mutations/add_to_cart.graphql'
 
 export default Vue.extend({
   mixins: [IsLoadingMixin],
@@ -79,6 +85,7 @@ export default Vue.extend({
         configurables: {},
         quantity: 0,
       },
+      addingToCart: false,
     }
   },
 
@@ -96,6 +103,12 @@ export default Vue.extend({
     topOffSet(): string {
       // @ts-ignore
       return `top-${this.$vuetify.breakpoint.name}`
+    },
+  },
+
+  watch: {
+    addingToCart(value: boolean) {
+      EventBus.$emit('update:adding-to-cart', value)
     },
   },
 
@@ -117,38 +130,61 @@ export default Vue.extend({
         ...configurable,
       }
     },
+
     onUpdateQuantity(quantity: number) {
       // @ts-ignore
       this.customerInput.quantity = quantity
     },
-    onAddToCart() {
-      console.log('add to cart')
+
+    async onAddToCart() {
       // @ts-ignore
-      console.log(this.customerInput)
+      this.addingToCart = true
+      const configuration: ConfigurableInput[] = []
 
-      // const configurableOptions: ConfigurableOption[] = []
+      // @ts-ignore
+      for (const key in this.customerInput.configurables) {
+        // @ts-ignore
+        configuration.push({
+          configurableName: key,
+          // @ts-ignore
+          customerPreferrence: this.customerInput.configurables[key],
+        })
+      }
 
-      // // @ts-ignore
-      // for (const key in this.customerInput.configurables) {
-      //   configurableOptions.push({
-      //     // @ts-ignore
-      //     name: this.customerInput.configurables[key],
-      //     // @ts-ignore
-      //     configurable: { configurableType: key },
-      //   })
-      // }
+      console.log(configuration)
 
-      // const cartItem: CartItem = {
-      //   // @ts-ignore
-      //   cartItemId: null,
-      //   customer: { customerID: authStore.customer.customerID },
-      //   // @ts-ignore
-      //   product: { productID: this.productID },
-      //   configurableOptions,
-      //   dateAddedToCart: new Date(Date.now()),
-      //   // @ts-ignore
-      //   quantity: this.customerInput.quantity,
-      // }
+      const detailsToSend: AddToCartMutationVariables = {
+        item: {
+          customerId:
+            authStore.customer.customerID !== undefined
+              ? authStore.customer.customerID
+              : 0,
+          // @ts-ignore
+          productId: parseInt(this.productDetails.productID),
+          configuration,
+        },
+      }
+
+      let result
+
+      try {
+        // @ts-ignore
+        result = await this.$apollo.mutate({
+          mutation: AddToCart,
+          variables: detailsToSend,
+        })
+
+        if (result.data.addItemToCart !== undefined) {
+          cartStore.addToCart(result.data.addItemToCart)
+        } else {
+          console.log("couldn't add to cart")
+        }
+      } catch (error) {
+        console.log(error)
+      }
+
+      // @ts-ignore
+      this.addingToCart = false
     },
   },
 

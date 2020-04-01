@@ -36,10 +36,21 @@
 <script lang="ts">
 import Vue from 'vue'
 import { ShippingOptions } from '~/apollo/queries/shipping_options.graphql'
-import { ShippingOption, ShippingOptionsQueryVariables } from '~/types/types'
+import {
+  DeliveryType,
+  ShippingOption,
+  ShippingOptionsQueryVariables,
+} from '~/types/types'
 import { DeliveryTypes } from '~/types/enums'
 import { authStore } from '~/store'
 import { RadioOption } from '~/types/ui'
+import { EventBus } from '~/utils/event-bus'
+
+type ChooseDeliverMethodData = {
+  [keys: string]: any
+  selectedPickupStation: ShippingOption | {}
+  selectedOption: DeliveryType | ''
+}
 
 export default Vue.extend({
   // @ts-ignore
@@ -59,7 +70,7 @@ export default Vue.extend({
     },
   },
 
-  data(): { [keys: string]: any; selectedPickupStation: ShippingOption | {} } {
+  data(): ChooseDeliverMethodData {
     return {
       selectedOption: '',
       addressId: 4,
@@ -120,6 +131,39 @@ export default Vue.extend({
   watch: {
     addressId(value: number) {
       console.log(value)
+    },
+
+    selectedOption(value: string) {
+      let fee: number | null
+
+      switch (value) {
+        case DeliveryTypes.DOORSTEP:
+          fee =
+            // @ts-ignore
+            this.homeShippingOption !== undefined
+              ? // @ts-ignore
+                this.homeShippingOption.cost
+              : null
+          EventBus.$emit('update:shipping-fee', fee)
+
+          break
+
+        case DeliveryTypes.PICKUP_STATION:
+          fee =
+            // @ts-ignore
+            this.selectedPickupStation !== {}
+              ? // @ts-ignore
+                this.selectedPickupStation.cost
+              : null
+          EventBus.$emit('update:shipping-fee', fee)
+
+          break
+
+        default:
+          fee = null
+          EventBus.$emit('update:shipping-fee', fee)
+          break
+      }
     },
   },
 })

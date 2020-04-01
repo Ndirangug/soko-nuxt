@@ -14,6 +14,7 @@
         :tile="!showFab"
         :fab="showFab"
         :class="{ 'fab-add-to-cart': showFab }"
+        :loading="addingToCart"
         @click="addToCart"
       >
         <v-icon>{{ icons.addToCart }}</v-icon>
@@ -32,6 +33,7 @@
 import { mdiCartPlus, mdiHeart, mdiHeartOutline } from '@mdi/js'
 import Vue from 'vue'
 import { EventBus } from '~/utils/event-bus'
+
 export default Vue.extend({
   data() {
     return {
@@ -43,6 +45,7 @@ export default Vue.extend({
       // TODO: GET FROM APOLLO DATA
       favorited: false,
       isIntersecting: false,
+      addingToCart: false,
     }
   },
 
@@ -51,6 +54,12 @@ export default Vue.extend({
       // @ts-ignore
       return this.$vuetify.breakpoint.smAndDown && !this.isIntersecting
     },
+  },
+
+  mounted() {
+    EventBus.$on('update:adding-to-cart', (value: boolean) => {
+      this.addingToCart = value
+    })
   },
 
   methods: {

@@ -1,0 +1,27 @@
+mutation AddToCart($item: CartItemInput!) {
+  addItemToCart(item: $item){
+    cartItemID
+    product{
+      productID
+      title
+      price
+      vat
+      discount{
+        amount
+        discountType
+      }
+      thumbnails
+    }
+    configurableOptions{
+      configurableOptionID
+      name
+      thumbnailUrl
+      configurable{
+        configurableID
+        configurableType
+      }
+    }
+    dateAddedToCart
+    quantity
+  }
+}

@@ -4,6 +4,7 @@ query ProductDetails($productID: Int!) {
     title
     shortDescription
     price
+    vat
     discount {
       amount
       discountType

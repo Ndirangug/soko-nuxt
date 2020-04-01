@@ -75,6 +75,7 @@ export interface Product {
   title: string
   shortDescription: string
   price: number
+  vat: number
   discount: Discount
   images?: string[]
   thumbnails: string[]
@@ -472,14 +473,9 @@ export interface AddressInput {
   area?: string
 }
 
-export interface CartItemInput {
-  productID?: number
-  configuration?: ConfigurableInput[]
-}
-
 export interface ConfigurableInput {
-  configurableName?: string
-  customerPreferrence?: string
+  configurableName: string
+  customerPreferrence: string
 }
 
 export interface SponsoredContext {
@@ -540,6 +536,11 @@ export type CustomerAddressesQueryVariables =
   | CustomerQueryVariables
   | { customerId: number; defaultOnly: boolean }
 
+export type ShippingOptionsQueryVariables = {
+  customerId: number
+  addressId: number
+}
+
 export interface AddAddressMutationVariables {
   customerId: number
   address: {
@@ -557,7 +558,10 @@ export interface AddAddressMutationVariables {
   }
 }
 
-export type ShippingOptionsQueryVariables = {
-  customerId: number
-  addressId: number
+export interface AddToCartMutationVariables {
+  item: {
+    customerId: number
+    productId: number
+    configuration: ConfigurableInput[]
+  }
 }

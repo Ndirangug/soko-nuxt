@@ -10,6 +10,7 @@ query CartItems($customerId: Int!) {
         title
         thumbnails
         price
+        vat
       }
       configurableOptions {
         configurableOptionID

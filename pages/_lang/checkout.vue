@@ -3,7 +3,7 @@
     class="checkout-root-container d-flex flex-column flex-md-row justify-start align-center justify-md-space-between align-md-start px-2 px-md-6 px-lg-8"
   >
     <div
-      class="stepper-container mr-md-6"
+      class="stepper-container mr-md-4 mr-lg-6"
       :style="{ width: $vuetify.breakpoint.mdAndUp ? '70%' : '100%' }"
     >
       <CheckoutStepper />

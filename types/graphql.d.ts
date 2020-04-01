@@ -143,3 +143,11 @@ declare module '*/shipping_options.graphql' {
 
   export default defaultDocument
 }
+
+declare module '*/add_to_cart.graphql' {
+  import { DocumentNode } from 'graphql'
+  const defaultDocument: DocumentNode
+  export const AddToCart: DocumentNode
+
+  export default defaultDocument
+}
