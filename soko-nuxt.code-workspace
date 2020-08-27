@@ -5,6 +5,6 @@
 		}
 	],
 	"settings": {
-		"files.autoSaveDelay": 10000
+		"files.autoSaveDelay": 5000
 	}
 }

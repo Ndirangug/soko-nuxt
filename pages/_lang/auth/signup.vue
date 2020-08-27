@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>welcomee</h1>
-    <nuxt />
+    <h1>Sign up</h1>
   </div>
 </template>

@@ -6,13 +6,35 @@
       </h1>
       <p>{{ $t('home.introduction') }}</p>
     </div>
+
+    <div>
+      <h1>Customer</h1>
+      <p v-for="(detail, value) in customer" :key="detail">
+        {{ detail }} => {{ value }}
+      </p>
+    </div>
   </div>
 </template>
 
 <script>
+import Customer from '~/apollo/queries/customer'
+
 export default {
-  head () {
+  apollo: {
+    customer: {
+      query: Customer,
+      prefetch: true,
+      variables() {
+        return { customerID: 6 }
+      },
+    },
+  },
+
+  head() {
     return { title: this.$t('home.title') }
-  }
+  },
+
+  layout: 'sample',
 }
 </script>
+

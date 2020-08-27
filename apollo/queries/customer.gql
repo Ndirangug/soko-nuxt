@@ -1,0 +1,10 @@
+query Customer($customerID: Int!){
+  customer(customerID: $customerID){
+    first_name
+    last_name
+    email
+    dateOfBirth
+    gender
+  }
+  
+}
