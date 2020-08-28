@@ -5,6 +5,8 @@ query Customer($customerID: Int!){
     email
     dateOfBirth
     gender
+    
   }
+
   
 }

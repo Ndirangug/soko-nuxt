@@ -11,6 +11,8 @@
 </template>
 
 <script>
+
+
 export default {
   layout: 'empty',
   props: {
@@ -19,6 +21,7 @@ export default {
       default: null,
     },
   },
+
   data() {
     return {
       pageNotFound: '404 Not Found',

@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { gql } from 'graphql-tag'
 import Customer from '~/apollo/queries/customer'
 
 export default {
@@ -35,6 +36,7 @@ export default {
   },
 
   layout: 'sample',
+
+  auth: false,
 }
 </script>
-

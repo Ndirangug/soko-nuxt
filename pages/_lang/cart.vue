@@ -1,5 +1,11 @@
 <template>
-    <div>
-        <h1>Cart</h1>
-    </div>
+  <div>
+    <h1>Cart</h1>
+  </div>
 </template>
+
+<script>
+export default {
+  auth: false,
+}
+</script>
