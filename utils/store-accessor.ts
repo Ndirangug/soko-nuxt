@@ -11,4 +11,4 @@ function initialiseStores(store: Store<any>): void {
   authStore = getModule(authmodule, store)
 }
 
-export { initialiseStores, exampleStore, authStore  }
+export { initialiseStores, exampleStore, authStore }

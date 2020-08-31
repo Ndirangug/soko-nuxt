@@ -1,6 +1,5 @@
 import { Module, VuexModule, Mutation } from 'vuex-module-decorators'
-import {Customer} from "./types/types"
-import { Customer, Customer } from '~/types/types'
+import { Customer } from '~/types/types'
 
 @Module({ name: 'auth', stateFactory: true, namespaced: true })
 export default class Auth extends VuexModule {
@@ -13,18 +12,18 @@ export default class Auth extends VuexModule {
   //     return this.wheels / 2
   //   }
 
-      customer: Customer = {}
-      loggedIn = false
+  customer: Customer = {}
+  loggedIn = false
 
-      @Mutation
-      logIn(customer: Customer){
-        this.loggedIn = true
-        this.customer = customer
-      }
+  @Mutation
+  logIn(customer: Customer) {
+    this.loggedIn = true
+    this.customer = customer
+  }
 
-      @Mutation
-      logOut(customer: Customer){
-        this.loggedIn = false
-        this.customer = {}
-      }
+  @Mutation
+  logOut() {
+    this.loggedIn = false
+    this.customer = {}
+  }
 }

@@ -32,11 +32,11 @@ export default {
   /*
    ** Router Extension - adding router middleware
    */
-  router: {},
+  // router: {},
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['@/assets/colors.scss'],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
