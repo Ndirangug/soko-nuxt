@@ -36,7 +36,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['@/assets/colors.scss'],
+  css: ['colors'],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
@@ -62,6 +62,7 @@ export default {
     '@nuxt/content',
     '@nuxtjs/apollo',
     'nuxt-i18n',
+    '@nuxtjs/style-resources',
   ],
   /*
    ** nuxt-i18n module configuration
@@ -119,6 +120,9 @@ export default {
         httpEndpoint: 'http://localhost:9002/graphql',
       },
     },
+  },
+  styleResources: {
+    scss: ['./assets/vars/*.scss'],
   },
   /*
    ** Axios module configuration
