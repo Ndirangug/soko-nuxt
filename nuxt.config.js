@@ -32,9 +32,7 @@ export default {
   /*
    ** Router Extension - adding router middleware
    */
-  router: {
-    middleware: ['auth'],
-  },
+  router: {},
   /*
    ** Global CSS
    */
@@ -43,7 +41,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['@/plugins/axios-accessor.ts'],
+  plugins: ['@/plugins/axios-accessor.ts', '@/plugins/vuetify.js'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -64,17 +62,7 @@ export default {
     '@nuxt/content',
     '@nuxtjs/apollo',
     'nuxt-i18n',
-    '@nuxtjs/auth',
   ],
-  /*
-   ** @nuxtjs/auth module configuration
-   ** See https://auth.nuxtjs.org/guide
-   */
-  auth: {
-    redirect: {
-      login: '/auth/login',
-    },
-  },
   /*
    ** nuxt-i18n module configuration
    ** See https://i18n.nuxtjs.org/basic-usage
@@ -167,5 +155,7 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
+  build: {
+    transpile: ['vuex-module-decorators'],
+  },
 }

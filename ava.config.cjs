@@ -5,6 +5,7 @@ module.exports = () => {
     babel: true,
     tap: true,
     verbose: true,
-    color: true
+    color: true,
+    files: ['./test/**/*.spec.js'],
   }
 }

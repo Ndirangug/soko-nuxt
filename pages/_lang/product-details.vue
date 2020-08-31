@@ -5,7 +5,5 @@
 </template>
 
 <script>
-export default {
-  auth: false,
-}
+export default {}
 </script>

@@ -1,0 +1,33 @@
+mutation LogIn($auth_method: AuthMethod!, $auth_payload: AuthPayload) {
+  logInCustomer(auth_method: $auth_method, username_password: $auth_payload) {
+   wasSuccessful
+  	message
+    authToken
+    customer{
+      customerID
+      first_name
+      last_name
+      avatarUrl
+    }
+  }
+}
+
+# sample variables
+# {
+#   "auth_method": "USERNAME_PASSWORD",
+#   "auth_payload": {"username": "george", "password": "tututu"}
+# }
+
+# mutation {
+#   logInCustomer(auth_method: "USERNAME_PASSWORD" username_password: { "username": "george", "password": "tututu" }) {
+#    wasSuccessful
+#   	message
+#     authToken
+#     customer{
+#       customerID
+#       first_name
+#       last_name
+#       avatarUrl
+#     }
+#   }
+# }
