@@ -1,7 +1,9 @@
 export interface Customer {
-  firstName: String
-  LastName: String
-  email: String
-  dateOfBirth: String
-  gender: String
+  customerID: number
+  firstName: string
+  LastName: string
+  email: string
+  phone: string
+  dateOfBirth: Date
+  gender: string
 }
