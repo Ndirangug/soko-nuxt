@@ -4,6 +4,6 @@ export interface Customer {
   LastName?: string
   email?: string
   phone?: string
-  dateOfBirth?: Date
+  dateOfBirth?: string
   gender?: string
 }

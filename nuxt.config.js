@@ -32,7 +32,7 @@ export default {
   /*
    ** Router Extension - adding router middleware
    */
-  // router: {},
+  router: {},
   /*
    ** Global CSS
    */
@@ -41,7 +41,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['@/plugins/axios-accessor.ts', '@/plugins/vuetify.js'],
+  plugins: ['@/plugins/axios-accessor.ts'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -155,7 +155,5 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {
-    transpile: ['vuex-module-decorators'],
-  },
+  build: {},
 }
