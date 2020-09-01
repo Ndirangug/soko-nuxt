@@ -36,7 +36,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['colors'],
+  css: [],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
@@ -75,6 +75,25 @@ export default {
       fallbackLocale: 'en',
       messages: {
         en: {
+          auth: {
+            login: 'Log In',
+            create_account: 'Create Account',
+            tip:
+              'Login to access your orders, your history, enjoy a personalized experience and more',
+            google_login: 'Log in with Google',
+            facebook_login: 'Log in with Facebook',
+            google_signup: 'Sign up with Google',
+            facebook_signup: 'Sign up with Facebook',
+            or: 'or',
+            email: 'email',
+            phone: 'phone',
+            password: 'password',
+            remember_me: 'Remember me',
+            forgot_password: 'Forgot Password',
+            dont_have_account: "Don't have an account?",
+            create_one: 'Create one',
+            fast_and_easy: 'fast and easy',
+          },
           links: {
             home: 'Accueil',
             about: 'À propos',

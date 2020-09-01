@@ -1,5 +1,5 @@
 <template>
   <div>
-    <h1>Log in</h1>
+    <h1 class="black--text">Log in</h1>
   </div>
 </template>
