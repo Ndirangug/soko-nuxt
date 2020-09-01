@@ -1,7 +1,7 @@
 <template>
   <div id="logo">
     <h1>
-      S<span class="black--text">O</span>K<span class="black--text">O</span>
+      <span class="white--text">S</span>O<span class="white--text">K</span>O
     </h1>
   </div>
 </template>

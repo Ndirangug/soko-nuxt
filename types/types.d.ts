@@ -7,3 +7,9 @@ export interface Customer {
   dateOfBirth?: string
   gender?: string
 }
+
+export interface Testimonial {
+  testimonialText: String
+  customerName: String
+  customerLocation: String
+}
