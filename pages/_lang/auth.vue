@@ -17,6 +17,7 @@
       >
         <v-carousel-item
           v-for="testimonial in testimonials"
+          id="testimonial-item"
           :key="testimonial.customerName"
         >
           <q>{{ testimonial.testimonialText }}</q>
@@ -27,9 +28,17 @@
     </div>
 
     <div id="login-signup-section" class="flex-child">
-      <nuxt-link :to="localePath('auth-login')">Log in</nuxt-link>
-      <nuxt-link :to="localePath('auth-signup')">Sign Up</nuxt-link>
-      <nuxt-child />
+      <div class="container">
+        <div class="tab-switchers">
+          <nuxt-link :to="localePath('auth-login')">
+            {{ $t('auth.login') }}
+          </nuxt-link>
+          <nuxt-link :to="localePath('auth-signup')">
+            {{ $t('auth.create_account') }}
+          </nuxt-link>
+        </div>
+        <nuxt-child />
+      </div>
     </div>
   </div>
 </template>
@@ -91,7 +100,6 @@ export default Vue.extend({
   align-items: center;
 
   .flex-child {
-    width: 50%;
     height: 100%;
   }
 
@@ -100,14 +108,14 @@ export default Vue.extend({
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
-
+    width: 45%;
     .logo {
       font-size: 3vw;
     }
     .divider {
       background-color: white;
       float: right;
-      width: 60%;
+      width: 55%;
       margin-top: -4vw;
       height: 0.3vw;
     }
@@ -125,11 +133,39 @@ export default Vue.extend({
 
   #login-signup-section {
     background-color: white;
-  }
-}
+    padding: 3vw 0;
+    width: 55%;
 
-h1 {
-  color: $systembar;
+    .container {
+      display: flex;
+      flex-flow: column nowrap;
+
+      .tab-switchers {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+
+        a {
+          text-transform: uppercase;
+          color: $grey-text-dark;
+          font-weight: 600;
+          font-size: 1.7vw;
+          margin: 0 2vw;
+          text-decoration: none;
+
+          &:hover {
+            color: black;
+          }
+          &:focus {
+            color: black;
+          }
+          &:active {
+            color: black;
+          }
+        }
+      }
+    }
+  }
 }
 
 /*  tablets - phoness */
