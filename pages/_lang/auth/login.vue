@@ -95,7 +95,7 @@ export default Vue.extend({
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    margin: 2vw 0;
+    margin: 1vw 0;
 
     .btn {
       margin: 0.25vw 0.3vw;
