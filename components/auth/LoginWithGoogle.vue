@@ -35,7 +35,6 @@
   .btn {
     font-size: 3.5vw;
     font-weight: 400;
-    margin: 3vw 0;
   }
 }
 </style>

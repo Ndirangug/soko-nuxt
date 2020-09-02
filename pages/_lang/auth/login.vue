@@ -151,6 +151,12 @@ export default Vue.extend({
 // screen <= phone
 @media screen and (max-width: 600px) {
   #root-container {
+    #buttons-container {
+      .btn {
+        margin: 1.3vw 0;
+      }
+    }
+
     form {
       width: 100%;
     }
