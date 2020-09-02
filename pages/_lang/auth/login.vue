@@ -20,8 +20,8 @@
         :append-icon="showPasssword ? 'mdi-eye' : 'mdi-eye-off'"
         :rules="[rules.required, rules.min]"
         :type="showPasssword ? 'text' : 'password'"
-        name="input-10-1"
-        label="Normal with hint text"
+        name="password"
+        label="Password"
         hint="At least 8 characters"
         counter
         @click:append="showPasssword = !showPasssword"
@@ -45,7 +45,7 @@
       {{ $t('auth.login') }}
     </v-btn>
 
-    <p class="flex-child text-body-2">
+    <p class="flex-child text-body-2 text-center">
       {{ $t('auth.dont_have_account') }}
       <nuxt-link :to="localePath('auth-signup')">
         {{ $t('auth.create_one') }}
@@ -121,8 +121,6 @@ export default Vue.extend({
     justify-content: space-between;
     width: 80%;
 
-    .remember_me {
-    }
     .forgot_password {
       font-size: 1vw;
     }
@@ -131,6 +129,42 @@ export default Vue.extend({
   .btn-login {
     margin: 1vw 0;
     width: 30%;
+  }
+}
+
+// phones <  screen <= tablets
+@media only screen and (max-width: 768px) and (min-width: 600px) {
+  #root-container {
+    form {
+      width: 95%;
+    }
+    .remember_me_forgot_password {
+      width: 95%;
+
+      .forgot_password {
+        font-size: 1.8vw;
+      }
+    }
+  }
+}
+
+// screen <= phone
+@media screen and (max-width: 600px) {
+  #root-container {
+    form {
+      width: 100%;
+    }
+    .remember_me_forgot_password {
+      width: 100%;
+
+      .forgot_password {
+        font-size: 3.8vw;
+      }
+    }
+
+    .btn-login {
+      margin: 4vw 0;
+    }
   }
 }
 </style>

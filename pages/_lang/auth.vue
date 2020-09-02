@@ -1,7 +1,7 @@
 <template>
   <div id="auth-flex-container">
     <div id="decorative-section" class="flex-child">
-      <div>
+      <div class="no-scroll">
         <BlackWhiteLogo class="logo" />
         <hr class="divider" role="presentation" />
         <p class="login-tip">{{ $t('auth.tip') }}</p>
@@ -77,6 +77,12 @@ export default Vue.extend({
   },
 
   layout: 'auth',
+
+  middleware({ route, redirect }) {
+    if (route.path.endsWith('auth/') || route.path.endsWith('auth')) {
+      return redirect('/auth/login')
+    }
+  },
 })
 </script>
 
@@ -110,6 +116,13 @@ export default Vue.extend({
     flex-flow: column nowrap;
     justify-content: space-between;
     width: 45%;
+
+    .no-scroll {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+    }
+
     .logo {
       font-size: 3vw;
     }
@@ -125,6 +138,7 @@ export default Vue.extend({
       width: 65%;
       margin-top: 0.8vw;
     }
+
     #testimonials {
       font-size: 1.2vw;
       font-style: italic;
@@ -194,12 +208,35 @@ export default Vue.extend({
       }
 
       #testimonials {
-        display: none;
+        font-size: 2vw;
+
+        q {
+          font-size: 1.5vw;
+        }
+
+        address {
+          font-size: 1.5vw;
+        }
       }
     }
     #login-signup-section {
       width: 60%;
+      padding: 8vw 0;
+
+      .container {
+        .tab-switchers {
+          a {
+            font-size: 2vw;
+          }
+        }
+      }
     }
+  }
+}
+
+@media not screen and (min-height: 600px) {
+  #testimonials {
+    display: none;
   }
 }
 
@@ -226,14 +263,22 @@ export default Vue.extend({
 
     #login-signup-section {
       position: fixed;
-      top: 0;
+      top: 14vw;
       left: 0;
       right: 0;
-      bottom: 0;
+      bottom: 3vw;
       z-index: 2;
       width: 80%;
-      height: 80%;
+      height: auto;
       margin: auto;
+
+      .container {
+        .tab-switchers {
+          a {
+            font-size: 4vw;
+          }
+        }
+      }
     }
   }
 }

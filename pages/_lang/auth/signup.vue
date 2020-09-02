@@ -20,8 +20,8 @@
         :append-icon="showPasssword ? 'mdi-eye' : 'mdi-eye-off'"
         :rules="[rules.required, rules.min]"
         :type="showPasssword ? 'text' : 'password'"
-        name="input-10-1"
-        label="Normal with hint text"
+        name="password"
+        label="Password"
         hint="At least 8 characters"
         counter
         @click:append="showPasssword = !showPasssword"
@@ -32,8 +32,8 @@
         :append-icon="showPasssword ? 'mdi-eye' : 'mdi-eye-off'"
         :rules="[rules.required, rules.min]"
         :type="showPasssword ? 'text' : 'password'"
-        name="input-10-1"
-        label="Normal with hint text"
+        name="password"
+        label="Repeat password"
         hint="At least 8 characters"
         counter
         @click:append="showPasssword = !showPasssword"
@@ -59,7 +59,7 @@
       {{ $t('auth.create_account') }}
     </v-btn>
 
-    <p class="flex-child text-body-2">
+    <p class="flex-child text-body-2 text-center">
       {{ $t('auth.already_have_account') }}
       <nuxt-link :to="localePath('auth-login')">
         {{ $t('auth.login') }}
@@ -135,6 +135,37 @@ export default Vue.extend({
   .btn-signup {
     margin: 1vw 0;
     width: 40%;
+  }
+}
+
+// phones <  screen <= tablets
+@media only screen and (max-width: 768px) and (min-width: 600px) {
+  #root-container {
+    .btn-signup {
+      width: 60%;
+    }
+  }
+}
+
+// screen <= phone
+@media screen and (max-width: 600px) {
+  #root-container {
+    #buttons-container {
+      .btn {
+        margin: 1.3vw 0;
+      }
+    }
+    form {
+      width: 100%;
+    }
+    .terms_and_conditions {
+      width: 100%;
+    }
+
+    .btn-signup {
+      margin: 4vw 0;
+      width: 90%;
+    }
   }
 }
 </style>

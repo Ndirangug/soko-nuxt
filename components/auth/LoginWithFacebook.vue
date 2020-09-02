@@ -22,4 +22,19 @@
     margin-right: 1vw;
   }
 }
+
+// phones <  screen <= tablets
+@media only screen and (max-width: 768px) and (min-width: 600px) {
+  .btn {
+    font-size: 1.8vw;
+  }
+}
+
+// screen <= phone
+@media screen and (max-width: 600px) {
+  .btn {
+    font-size: 3.5vw;
+    font-weight: 400;
+  }
+}
 </style>
