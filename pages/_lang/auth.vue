@@ -21,6 +21,7 @@
           :key="testimonial.customerName"
         >
           <q>{{ testimonial.testimonialText }}</q>
+          <br />
           <address>{{ testimonial.customerName }}</address>
           <address>{{ testimonial.customerLocation }}</address>
         </v-carousel-item>
@@ -128,17 +129,29 @@ export default Vue.extend({
       font-size: 1.2vw;
       font-style: italic;
       text-align: right;
+
+      q {
+        font-size: 1vw;
+        margin-bottom: 2vw;
+      }
+
+      address {
+        font-size: 1vw;
+      }
     }
   }
 
   #login-signup-section {
     background-color: white;
-    padding: 3vw 0;
     width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .container {
       display: flex;
       flex-flow: column nowrap;
+      padding: 0;
 
       .tab-switchers {
         display: flex;

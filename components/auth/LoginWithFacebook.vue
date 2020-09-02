@@ -1,7 +1,13 @@
 <template>
   <div>
-    <v-btn class="btn" color="white" elevation="6" rounded large>
-      <v-icon size="30px" class="icon" color="#4267b2">mdi-facebook</v-icon>
+    <v-btn
+      class="btn white--text"
+      color="#1778F2"
+      elevation="6"
+      rounded
+      x-large
+    >
+      <v-icon size="30px" color="white" class="icon">mdi-facebook</v-icon>
       {{ $t('auth.facebook_login') }}
     </v-btn>
   </div>

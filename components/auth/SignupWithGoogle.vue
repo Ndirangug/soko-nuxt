@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn class="btn" elevation="6" color="white" rounded large>
+    <v-btn class="btn" elevation="6" color="white" rounded x-large>
       <v-img
         class="icon"
         contain
