@@ -133,7 +133,7 @@ export default Vue.extend({
   }
 
   form {
-    width: 80%;
+    width: 60%;
     padding: 0;
     margin: 0;
 
@@ -147,7 +147,7 @@ export default Vue.extend({
   .terms_and_conditions {
     display: flex;
     flex-flow: row wrap;
-    width: 80%;
+    width: 60%;
   }
 
   .btn-signup {
@@ -159,6 +159,12 @@ export default Vue.extend({
 // phones <  screen <= tablets
 @media only screen and (max-width: 768px) and (min-width: 600px) {
   #root-container {
+    form {
+      width: 80%;
+    }
+    .terms_and_conditions {
+      width: 80%;
+    }
     .btn-signup {
       width: 60%;
     }
@@ -168,6 +174,8 @@ export default Vue.extend({
 // screen <= phone
 @media screen and (max-width: 600px) {
   #root-container {
+    margin: 0;
+
     #buttons-container {
       .btn {
         margin: 1.3vw 0;
@@ -182,7 +190,7 @@ export default Vue.extend({
 
     .btn-signup {
       margin: 4vw 0;
-      width: 90%;
+      width: 92%;
     }
   }
 }

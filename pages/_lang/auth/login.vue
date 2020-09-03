@@ -116,7 +116,7 @@ export default Vue.extend({
   }
 
   form {
-    width: 80%;
+    width: 60%;
     padding: 0;
     margin: 0;
 
@@ -131,7 +131,7 @@ export default Vue.extend({
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    width: 80%;
+    width: 60%;
 
     .forgot_password {
       font-size: 1vw;
@@ -148,10 +148,10 @@ export default Vue.extend({
 @media only screen and (max-width: 768px) and (min-width: 600px) {
   #root-container {
     form {
-      width: 95%;
+      width: 80%;
     }
     .remember_me_forgot_password {
-      width: 95%;
+      width: 80%;
 
       .forgot_password {
         font-size: 1.8vw;

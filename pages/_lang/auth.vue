@@ -4,7 +4,12 @@
       <div class="no-scroll">
         <BlackWhiteLogo class="logo" />
         <hr class="divider" role="presentation" />
-        <p class="login-tip">{{ $t('auth.tip') }}</p>
+        <p v-if="this.$route.path.endsWith('login')" class="tip">
+          {{ $t('auth.logintip') }}
+        </p>
+        <p v-if="this.$route.path.endsWith('signup')" class="tip">
+          {{ $t('auth.signuptip') }}
+        </p>
       </div>
 
       <v-carousel
@@ -133,7 +138,7 @@ export default Vue.extend({
       margin-top: -4vw;
       height: 0.3vw;
     }
-    .login-tip {
+    .tip {
       color: white;
       width: 65%;
       margin-top: 0.8vw;
@@ -165,7 +170,9 @@ export default Vue.extend({
     .container {
       display: flex;
       flex-flow: column nowrap;
-      padding: 0;
+      margin: 0;
+      width: 100%;
+      height: auto;
 
       .tab-switchers {
         display: flex;
@@ -252,7 +259,7 @@ export default Vue.extend({
       .divider {
         display: none;
       }
-      .login-tip {
+      .tip {
         display: none;
       }
 
@@ -268,17 +275,34 @@ export default Vue.extend({
       right: 0;
       bottom: 3vw;
       z-index: 2;
-      width: 80%;
+      width: 90%;
       height: auto;
       margin: auto;
+      overflow-x: hidden;
+      overflow-y: scroll;
 
       .container {
+        margin: 0;
+        width: 85%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+
         .tab-switchers {
           a {
             font-size: 4vw;
           }
         }
       }
+    }
+  }
+}
+
+//phones small in height
+@media screen and (max-width: 600px) and (max-height: 600px) {
+  #login-signup-section {
+    .container {
+      padding-top: 60vw;
+      padding-bottom: 8vw;
     }
   }
 }

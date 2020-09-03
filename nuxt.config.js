@@ -78,8 +78,9 @@ export default {
           auth: {
             login: 'Log In',
             create_account: 'Create Account',
-            tip:
+            logintip:
               'Login to access your orders, your history, enjoy a personalized experience and more',
+            signuptip: 'Sign up tiip',
             google_login: 'Log in with Google',
             facebook_login: 'Log in with Facebook',
             google_signup: 'Sign up with Google',
