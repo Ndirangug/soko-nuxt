@@ -1,6 +1,8 @@
 <template>
   <div class="root-container">
+    <!-- #####   top banner section of page   #####-->
     <div class="container-top">
+      <!-- back arrow and logo -->
       <div class="top-left">
         <v-btn icon x-large left>
           <v-icon large color="white">{{ icons.backArrow }}</v-icon>
@@ -8,6 +10,7 @@
         <GreenWhiteLogo />
       </div>
 
+      <!-- ------ toolbar   ---------- -->
       <div class="category-toolbar">
         <v-toolbar class="the-toolbar">
           <v-app-bar-nav-icon class="black--text" x-large></v-app-bar-nav-icon>
@@ -20,20 +23,62 @@
 
           <v-spacer></v-spacer>
 
-          <v-btn icon x-large class="black--text">
-            <v-icon>{{ icons.myAccount }}</v-icon>
-          </v-btn>
+          <div class="toolbar-button flex-center-row">
+            <v-menu transition="slide-y-transition" bottom>
+              <template
+                v-slot:activator="{ on, attrs }"
+                class="flex-center-row"
+              >
+                <v-btn
+                  icon
+                  x-large
+                  class="black--text"
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  <v-icon large>{{ icons.myAccount }}</v-icon>
+                </v-btn>
+                <h4 class="text-capitalize black--text">
+                  {{ $t('products.my_account') }}
+                </h4>
+              </template>
+              <v-list>
+                <v-list-item v-for="(item, i) in my_account_dropdown" :key="i">
+                  <v-list-item-title>
+                    <nuxt-link
+                      class="text-capitalize"
+                      :to="localePath(`myaccount-${item.route}`)"
+                    >
+                      {{ item.title }}
+                    </nuxt-link>
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </div>
 
-          <div class="toolbar-button">
+          <div class="toolbar-button flex-center-row">
             <v-btn icon x-large class="black--text">
-              <v-icon>{{ icons.cart }}</v-icon>
+              <v-icon large>{{ icons.cart }}</v-icon>
             </v-btn>
-            <h4>Cart</h4>
+            <h4 class="text-capitalize">{{ $t('products.cart') }}</h4>
           </div>
         </v-toolbar>
       </div>
     </div>
+
+    <!-- ####  after the banner ##### -->
+
+    <!-- ---- the ads ------ -->
+
+    <!-- ##### the actual products ###### ------ -->
     <nuxt-child />
+
+    <!-- ##### blog ##### -->
+
+    <!-- ##### subscribe #### -->
+
+    <!-- ##### footer ##### -->
   </div>
 </template>
 
@@ -50,6 +95,15 @@ export default Vue.extend({
         cart: mdiCart,
       },
       category: 'living room',
+      my_account_dropdown: [
+        { title: this.$t('products.profile'), route: 'overview' },
+        { title: this.$t('products.track_my_order'), route: 'orders' },
+        { title: this.$t('products.orders'), route: 'orders' },
+        { title: this.$t('products.messages'), route: 'messages' },
+        { title: this.$t('products.account_settings'), route: 'overview' },
+        { title: this.$t('products.recently_viewed'), route: 'myactivity' },
+        { title: this.$t('products.saved_items'), route: 'myactivity' },
+      ],
     }
   },
 })
@@ -89,12 +143,16 @@ export default Vue.extend({
         background-color: transparent;
       }
       .toolbar-button {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: center;
-        align-items: center;
+        margin: 0 1vw;
       }
     }
   }
+}
+
+.flex-center-row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 }
 </style>

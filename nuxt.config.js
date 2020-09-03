@@ -98,6 +98,17 @@ export default {
             agree: 'By signing up, I agree to the',
             terms_and_conditions: 'terms and conditions',
           },
+          products: {
+            cart: 'cart',
+            my_account: 'my account',
+            profile: 'profile',
+            orders: 'orders',
+            track_my_order: 'track my order',
+            messages: 'messages',
+            account_settings: 'account settings',
+            recently_viewed: 'recently_viewed',
+            saved_items: 'saved_items',
+          },
           links: {
             home: 'Accueil',
             about: 'À propos',
