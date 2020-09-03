@@ -5,18 +5,38 @@
       color="#1778F2"
       elevation="6"
       rounded
-      x-large
+      :x-large="this.$vssWidth > 600 ? true : false"
     >
-      <v-icon size="30px" color="white" class="icon">mdi-facebook</v-icon>
+      <v-icon size="35" color="white" class="icon">
+        {{ icons.facebook }}
+      </v-icon>
       {{ $t('auth.facebook_signup') }}
     </v-btn>
   </div>
 </template>
 
+<script lang="ts">
+import Vue from 'vue'
+import { mdiFacebook } from '@mdi/js'
+import NuxtSSRScreenSize from 'nuxt-ssr-screen-size'
+
+export default Vue.extend({
+  mixins: [NuxtSSRScreenSize.NuxtSSRScreenSizeMixin],
+  data() {
+    return {
+      icons: {
+        facebook: mdiFacebook,
+      },
+    }
+  },
+})
+</script>
+
 <style lang="scss" scoped>
 .btn {
   font-size: 1vw;
   text-transform: capitalize;
+  max-width: 280px;
 
   .icon {
     margin-right: 1vw;

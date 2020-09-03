@@ -27,15 +27,17 @@
     "@nuxtjs/apollo": "^4.0.1-rc.3",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "@nuxtjs/vuetify": "^1.11.2",
     "graphql-tag": "^2.11.0",
     "nuxt": "^2.14.0",
     "nuxt-i18n": "^6.13.12",
-    "vuex-module-decorators": "^0.17.0",
-    "@nuxtjs/vuetify": "^1.11.2",
-    "@nuxtjs/style-resources": "^1.0.0"
+    "nuxt-ssr-screen-size": "github:hugojerez/nuxt-ssr-screen-size",
+    "vuex-module-decorators": "^0.17.0"
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
+    "@mdi/js": "^5.5.55",
     "@nuxt/types": "^2.14.0",
     "@nuxt/typescript-build": "^2.0.2",
     "@nuxtjs/eslint-config": "^3.1.0",

@@ -1,6 +1,12 @@
 <template>
   <div>
-    <v-btn class="btn" elevation="6" color="white" rounded x-large>
+    <v-btn
+      class="btn"
+      elevation="6"
+      color="white"
+      rounded
+      :x-large="this.$vssWidth > 600 ? true : false"
+    >
       <v-img
         class="icon"
         contain
@@ -13,10 +19,20 @@
   </div>
 </template>
 
+<script lang="ts">
+import Vue from 'vue'
+import NuxtSSRScreenSize from 'nuxt-ssr-screen-size'
+
+export default Vue.extend({
+  mixins: [NuxtSSRScreenSize.NuxtSSRScreenSizeMixin],
+})
+</script>
+
 <style lang="scss" scoped>
 .btn {
   font-size: 1vw;
   text-transform: capitalize;
+  max-width: 280px;
 
   .icon {
     margin-right: 1vw;

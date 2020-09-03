@@ -8,16 +8,12 @@
     <p class="flex-child">or</p>
 
     <v-form class="flex-child">
-      <v-text-field
-        v-model="formInput.username"
-        label="Email or Phone"
-        prepend-inner-icon="mdi-face"
-      ></v-text-field>
+      <v-text-field v-model="formInput.username" label="Email or Phone">
+        <v-icon slot="prepend-inner">{{ icons.user }} </v-icon>
+      </v-text-field>
 
       <v-text-field
         v-model="formInput.password"
-        prepend-inner-icon="mdi-lock"
-        :append-icon="showPasssword ? 'mdi-eye' : 'mdi-eye-off'"
         :rules="[rules.required, rules.min]"
         :type="showPasssword ? 'text' : 'password'"
         name="password"
@@ -25,11 +21,14 @@
         hint="At least 8 characters"
         counter
         @click:append="showPasssword = !showPasssword"
-      ></v-text-field>
+      >
+        <v-icon slot="prepend-inner">{{ icons.lock }} </v-icon>
+        <v-icon slot="append" @click="toggleshowPasssword">
+          {{ icons.password_see }}
+        </v-icon>
+      </v-text-field>
       <v-text-field
         v-model="formInput.password_confirm"
-        prepend-inner-icon="mdi-lock"
-        :append-icon="showPasssword ? 'mdi-eye' : 'mdi-eye-off'"
         :rules="[rules.required, rules.min]"
         :type="showPasssword ? 'text' : 'password'"
         name="password"
@@ -37,7 +36,12 @@
         hint="At least 8 characters"
         counter
         @click:append="showPasssword = !showPasssword"
-      ></v-text-field>
+      >
+        <v-icon slot="prepend-inner">{{ icons.lock }} </v-icon>
+        <v-icon slot="append" @click="toggleshowPasssword">
+          {{ icons.password_see }}
+        </v-icon>
+      </v-text-field>
     </v-form>
 
     <div class="terms_and_conditions flex-child">
@@ -70,9 +74,16 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mdiLock, mdiFace, mdiEye, mdiEyeOff } from '@mdi/js'
+
 export default Vue.extend({
   data() {
     return {
+      icons: {
+        user: mdiFace,
+        lock: mdiLock,
+        password_see: mdiEyeOff,
+      },
       showPasssword: false,
       rules: {
         required: (value: any) => !!value || 'Required.',
@@ -86,6 +97,13 @@ export default Vue.extend({
         terms_and_conditions: false,
       },
     }
+  },
+
+  methods: {
+    toggleshowPasssword() {
+      this.showPasssword = !this.showPasssword
+      this.icons.password_see = this.showPasssword ? mdiEye : mdiEyeOff
+    },
   },
 })
 </script>
@@ -106,7 +124,7 @@ export default Vue.extend({
   #buttons-container {
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: space-around;
     margin: 1vw 0;
 
     .btn {
