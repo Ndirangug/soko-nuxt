@@ -4,10 +4,10 @@
       <div class="no-scroll">
         <BlackWhiteLogo class="logo" />
         <hr class="divider" role="presentation" />
-        <p v-if="this.$route.path.endsWith('login')" class="tip">
+        <p v-if="routeIsLogin" class="tip">
           {{ $t('auth.logintip') }}
         </p>
-        <p v-if="this.$route.path.endsWith('signup')" class="tip">
+        <p v-if="routeIsSignUp" class="tip">
           {{ $t('auth.signuptip') }}
         </p>
       </div>
@@ -36,10 +36,16 @@
     <div id="login-signup-section" class="flex-child">
       <div class="container">
         <div class="tab-switchers">
-          <nuxt-link :to="localePath('auth-login')">
+          <nuxt-link
+            :class="routeIsLogin ? 'black--text' : ''"
+            :to="localePath('auth-login')"
+          >
             {{ $t('auth.login') }}
           </nuxt-link>
-          <nuxt-link :to="localePath('auth-signup')">
+          <nuxt-link
+            :class="routeIsSignUp ? 'black--text' : ''"
+            :to="localePath('auth-signup')"
+          >
             {{ $t('auth.create_account') }}
           </nuxt-link>
         </div>
@@ -79,6 +85,15 @@ export default Vue.extend({
     return {
       testimonials: sampleTestimonials,
     }
+  },
+
+  computed: {
+    routeIsLogin() {
+      return this.$route.path.endsWith('login')
+    },
+    routeIsSignUp() {
+      return this.$route.path.endsWith('signup')
+    },
   },
 
   layout: 'auth',
