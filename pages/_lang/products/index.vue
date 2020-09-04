@@ -1,7 +1,6 @@
 <template>
   <div class="root-container">
     <!-- #####   top banner section of page   #####-->
-    <!-- TODO turn this div into a component -->
     <BannerAndToolbar :category="category" />
 
     <!-- ####  after the banner ##### -->

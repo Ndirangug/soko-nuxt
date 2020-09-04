@@ -106,8 +106,11 @@ export default {
             track_my_order: 'track my order',
             messages: 'messages',
             account_settings: 'account settings',
-            recently_viewed: 'recently_viewed',
-            saved_items: 'saved_items',
+            recently_viewed: 'recently viewed',
+            saved_items: 'saved items',
+          },
+          navdrawer: {
+            shop_by_category: 'shop by category',
           },
           links: {
             home: 'Accueil',
