@@ -1,35 +1,35 @@
-@mixin flex-center-row-nowrap {
-    .flex-center-row-nowrap{
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: center;
-        align-items: center;
-    }
-}
+// @mixin flex-center-row-nowrap {
+//     .flex-center-row-nowrap{
+//         display: flex;
+//         flex-flow: row nowrap;
+//         justify-content: center;
+//         align-items: center;
+//     }
+// }
 
-@mixin flex-center-row-wrap {
-    .flex-center-row-wrap{
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
-        align-items: center;
-    }
-}
+// @mixin flex-center-row-wrap {
+//     .flex-center-row-wrap{
+//         display: flex;
+//         flex-flow: row wrap;
+//         justify-content: center;
+//         align-items: center;
+//     }
+// }
 
-@mixin flex-center-column-nowrap {
-    .flex-center-column-nowrap{
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-        align-items: center;
-    }
-}
+// @mixin flex-center-column-nowrap {
+//     .flex-center-column-nowrap{
+//         display: flex;
+//         flex-flow: column nowrap;
+//         justify-content: center;
+//         align-items: center;
+//     }
+// }
 
-@mixin flex-center-column-wrap {
-    .flex-center-column-wrap{
-        display: flex;
-        flex-flow: column wrap;
-        justify-content: center;
-        align-items: center;
-    }
-}
+// @mixin flex-center-column-wrap {
+//     .flex-center-column-wrap{
+//         display: flex;
+//         flex-flow: column wrap;
+//         justify-content: center;
+//         align-items: center;
+//     }
+// }
