@@ -23,11 +23,13 @@
 
           <v-spacer></v-spacer>
 
-          <div class="toolbar-button flex-center-row">
+          <!--  ***  my account dropown *** -->
+          <!-- TODO improve appearance of  this menu prolly consider using cards, lists or checout menu examples-->
+          <div class="toolbar-button d-flex justify-center align-center">
             <v-menu transition="slide-y-transition" bottom>
               <template
                 v-slot:activator="{ on, attrs }"
-                class="flex-center-row"
+                class="d-flex justify-center align-center"
               >
                 <v-btn
                   icon
@@ -46,7 +48,7 @@
                 <v-list-item v-for="(item, i) in my_account_dropdown" :key="i">
                   <v-list-item-title>
                     <nuxt-link
-                      class="text-capitalize"
+                      class="text-capitalize black--text"
                       :to="localePath(`myaccount-${item.route}`)"
                     >
                       {{ item.title }}
@@ -57,7 +59,8 @@
             </v-menu>
           </div>
 
-          <div class="toolbar-button flex-center-row">
+          <!--  ***  cart button *** -->
+          <div class="toolbar-button d-flex justify-center align-center">
             <v-btn icon x-large class="black--text">
               <v-icon large>{{ icons.cart }}</v-icon>
             </v-btn>
@@ -147,12 +150,5 @@ export default Vue.extend({
       }
     }
   }
-}
-
-.flex-center-row {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
 }
 </style>

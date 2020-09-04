@@ -156,7 +156,7 @@ export default {
     },
   },
   styleResources: {
-    scss: ['./assets/vars/*.scss'],
+    scss: ['./assets/vars/*.scss', './assets/mixins/*.scss'],
   },
   /*
    ** Axios module configuration
