@@ -1,3 +1,4 @@
+// TODO css to customize navdrawers subtitle behavior
 <template>
   <v-navigation-drawer
     v-model="drawerLocal"
@@ -9,7 +10,7 @@
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title class="text-capitalize font-weight-bold">
-          {{ $t('navdrawer.shop_by_category') }}
+          {{ $t('navigation.shop_by_category') }}
         </v-list-item-title>
       </v-list-item-content>
     </v-list-item>
@@ -17,13 +18,37 @@
     <v-divider></v-divider>
 
     <v-list dense>
-      <v-list-item v-for="item in items" :key="item.title" link>
+      <v-list-item
+        v-for="(value, key) in $t('navigation.rooms')"
+        :key="key"
+        link
+      >
         <v-list-item-icon>
-          <v-icon>{{ item.icon }}</v-icon>
+          <v-icon>{{ icons.rooms[key] }}</v-icon>
         </v-list-item-icon>
 
         <v-list-item-content>
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
+          <v-list-item-title class="text-capitalize">
+            {{ value }}
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+
+    <v-list dense>
+      <v-list-item
+        v-for="(value, key) in $t('navigation.specifics')"
+        :key="key"
+        link
+      >
+        <v-list-item-icon>
+          <v-icon>{{ icons.specifics[key] }}</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title class="text-capitalize">
+            {{ value }}
+          </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -40,6 +65,21 @@ import {
   mdiPackage,
   mdiMapCheck,
   mdiFaceProfile,
+  mdiSofa,
+  mdiShower,
+  mdiFood,
+  mdiCounter,
+  mdiToilet,
+  mdiFlower,
+  mdiFlowerTulip,
+  mdiWall,
+  mdiFlowerPoppy,
+  mdiHomeFloor0,
+  mdiRug,
+  mdiTableFurniture,
+  mdiWaterBoiler,
+  mdiStore,
+  mdiBookshelf,
 } from '@mdi/js'
 export default Vue.extend({
   props: {
@@ -87,6 +127,28 @@ export default Vue.extend({
           route: 'myactivity',
         },
       ],
+      // keys to the icons object should match the keys in the internationalization file's navigation object
+      icons: {
+        rooms: {
+          living_room: mdiSofa,
+          bathroom: mdiShower,
+          dining_room: mdiFood,
+          kitchen: mdiCounter,
+          washroom: mdiToilet,
+          balcony: mdiFlower,
+          porch: mdiFlowerTulip,
+        },
+        specifics: {
+          for_your_wall: mdiWall,
+          fresh_flowers: mdiFlowerPoppy,
+          flooring: mdiHomeFloor0,
+          carpets_and_rugs: mdiRug,
+          furniture: mdiTableFurniture,
+          kitchen_fittings: mdiWaterBoiler,
+          storage_units: mdiStore,
+          floating_shelves: mdiBookshelf,
+        },
+      },
     }
   },
 

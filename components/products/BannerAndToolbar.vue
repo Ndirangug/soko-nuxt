@@ -37,7 +37,7 @@
                 {{ $t('products.my_account') }}
               </h4>
             </template>
-            <v-list dense :nav="nav">
+            <v-list dense nav>
               <v-list-item-group color="primary">
                 <v-list-item
                   v-for="(item, i) in my_account_dropdown"

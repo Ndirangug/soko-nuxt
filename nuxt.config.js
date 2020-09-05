@@ -109,8 +109,30 @@ export default {
             recently_viewed: 'recently viewed',
             saved_items: 'saved items',
           },
-          navdrawer: {
+          // keys to the navigation object should match the keys in the NavDrawer data.icons object
+          navigation: {
             shop_by_category: 'shop by category',
+            rooms: {
+              title: 'rooms',
+              living_room: 'living room',
+              bathroom: 'bathroom',
+              dining_room: 'dining room',
+              kitchen: 'kitchen',
+              washroom: 'washroom',
+              balcony: 'balcony',
+              porch: 'porch',
+            },
+            specifics: {
+              title: 'specifics',
+              for_your_wall: 'for your wall',
+              fresh_flowers: 'fresh flowers',
+              flooring: 'flooring',
+              carpets_and_rugs: 'carpets and rugs',
+              furniture: 'furniture',
+              kitchen_fittings: 'kitchen fittings',
+              storage_units: 'storage units',
+              floating_shelves: 'floating shelves',
+            },
           },
           links: {
             home: 'Accueil',
