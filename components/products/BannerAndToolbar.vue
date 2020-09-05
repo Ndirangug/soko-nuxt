@@ -81,7 +81,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import NuxtSSRScreenSize from 'nuxt-ssr-screen-size'
+// import NuxtSSRScreenSize from 'nuxt-ssr-screen-size'
 import {
   mdiArrowLeft,
   mdiCart,
@@ -96,6 +96,7 @@ import {
   mdiMenu,
   mdiClose,
 } from '@mdi/js'
+import NuxtSSRScreenSize from 'nuxt-ssr-screen-size'
 
 export default Vue.extend({
   mixins: [NuxtSSRScreenSize.NuxtSSRScreenSizeMixin],
@@ -107,7 +108,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      drawer: null,
+      drawer: false,
       icons: {
         backArrow: mdiArrowLeft,
         myAccount: mdiAccountCircle,
@@ -162,7 +163,9 @@ export default Vue.extend({
   },
 
   computed: {
-    isPhone() {
+    isPhone(): boolean {
+      // TODO maybe find better fix?
+      // @ts-ignore
       return this.$vssWidth < 600
     },
   },
@@ -195,6 +198,8 @@ export default Vue.extend({
     .the-toolbar {
       padding: 0 2vw;
       background-color: $grey-background-transparent;
+      position: sticky;
+      top: 0;
     }
 
     button {
