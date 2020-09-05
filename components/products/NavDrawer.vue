@@ -17,6 +17,14 @@
 
     <v-divider></v-divider>
 
+    <v-list-item>
+      <v-list-item-content>
+        <v-list-item-title class="text-capitalize font-weight-bold">
+          {{ $t('navigation.rooms.title') }}
+        </v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+
     <v-list dense>
       <v-list-item
         v-for="(value, key) in $t('navigation.rooms')"
@@ -34,6 +42,14 @@
         </v-list-item-content>
       </v-list-item>
     </v-list>
+
+    <v-list-item>
+      <v-list-item-content>
+        <v-list-item-title class="text-capitalize font-weight-bold">
+          {{ $t('navigation.specifics.title') }}
+        </v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
 
     <v-list dense>
       <v-list-item
@@ -164,5 +180,23 @@ export default Vue.extend({
 .nav-drawer {
   margin-left: 2vw;
   margin-top: -2vw;
+
+  .v-list {
+    .v-list-item:first-of-type {
+      display: none;
+
+      &:hover {
+        background-color: none;
+      }
+      .v-list-item__icon {
+        display: none;
+      }
+      .v-list-item__content {
+        .v-list-item__title {
+          font-weight: 600;
+        }
+      }
+    }
+  }
 }
 </style>
