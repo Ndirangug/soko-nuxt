@@ -74,7 +74,7 @@
         </div>
       </v-toolbar>
       <!-- navdrawer -->
-      <NavDrawer :drawer="drawer" />
+      <NavDrawer class="nav-drawer" :drawer="drawer" />
     </div>
   </div>
 </template>

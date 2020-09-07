@@ -3,7 +3,7 @@
     <div>
       <v-toolbar class="the-toolbar">
         <v-app-bar-nav-icon class="black--text">
-          <v-icon x-large>mdi-menu</v-icon>
+          <v-icon>{{ icons.filter }}</v-icon>
         </v-app-bar-nav-icon>
 
         <v-toolbar-title class="toolbar-title font-weight-bold text-uppercase">
@@ -22,6 +22,20 @@
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import { mdiFilterMenu } from '@mdi/js'
+import Vue from 'vue'
+export default Vue.extend({
+  data() {
+    return {
+      icons: {
+        filter: mdiFilterMenu,
+      },
+    }
+  },
+})
+</script>
 
 <style lang="scss" scoped>
 .root-container {

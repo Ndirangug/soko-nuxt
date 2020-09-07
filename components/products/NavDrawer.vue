@@ -180,6 +180,9 @@ export default Vue.extend({
 .nav-drawer {
   margin-left: 2vw;
   margin-top: -2vw;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 
   .v-list {
     .v-list-item:first-of-type {

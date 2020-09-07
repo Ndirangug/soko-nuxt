@@ -7,7 +7,6 @@
         continuous
         show-arrows-on-hover
         hide-delimiter-background
-        height="200"
       >
         <v-carousel-item
           v-for="(ad_strip, i) in ads"
@@ -50,14 +49,17 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .root-container {
   padding: 5vw 0;
+
   .ads-container {
     .ads-carousel {
+      height: 15vw !important;
       .ads-strip {
         .ad-item {
           .img {
             margin: 0 2vw;
             max-width: 300px;
-            min-width: 60px;
+            min-width: 80px;
+            width: 20%;
           }
         }
       }
@@ -66,13 +68,12 @@ export default Vue.extend({
 }
 @media only screen and (max-width: $tablet_max_px) and (min-width: $phone_max_px) {
   .root-container {
-    padding: 5vw 0;
     .ads-container {
       .ads-carousel {
         .ads-strip {
           .ad-item {
             .img {
-              margin: 0 2vw;
+              width: 30%;
             }
           }
         }
@@ -83,19 +84,17 @@ export default Vue.extend({
 
 @media screen and (max-width: $phone_max_px) {
   .root-container {
-    padding: 5vw 0;
     .ads-container {
       .ads-carousel {
+        height: 23vw !important;
         .ads-strip {
           .ad-item {
             .img {
-              margin: 0 2vw;
+              width: 40%;
             }
           }
         }
       }
-
-      overflow-x: scroll;
     }
   }
 }
