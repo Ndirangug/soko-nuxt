@@ -48,14 +48,14 @@ export default Vue.extend({
 }
 
 // phones <  screen <= tablets
-@media only screen and (max-width: 768px) and (min-width: 600px) {
+@media only screen and (max-width: $tablet_max_px) and (min-width: $phone_max_px) {
   .btn {
     font-size: 1.8vw;
   }
 }
 
 // screen <= phone
-@media screen and (max-width: 600px) {
+@media screen and (max-width: $phone_max_px) {
   .btn {
     font-size: 3.5vw;
     font-weight: 400;

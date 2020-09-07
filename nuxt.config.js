@@ -181,7 +181,7 @@ export default {
     },
   },
   styleResources: {
-    scss: ['./assets/vars/*.scss', './assets/mixins/*.scss'],
+    scss: ['./assets/scss/vars/*.scss', './assets/scss/mixins/*.scss'],
   },
   /*
    ** Axios module configuration
@@ -198,7 +198,7 @@ export default {
    ** https://github.com/nuxt-community/vuetify-module
    */
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
+    customVariables: ['~/assets/scss/vuetify_variables.scss'],
     icons: {
       iconfont: 'mdiSvg',
     },

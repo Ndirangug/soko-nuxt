@@ -157,7 +157,7 @@ export default Vue.extend({
 }
 
 // phones <  screen <= tablets
-@media only screen and (max-width: 768px) and (min-width: 600px) {
+@media only screen and (max-width: $tablet_max_px) and (min-width: $phone_max_px) {
   #root-container {
     form {
       width: 80%;
@@ -172,7 +172,7 @@ export default Vue.extend({
 }
 
 // screen <= phone
-@media screen and (max-width: 600px) {
+@media screen and (max-width: $phone_max_px) {
   #root-container {
     margin: 0;
 

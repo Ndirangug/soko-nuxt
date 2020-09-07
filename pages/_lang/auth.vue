@@ -218,7 +218,7 @@ export default Vue.extend({
 }
 
 /*  tablets - phoness */
-@media only screen and (max-width: 768px) and (min-width: 600px) {
+@media only screen and (max-width: $tablet_max_px) and (min-width: $phone_max_px) {
   #auth-flex-container {
     //display: flex;
 
@@ -256,14 +256,14 @@ export default Vue.extend({
   }
 }
 
-@media not screen and (min-height: 600px) {
+@media not screen and (min-height: $phone_max_px) {
   #testimonials {
     display: none;
   }
 }
 
 // phones and smaller
-@media screen and (max-width: 600px) {
+@media screen and (max-width: $phone_max_px) {
   #auth-flex-container {
     display: block;
 
@@ -313,7 +313,7 @@ export default Vue.extend({
 }
 
 //phones small in height
-@media screen and (max-width: 600px) and (max-height: 600px) {
+@media screen and (max-width: $phone_max_px) and (max-height: $phone_max_px) {
   #login-signup-section {
     .container {
       padding-top: 60vw;
