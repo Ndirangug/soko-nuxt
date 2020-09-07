@@ -3,9 +3,8 @@
     <!-- #####   top banner section of page   #####-->
     <BannerAndToolbar :category="category" />
 
-    <!-- ####  after the banner ##### -->
-
-    <!-- ---- the ads ------ -->
+    <!-- #### the AdsStrip ##### -->
+    <AdsStrip />
 
     <!-- ##### the actual products ###### ------ -->
     <nuxt-child />
