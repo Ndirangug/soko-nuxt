@@ -6,10 +6,13 @@
           <v-icon>{{ icons.filter }}</v-icon>
         </v-app-bar-nav-icon>
 
-        <v-toolbar-title class="toolbar-title font-weight-bold text-uppercase">
-          Filters
+        <v-toolbar-title
+          class="toolbar-title font-weight-medium text-capitalize"
+        >
+          {{ $t('products.browse_products.filter') }}
         </v-toolbar-title>
-
+        <v-divider class="mx-4 font-weight-black" inset vertical></v-divider>
+        <SearchBar />
         <v-spacer></v-spacer>
 
         <v-btn icon x-large class="black--text">

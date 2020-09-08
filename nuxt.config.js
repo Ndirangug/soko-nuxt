@@ -119,6 +119,8 @@ export default {
               featured: 'featured',
               new_arrivals: 'new arrivals',
               flash_sales: 'flash sales',
+              search_anything: 'search anything...',
+              max_five_tags: 'only a maximum of 5 tags allowed. discard 1 tag ',
             },
           },
           // keys to the navigation object should match the keys in the NavDrawer data.icons object
