@@ -182,6 +182,7 @@ export default Vue.extend({
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+  position: sticky;
 
   .top-left {
     position: sticky;
@@ -194,6 +195,7 @@ export default Vue.extend({
 
   .category-toolbar {
     margin-bottom: 5vw;
+    z-index: 2;
 
     .the-toolbar {
       padding: 0 2vw;

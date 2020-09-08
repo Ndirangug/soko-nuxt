@@ -109,6 +109,7 @@ export default {
             recently_viewed: 'recently viewed',
             saved_items: 'saved items',
             browse_products: {
+              category: 'category',
               filter: 'filter',
               sort_by: 'sort by',
               popularity: 'popularity',
