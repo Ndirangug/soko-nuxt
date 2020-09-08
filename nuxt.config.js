@@ -108,6 +108,18 @@ export default {
             account_settings: 'account settings',
             recently_viewed: 'recently viewed',
             saved_items: 'saved items',
+            browse_products: {
+              filter: 'filter',
+              sort_by: 'sort by',
+              popularity: 'popularity',
+              price: 'price',
+              low_to_high: 'low to high',
+              high_to_low: 'high to low',
+              newest_first: 'newest first',
+              featured: 'featured',
+              new_arrivals: 'new arrivals',
+              flash_sales: 'flash sales',
+            },
           },
           // keys to the navigation object should match the keys in the NavDrawer data.icons object
           navigation: {
@@ -132,6 +144,12 @@ export default {
               kitchen_fittings: 'kitchen fittings',
               storage_units: 'storage units',
               floating_shelves: 'floating shelves',
+            },
+            other_categories: {
+              sofas: 'sofas',
+              lighting: 'lighting',
+              wall_art: 'wall art',
+              tiles: 'tiles',
             },
           },
           links: {
