@@ -1,8 +1,7 @@
-// TODO css to customize navdrawers subtitle behavior
+// TODO MAKE ABSOLUTE, POSITION = TOOLBARPOSITION
 <template>
   <v-navigation-drawer
-    v-model="drawerLocal"
-    :absolute="false"
+    v-model="drawerState"
     temporary
     hide-overlay
     class="nav-drawer"
@@ -100,12 +99,13 @@ import {
 export default Vue.extend({
   props: {
     drawer: {
-      required: true,
       type: Boolean,
+      required: true,
     },
   },
   data() {
     return {
+      drawerState: false,
       items: [
         {
           title: this.$t('products.profile'),
@@ -168,9 +168,13 @@ export default Vue.extend({
     }
   },
 
-  computed: {
-    drawerLocal() {
-      return this.drawer
+  watch: {
+    drawer(val: boolean) {
+      this.$emit('toggle-navdrawer', val)
+      this.drawerState = val
+    },
+    drawerState(val: boolean) {
+      this.$emit('toggle-navdrawer', val)
     },
   },
 })
@@ -178,11 +182,8 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .nav-drawer {
-  margin-left: 2vw;
-  margin-top: -2vw;
-  position: sticky;
-  top: 0;
-  z-index: 2;
+  position: fixed;
+  z-index: 3;
 
   .v-list {
     .v-list-item:first-of-type {

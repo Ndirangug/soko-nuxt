@@ -9,7 +9,10 @@
         outlined
         class="select"
         :placeholder="$t('products.browse_products.category')"
-      ></v-select>
+        rounded
+      >
+        <v-icon slot="append">{{ icons.arrowDown }}</v-icon>
+      </v-select>
 
       <v-combobox
         v-model="search_tags"
@@ -25,6 +28,7 @@
         outlined
         filled
         dense
+        rounded
         class="combobox"
       >
         <template v-slot:no-data>
@@ -43,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { mdiMagnify } from '@mdi/js'
+import { mdiChevronDown, mdiChevronUp, mdiMagnify } from '@mdi/js'
 import Vue from 'vue'
 export default Vue.extend({
   data: () => ({
@@ -64,6 +68,8 @@ export default Vue.extend({
     max_input_reached: false,
     icons: {
       search: mdiMagnify,
+      arrowUp: mdiChevronUp,
+      arrowDown: mdiChevronDown,
     },
 
     get search_category(): string {
@@ -102,9 +108,13 @@ export default Vue.extend({
 
   .select {
     width: 30%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
   .combobox {
     width: 70%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="root-container">
+  <div class="root-container" @toggle-navdrawer="onToggleNavDrawer">
     <!-- #####   top banner section of page   #####-->
     <BannerAndToolbar :category="category" />
 
@@ -23,8 +23,15 @@ import Vue from 'vue'
 export default Vue.extend({
   data() {
     return {
+      drawerState: false,
       category: 'living room',
     }
+  },
+
+  methods: {
+    onToggleNavDrawer(drawerState: boolean) {
+      this.drawerState = drawerState
+    },
   },
 })
 </script>

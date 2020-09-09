@@ -12,8 +12,8 @@
     <!-- ------ toolbar   ---------- -->
     <div class="category-toolbar">
       <v-toolbar class="the-toolbar">
-        <v-app-bar-nav-icon class="black--text" @click.stop="drawer = !drawer">
-          <v-icon v-if="drawer" x-large>{{ icons.menuOpen }}</v-icon>
+        <v-app-bar-nav-icon class="black--text" @click="toggleNavDrawer">
+          <v-icon v-if="drawerOpenState" x-large>{{ icons.menuOpen }}</v-icon>
           <v-icon v-else x-large>{{ icons.menu }}</v-icon>
         </v-app-bar-nav-icon>
 
@@ -73,9 +73,13 @@
           </h4>
         </div>
       </v-toolbar>
-      <!-- navdrawer -->
-      <NavDrawer class="nav-drawer" :drawer="drawer" />
+      <!-- navdrawer create eevent to control navdraweropening -->
     </div>
+    <NavDrawer
+      class="nav-drawer"
+      :drawer="drawerOpenState"
+      @toggle-navdrawer="onToggleNavdrawer"
+    />
   </div>
 </template>
 
@@ -108,7 +112,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      drawer: false,
+      drawerOpenState: false,
       icons: {
         backArrow: mdiArrowLeft,
         myAccount: mdiAccountCircle,
@@ -169,6 +173,15 @@ export default Vue.extend({
       return this.$vssWidth < 600
     },
   },
+
+  methods: {
+    toggleNavDrawer() {
+      this.drawerOpenState = !this.drawerOpenState
+    },
+    onToggleNavdrawer(receivedState: boolean) {
+      this.drawerOpenState = receivedState
+    },
+  },
 })
 </script>
 
@@ -182,7 +195,6 @@ export default Vue.extend({
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-  position: sticky;
 
   .top-left {
     position: sticky;
@@ -195,6 +207,8 @@ export default Vue.extend({
 
   .category-toolbar {
     margin-bottom: 5vw;
+    position: sticky;
+    top: 0;
     z-index: 2;
 
     .the-toolbar {
