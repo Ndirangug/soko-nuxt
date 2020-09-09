@@ -36,4 +36,10 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.v-autocomplete__content {
+  .v-list-item__title {
+    color: $grey-text-dark !important;
+  }
+}
+</style>

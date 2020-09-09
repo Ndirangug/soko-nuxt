@@ -7,6 +7,11 @@
     class="nav-drawer"
   >
     <v-list-item>
+      <v-list-item-icon class="back-button">
+        <v-btn icon @click="drawerState = false">
+          <v-icon>{{ icons.backArrow }}</v-icon>
+        </v-btn>
+      </v-list-item-icon>
       <v-list-item-content>
         <v-list-item-title class="text-capitalize font-weight-bold">
           {{ $t('navigation.shop_by_category') }}
@@ -95,6 +100,7 @@ import {
   mdiWaterBoiler,
   mdiStore,
   mdiBookshelf,
+  mdiArrowLeft,
 } from '@mdi/js'
 export default Vue.extend({
   props: {
@@ -164,6 +170,7 @@ export default Vue.extend({
           storage_units: mdiStore,
           floating_shelves: mdiBookshelf,
         },
+        backArrow: mdiArrowLeft,
       },
     }
   },
@@ -184,6 +191,10 @@ export default Vue.extend({
 .nav-drawer {
   position: fixed;
   z-index: 3;
+
+  .back-button {
+    margin-right: 1vw;
+  }
 
   .v-list {
     .v-list-item:first-of-type {
