@@ -11,7 +11,6 @@
         :placeholder="$t('products.browse_products.category')"
         rounded
       >
-        <v-icon slot="append">{{ icons.arrowDown }}</v-icon>
       </v-select>
 
       <v-combobox

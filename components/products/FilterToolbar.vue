@@ -8,6 +8,7 @@
     }"
   >
     <v-toolbar
+      id="filter-toolbar"
       class="the-toolbar"
       :class="{
         'elevation-20 ': isFilterToolBarFixedShown,
@@ -34,16 +35,13 @@
       <SearchBar />
       <v-spacer></v-spacer>
 
+      <!-- sort by -->
       <div
         v-if="screenSize !== ScreenSize.PHONE"
+        id="sortby-dropdown"
         class="d-flex justify-center align-center"
       >
-        <v-btn icon x-large class="black--text">
-          <v-icon large>mdi-cart</v-icon>
-        </v-btn>
-        <v-btn icon x-large class="black--text">
-          <v-icon large>mdi-cart</v-icon>
-        </v-btn>
+        <SortBy @sort-changed="sortBy = $event" />
       </div>
 
       <!-- menu -->
@@ -52,22 +50,26 @@
       </v-btn>
     </v-toolbar>
 
-    <v-btn
-      class="search-fab elevation-20"
-      :class="{ 'd-none': !isFilterToolBarFixedHidden }"
-      fab
-      absolute
-      right
-      color="primary"
-      @click="isFilterToolBarFixedShown = !isFilterToolBarFixedShown"
-    >
-      <v-icon>{{ icons.search }}</v-icon>
-    </v-btn>
+    <!-- search FAB -->
+    <v-fab-transition>
+      <v-btn
+        class="search-fab elevation-20"
+        :class="{ 'd-none': !isFilterToolBarFixedHidden }"
+        fab
+        absolute
+        right
+        color="primary"
+        @click="isFilterToolBarFixedShown = !isFilterToolBarFixedShown"
+      >
+        <v-icon v-if="!isFilterToolBarFixedShown">{{ icons.search }}</v-icon>
+        <v-icon v-else>{{ icons.cancel }}</v-icon>
+      </v-btn>
+    </v-fab-transition>
   </div>
 </template>
 
 <script lang="ts">
-import { mdiDotsVertical, mdiFilterMenu, mdiMagnify } from '@mdi/js'
+import { mdiClose, mdiDotsVertical, mdiFilterMenu, mdiMagnify } from '@mdi/js'
 import Vue from 'vue'
 import { ScreenSizeMixin } from '~/components/mixins/ScreenSize'
 
@@ -78,10 +80,12 @@ export default Vue.extend({
       windowOffsetTop: 0,
       isFilterToolBarFixedHidden: false,
       isFilterToolBarFixedShown: false,
+      sortBy: '',
       icons: {
         filter: mdiFilterMenu,
         search: mdiMagnify,
         more: mdiDotsVertical,
+        cancel: mdiClose,
       },
     }
   },
@@ -132,12 +136,15 @@ export default Vue.extend({
 
   .the-toolbar {
     padding: 0 1vw;
-  }
 
-  // .search-fab {
-  //   position: absolute;
-  //   // right: 10px;
-  // }
+    #sortby-dropdown {
+      margin-left: 1vw;
+      max-width: 180px;
+      margin-top: 2vw;
+      .sortby-btn {
+      }
+    }
+  }
 }
 
 .position-fixed-hidden {
