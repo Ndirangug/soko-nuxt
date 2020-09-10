@@ -39,7 +39,7 @@
                 <v-icon large>{{ icons.myAccount }}</v-icon>
               </v-btn>
               <h4
-                v-if="screenSize != ScreenSize.PHONE"
+                v-show="screenSize != ScreenSize.PHONE"
                 class="text-capitalize black--text"
               >
                 {{ $t('products.my_account') }}
@@ -76,7 +76,7 @@
           <v-btn icon x-large class="black--text">
             <v-icon large>{{ icons.cart }}</v-icon>
           </v-btn>
-          <h4 v-if="screenSize != ScreenSize.PHONE" class="text-capitalize">
+          <h4 v-show="screenSize != ScreenSize.PHONE" class="text-capitalize">
             {{ $t('products.cart') }}
           </h4>
         </div>
@@ -121,7 +121,7 @@ export default Vue.extend({
   data() {
     return {
       drawerOpenState: false,
-      offsetTop: 0,
+      documentOffsetTop: 0,
       isToolBarPositionFixed: false,
       icons: {
         backArrow: mdiArrowLeft,
@@ -185,26 +185,28 @@ export default Vue.extend({
     },
     onScroll(e: Event) {
       // @ts-ignore
-      this.offsetTop = e.target.scrollingElement.scrollTop
+      // eslint-disable-next-line prefer-const, prettier/prettier
+      // @ts-ignore
+      this.documentOffsetTop = e.target.scrollingElement.scrollTop
       // @ts-ignore
       switch (this.screenSize) {
         // @ts-ignore
         case this.ScreenSize.LARGE_SCREEN:
-          this.isToolBarPositionFixed = this.offsetTop > 615
+          this.isToolBarPositionFixed = this.documentOffsetTop > 615
           break
         // @ts-ignore
         case this.ScreenSize.TABLET:
-          this.isToolBarPositionFixed = this.offsetTop > 630
+          this.isToolBarPositionFixed = this.documentOffsetTop > 630
           break
         // @ts-ignore
         case this.ScreenSize.PHONE:
-          this.isToolBarPositionFixed = this.offsetTop > 600
+          this.isToolBarPositionFixed = this.documentOffsetTop > 600
           break
         default:
           // eslint-disable-next-line no-console
           console.warn('unable to determine screen size onScroll')
           // eslint-disable-next-line no-console
-          console.warn(this.offsetTop)
+          console.warn(this.documentOffsetTop)
           break
       }
     },
@@ -234,9 +236,6 @@ export default Vue.extend({
   }
 
   .category-toolbar {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
     margin-bottom: 5vw;
     z-index: 2;
 
@@ -258,5 +257,6 @@ export default Vue.extend({
   position: fixed !important;
   top: 0 !important;
   width: 100%;
+  background-color: $grey-background;
 }
 </style>
