@@ -1,4 +1,5 @@
-<!-- TODO split this further into separate components,? -->
+<!-- TODO split this further into separate components,?-->
+// TODO position fix top toolbar
 <template>
   <div class="container-top" :style="bannerImage">
     <!-- back arrow and logo -->
@@ -10,7 +11,11 @@
     </div>
 
     <!-- ------ toolbar   ---------- -->
-    <div class="category-toolbar">
+    <div
+      v-scroll="onScroll"
+      class="category-toolbar"
+      :class="{ 'position-fixed': isToolBarPositionFixed }"
+    >
       <v-toolbar class="the-toolbar">
         <v-app-bar-nav-icon class="black--text" @click="toggleNavDrawer">
           <v-icon v-if="drawerOpenState" x-large>{{ icons.menuOpen }}</v-icon>
@@ -100,10 +105,10 @@ import {
   mdiMenu,
   mdiClose,
 } from '@mdi/js'
-import NuxtSSRScreenSize from 'nuxt-ssr-screen-size'
+import { ScreenSizeMixin } from '~/components/mixins/ScreenSize'
 
 export default Vue.extend({
-  mixins: [NuxtSSRScreenSize.NuxtSSRScreenSizeMixin],
+  mixins: [ScreenSizeMixin],
   props: {
     category: {
       type: String,
@@ -113,6 +118,8 @@ export default Vue.extend({
   data() {
     return {
       drawerOpenState: false,
+      offsetTop: 0,
+      isToolBarPositionFixed: false,
       icons: {
         backArrow: mdiArrowLeft,
         myAccount: mdiAccountCircle,
@@ -172,6 +179,10 @@ export default Vue.extend({
       // @ts-ignore
       return this.$vssWidth < 600
     },
+    toolbarPosition() {
+      // let pos = this.$el.
+      return 0
+    },
   },
 
   methods: {
@@ -180,6 +191,31 @@ export default Vue.extend({
     },
     onToggleNavdrawer(receivedState: boolean) {
       this.drawerOpenState = receivedState
+    },
+    onScroll(e: Event) {
+      // @ts-ignore
+      this.offsetTop = e.target.scrollingElement.scrollTop
+      // @ts-ignore
+      if (this.isLargeScreen && this.offsetTop > 615) {
+        this.positionToolBarFixed()
+      } // @ts-ignore
+      else if (this.isTablet && this.offsetTop > 630) {
+        this.positionToolBarFixed()
+      } // @ts-ignore
+      else if (this.isPhone && this.offsetTop > 660) {
+        this.positionToolBarFixed()
+      } // eslint-disable-next-line prettier/prettier
+      else {
+        // eslint-disable-next-line no-console
+        console.warn('unable to determine screen size onScroll')
+        // eslint-disable-next-line no-console
+        console.warn(this.offsetTop)
+        this.isToolBarPositionFixed = false
+      }
+      // console.log(this.offsetTop)
+    },
+    positionToolBarFixed() {
+      this.isToolBarPositionFixed = true
     },
   },
 })
@@ -197,7 +233,8 @@ export default Vue.extend({
   justify-content: space-between;
 
   .top-left {
-    position: sticky;
+    position: -webkit-sticky !important;
+    position: sticky !important;
     top: 0;
 
     button {
@@ -206,16 +243,15 @@ export default Vue.extend({
   }
 
   .category-toolbar {
-    margin-bottom: 5vw;
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
+    margin-bottom: 5vw;
     z-index: 2;
 
     .the-toolbar {
       padding: 0 2vw;
       background-color: $grey-background-transparent;
-      position: sticky;
-      top: 0;
     }
 
     button {
@@ -225,5 +261,11 @@ export default Vue.extend({
       margin: 0 1vw;
     }
   }
+}
+
+.position-fixed {
+  position: fixed !important;
+  top: 0 !important;
+  width: 100%;
 }
 </style>
