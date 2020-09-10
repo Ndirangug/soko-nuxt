@@ -9,7 +9,6 @@
         outlined
         class="select"
         :placeholder="$t('products.browse_products.category')"
-        rounded
       >
       </v-select>
 
@@ -26,7 +25,6 @@
         clearable
         outlined
         dense
-        rounded
         class="combobox"
       >
         <template v-slot:no-data>
