@@ -2,21 +2,30 @@ import NuxtSSRScreenSize from 'nuxt-ssr-screen-size'
 const tabletMaxPx = 768
 const phoneMaxPx = 600
 
+enum ScreenSize {
+  LARGE_SCREEN,
+  TABLET,
+  PHONE,
+}
+
 export const ScreenSizeMixin = {
   mixins: [NuxtSSRScreenSize.NuxtSSRScreenSizeMixin],
+  data() {
+    return {
+      ScreenSize,
+    }
+  },
   computed: {
-    isLargeScreen(): boolean {
+    screenSize(): ScreenSize {
       // @ts-ignore
-      return this.$vssWidth > tabletMaxPx
-    },
-    isTablet(): boolean {
-      // @ts-ignore
-      return this.$vssWidth > phoneMaxPx && this.$vssWidth <= tabletMaxPx
-    },
-    isPhone(): boolean {
-      // TODO maybe find better fix?
-      // @ts-ignore
-      return this.$vssWidth <= phoneMaxPx
+      if (this.$vssWidth > tabletMaxPx) {
+        return ScreenSize.LARGE_SCREEN
+        // @ts-ignore
+      } else if (this.$vssWidth > phoneMaxPx && this.$vssWidth <= tabletMaxPx) {
+        return ScreenSize.TABLET
+      } else {
+        return ScreenSize.PHONE
+      }
     },
   },
 }

@@ -38,7 +38,10 @@
               <v-btn icon x-large class="black--text" v-bind="attrs" v-on="on">
                 <v-icon large>{{ icons.myAccount }}</v-icon>
               </v-btn>
-              <h4 v-show="!isPhone" class="text-capitalize black--text">
+              <h4
+                v-if="screenSize != ScreenSize.PHONE"
+                class="text-capitalize black--text"
+              >
                 {{ $t('products.my_account') }}
               </h4>
             </template>
@@ -73,7 +76,7 @@
           <v-btn icon x-large class="black--text">
             <v-icon large>{{ icons.cart }}</v-icon>
           </v-btn>
-          <h4 v-show="!isPhone" class="text-capitalize">
+          <h4 v-if="screenSize != ScreenSize.PHONE" class="text-capitalize">
             {{ $t('products.cart') }}
           </h4>
         </div>
@@ -173,18 +176,6 @@ export default Vue.extend({
     }
   },
 
-  computed: {
-    isPhone(): boolean {
-      // TODO maybe find better fix?
-      // @ts-ignore
-      return this.$vssWidth < 600
-    },
-    toolbarPosition() {
-      // let pos = this.$el.
-      return 0
-    },
-  },
-
   methods: {
     toggleNavDrawer() {
       this.drawerOpenState = !this.drawerOpenState
@@ -196,26 +187,26 @@ export default Vue.extend({
       // @ts-ignore
       this.offsetTop = e.target.scrollingElement.scrollTop
       // @ts-ignore
-      if (this.isLargeScreen && this.offsetTop > 615) {
-        this.positionToolBarFixed()
-      } // @ts-ignore
-      else if (this.isTablet && this.offsetTop > 630) {
-        this.positionToolBarFixed()
-      } // @ts-ignore
-      else if (this.isPhone && this.offsetTop > 660) {
-        this.positionToolBarFixed()
-      } // eslint-disable-next-line prettier/prettier
-      else {
-        // eslint-disable-next-line no-console
-        console.warn('unable to determine screen size onScroll')
-        // eslint-disable-next-line no-console
-        console.warn(this.offsetTop)
-        this.isToolBarPositionFixed = false
+      switch (this.screenSize) {
+        // @ts-ignore
+        case this.ScreenSize.LARGE_SCREEN:
+          this.isToolBarPositionFixed = this.offsetTop > 615
+          break
+        // @ts-ignore
+        case this.ScreenSize.TABLET:
+          this.isToolBarPositionFixed = this.offsetTop > 630
+          break
+        // @ts-ignore
+        case this.ScreenSize.PHONE:
+          this.isToolBarPositionFixed = this.offsetTop > 600
+          break
+        default:
+          // eslint-disable-next-line no-console
+          console.warn('unable to determine screen size onScroll')
+          // eslint-disable-next-line no-console
+          console.warn(this.offsetTop)
+          break
       }
-      // console.log(this.offsetTop)
-    },
-    positionToolBarFixed() {
-      this.isToolBarPositionFixed = true
     },
   },
 })
