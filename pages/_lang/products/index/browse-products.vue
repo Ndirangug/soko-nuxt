@@ -1,6 +1,8 @@
 <template>
   <div>
-    <FilterToolbar />
+    <v-scale-transition>
+      <FilterToolbar />
+    </v-scale-transition>
     <div class="space"></div>
   </div>
 </template>

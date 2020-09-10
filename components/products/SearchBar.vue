@@ -25,7 +25,6 @@
         deletable-chips
         clearable
         outlined
-        filled
         dense
         rounded
         class="combobox"

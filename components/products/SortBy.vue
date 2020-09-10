@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-select
+      v-if="screenSize !== ScreenSize.PHONE"
       v-model="sortBy"
       dense
       :items="sortOptions"
@@ -29,21 +30,51 @@
         <div class="black--text text--darker-1">{{ item.title }}</div>
       </template>
     </v-select>
+
+    <v-menu v-else transition="slide-y-transition" bottom>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn icon small class="black--text" v-bind="attrs" v-on="on">
+          <v-icon large>{{ icons.more }}</v-icon>
+        </v-btn>
+      </template>
+      <v-list dense nav>
+        <v-list-item-group color="primary">
+          <v-list-item
+            v-for="(item, i) in sortOptions"
+            :key="i"
+            @click="sortBy = item"
+          >
+            <v-list-item-icon>
+              <v-icon v-text="item.icon"></v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ item.title }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-menu>
   </div>
 </template>
 
 <script lang="ts">
 import {
+  mdiDotsVertical,
   mdiGroup,
   mdiSortAscending,
   mdiSortCalendarDescending,
   mdiSortDescending,
 } from '@mdi/js'
 import Vue from 'vue'
+import { ScreenSizeMixin } from '~/components/mixins/ScreenSize'
+
 export default Vue.extend({
+  mixins: [ScreenSizeMixin],
   data() {
     return {
-      sortBy: null,
+      sortBy: '',
       sortOptions: [
         {
           icon: mdiGroup,
@@ -66,12 +97,15 @@ export default Vue.extend({
           title: this.$t('products.browse_products.newest_first'),
         },
       ],
+      icons: {
+        more: mdiDotsVertical,
+      },
     }
   },
 
   watch: {
     sortBy(sortOption) {
-      this.$emit('sort-changed', sortOption.title)
+      this.$emit('sort-changed', sortOption)
     },
   },
 })

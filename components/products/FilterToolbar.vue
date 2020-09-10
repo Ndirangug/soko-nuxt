@@ -36,18 +36,7 @@
       <v-spacer></v-spacer>
 
       <!-- sort by -->
-      <div
-        v-if="screenSize !== ScreenSize.PHONE"
-        id="sortby-dropdown"
-        class="d-flex justify-center align-center"
-      >
-        <SortBy @sort-changed="sortBy = $event" />
-      </div>
-
-      <!-- menu -->
-      <v-btn v-else icon x-large class="black--text">
-        <v-icon large>{{ icons.more }}</v-icon>
-      </v-btn>
+      <SortBy id="sortby-dropdown" @sort-changed="sortBy = $event" />
     </v-toolbar>
 
     <!-- search FAB -->
@@ -69,7 +58,7 @@
 </template>
 
 <script lang="ts">
-import { mdiClose, mdiDotsVertical, mdiFilterMenu, mdiMagnify } from '@mdi/js'
+import { mdiClose, mdiFilterMenu, mdiMagnify } from '@mdi/js'
 import Vue from 'vue'
 import { ScreenSizeMixin } from '~/components/mixins/ScreenSize'
 
@@ -84,7 +73,6 @@ export default Vue.extend({
       icons: {
         filter: mdiFilterMenu,
         search: mdiMagnify,
-        more: mdiDotsVertical,
         cancel: mdiClose,
       },
     }
@@ -141,8 +129,6 @@ export default Vue.extend({
       margin-left: 1vw;
       max-width: 180px;
       margin-top: 2vw;
-      .sortby-btn {
-      }
     }
   }
 }
