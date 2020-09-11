@@ -1,7 +1,7 @@
 <template>
   <div class="root-container" @toggle-navdrawer="onToggleNavDrawer">
     <!-- #####   top banner section of page   #####-->
-    <BannerAndToolbar :category="category" />
+    <BannerAndToolbar :category="category.replace('_', '-')" />
 
     <!-- #### the AdsStrip ##### -->
     <AdsStrip />
@@ -24,8 +24,51 @@ export default Vue.extend({
   data() {
     return {
       drawerState: false,
-      category: 'living room',
     }
+  },
+
+  computed: {
+    availableCategories(): string[] {
+      return [
+        ...Object.keys(this.$t('navigation.rooms')),
+        ...Object.keys(this.$t('navigation.specifics')),
+        ...Object.keys(this.$t('navigation.other_categories')),
+      ]
+    },
+    category(): string {
+      const category = this.$route.query.category
+        ? this.$route.query.category
+            .toString()
+            .trim()
+            .toLowerCase()
+            .replace(' ', '_')
+            .replace('-', '_')
+        : 'null'
+
+      if (this.availableCategories.includes(category)) {
+        if (!this.$t(`navigation.rooms.${category}`).toString().includes('.')) {
+          return this.$t(`navigation.rooms.${category}`).toString()
+        } else if (
+          !this.$t(`navigation.specifics.${category}`).toString().includes('.')
+        ) {
+          return this.$t(`navigation.specifics.${category}`).toString()
+        } else if (
+          !this.$t(`navigation.other_categories.${category}`)
+            .toString()
+            .includes('.')
+        ) {
+          return this.$t(`navigation.other_categories.${category}`).toString()
+        } else {
+          this.$emit('category-locale-not-found', category)
+          return this.$t(
+            'products.browse_products.browse_categories'
+          ).toString()
+        }
+      } else {
+        this.$emit('category-does-not-exist', category)
+        return this.$t('products.browse_products.browse_categories').toString()
+      }
+    },
   },
 
   methods: {

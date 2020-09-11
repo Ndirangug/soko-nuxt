@@ -110,6 +110,7 @@ export default {
             saved_items: 'saved items',
             browse_products: {
               category: 'category',
+              browse_categories: 'browse categories',
               filter: 'filter',
               sort_by: 'sort by',
               popularity: 'popularity',
