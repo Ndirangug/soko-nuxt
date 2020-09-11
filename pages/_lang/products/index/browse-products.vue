@@ -1,15 +1,27 @@
 <template>
-  <div>
+  <div class="root-container">
     <v-scale-transition>
       <FilterToolbar />
     </v-scale-transition>
-    <div class="space"></div>
+    <div class="chips d-flex justify-center align-center">
+      <FilterTags />
+    </div>
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import { ScreenSizeMixin } from '~/components/mixins/ScreenSize'
+
+export default Vue.extend({
+  mixins: [ScreenSizeMixin],
+})
+</script>
 <style lang="scss" scoped>
-.space {
-  height: 1900px;
-  width: 100%;
-  background: $green-light;
+.root-container {
+  .chips {
+    width: 80%;
+    margin: 4vw auto;
+  }
 }
 </style>
