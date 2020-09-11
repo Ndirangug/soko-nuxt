@@ -1,5 +1,10 @@
 <template>
-  <div class="root-container" @toggle-navdrawer="onToggleNavDrawer">
+  <div
+    class="root-container"
+    @toggle-navdrawer="onToggleNavDrawer"
+    @category-does-not-exist="onCategoryDoesNotExist"
+    @category-locale-not-found="onCategoryLocaleNotFound"
+  >
     <!-- #####   top banner section of page   #####-->
     <BannerAndToolbar :category="category.replace('_', '-')" />
 
@@ -45,6 +50,7 @@ export default Vue.extend({
             .replace('-', '_')
         : 'null'
 
+      // todo clean this up asap
       if (this.availableCategories.includes(category)) {
         if (!this.$t(`navigation.rooms.${category}`).toString().includes('.')) {
           return this.$t(`navigation.rooms.${category}`).toString()
@@ -74,6 +80,12 @@ export default Vue.extend({
   methods: {
     onToggleNavDrawer(drawerState: boolean) {
       this.drawerState = drawerState
+    },
+    onCategoryDoesNotExist(e: string) {
+      console.log(e)
+    },
+    onCategoryLocaleNotFound(e: string) {
+      console.log(e)
     },
   },
 })
