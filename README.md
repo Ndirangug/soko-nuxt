@@ -1,6 +1,6 @@
 ![Deploy To Heroku](https://github.com/Ndirangug/soko-nuxt/workflows/Deploy%20To%20Heroku/badge.svg?branch=master)
 
-# soko-nuxt2
+# soko-nuxt
 
 ## Build Setup
 

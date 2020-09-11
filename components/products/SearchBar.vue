@@ -125,4 +125,17 @@ export default Vue.extend({
     border-bottom-left-radius: 0;
   }
 }
+
+// phone <= screen <= tablet
+@media screen and (max-width: $tablet_max_px) {
+  .search-box-container {
+    width: 100%;
+  }
+}
+// screen <= phone
+@media screen and (max-width: $phone_max_px) {
+  .search-box-container {
+    width: 100%;
+  }
+}
 </style>

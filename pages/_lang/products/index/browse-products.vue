@@ -8,7 +8,7 @@
 </template>
 <style lang="scss" scoped>
 .space {
-  height: 800px;
+  height: 1900px;
   width: 100%;
   background: $green-light;
 }

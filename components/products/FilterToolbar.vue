@@ -16,27 +16,36 @@
         'toolbar-fixed-hidden': isFilterToolBarFixedHidden,
       }"
     >
-      <v-app-bar-nav-icon class="black--text">
+      <v-app-bar-nav-icon
+        v-show="screenSize == ScreenSize.LARGE_SCREEN"
+        class="black--text filter-icon"
+      >
+        <!-- TODO PLACE in bottom navigation for phones -->
         <v-icon>{{ icons.filter }}</v-icon>
       </v-app-bar-nav-icon>
 
       <v-toolbar-title
         v-show="screenSize == ScreenSize.LARGE_SCREEN"
-        class="toolbar-title font-weight-medium text-capitalize"
+        class="toolbar-title font-weight-normal text-capitalize"
       >
         {{ $t('products.browse_products.filter') }}
       </v-toolbar-title>
       <v-divider
-        v-show="screenSize !== ScreenSize.PHONE"
+        v-show="screenSize == ScreenSize.LARGE_SCREEN"
         class="mx-4 font-weight-black"
         inset
         vertical
       ></v-divider>
       <SearchBar />
-      <v-spacer></v-spacer>
+      <v-spacer v-show="screenSize == ScreenSize.LARGE_SCREEN"></v-spacer>
 
+      <!-- TODO PLACE in bottom navigation for phones -->
       <!-- sort by -->
-      <SortBy id="sortby-dropdown" @sort-changed="sortBy = $event" />
+      <SortBy
+        v-show="screenSize == ScreenSize.LARGE_SCREEN"
+        id="sortby-dropdown"
+        @sort-changed="sortBy = $event"
+      />
     </v-toolbar>
 
     <!-- search FAB -->
@@ -48,10 +57,18 @@
         absolute
         right
         color="primary"
+        :small="screenSize == ScreenSize.PHONE"
         @click="isFilterToolBarFixedShown = !isFilterToolBarFixedShown"
       >
-        <v-icon v-if="!isFilterToolBarFixedShown">{{ icons.search }}</v-icon>
-        <v-icon v-else>{{ icons.cancel }}</v-icon>
+        <v-icon
+          v-if="!isFilterToolBarFixedShown"
+          :small="screenSize == ScreenSize.PHONE"
+        >
+          {{ icons.search }}
+        </v-icon>
+        <v-icon v-else :small="screenSize == ScreenSize.PHONE">
+          {{ icons.cancel }}
+        </v-icon>
       </v-btn>
     </v-fab-transition>
   </div>
@@ -100,7 +117,7 @@ export default Vue.extend({
           break
         // @ts-ignore
         case this.ScreenSize.TABLET:
-          this.isFilterToolBarFixedHidden = this.windowOffsetTop > 970
+          this.isFilterToolBarFixedHidden = this.windowOffsetTop > 950
           break
         // @ts-ignore
         case this.ScreenSize.PHONE:
@@ -124,6 +141,13 @@ export default Vue.extend({
 
   .the-toolbar {
     padding: 0 1vw;
+    border-radius: 50px;
+
+    .toolbar-title {
+      padding-left: 0 !important;
+      font-size: 2vw;
+      overflow: visible !important;
+    }
 
     #sortby-dropdown {
       margin-left: 1vw;
@@ -137,24 +161,22 @@ export default Vue.extend({
   position: fixed !important;
   top: 20px !important;
   width: 100% !important;
-  opacity: 60%;
 }
 
 .toolbar-container-fixed-shown {
   position: fixed !important;
   top: 90px !important;
   width: 100%;
-  opacity: 100%;
 }
 
 .toolbar-fixed-shown {
   width: 90%;
   margin: auto;
-  border-radius: 50px;
+  opacity: 100% !important;
 }
 .toolbar-fixed-hidden {
   width: 90%;
   margin: auto;
-  border-radius: 50px;
+  opacity: 0;
 }
 </style>
