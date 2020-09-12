@@ -3,8 +3,14 @@
     <v-scale-transition>
       <FilterToolbar />
     </v-scale-transition>
-    <div class="chips d-flex justify-center align-center">
-      <FilterTags />
+    <div
+      class="d-flex justify-center align-center"
+      :class="{ chips: showTags }"
+    >
+      <FilterTags v-show="showTags" @check-tags="showTags = $event" />
+    </div>
+    <div class="categories">
+      <AllCategories />
     </div>
   </div>
 </template>
@@ -15,6 +21,11 @@ import { ScreenSizeMixin } from '~/components/mixins/ScreenSize'
 
 export default Vue.extend({
   mixins: [ScreenSizeMixin],
+  data() {
+    return {
+      showTags: false,
+    }
+  },
 })
 </script>
 <style lang="scss" scoped>

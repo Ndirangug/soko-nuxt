@@ -32,12 +32,12 @@ export default Vue.extend({
 
   watch: {
     tags() {
-      this.updateSelection()
+      this.checkTags()
     },
   },
 
   mounted() {
-    this.updateSelection()
+    this.checkTags()
   },
 
   methods: {
@@ -50,9 +50,13 @@ export default Vue.extend({
         this.selection.push(element)
       }
     },
-
-    updateSelection() {
-      this.selection = [...this.tags.keys()]
+    checkTags() {
+      if (this.tags.length > 0) {
+        this.selection = [...this.tags.keys()]
+        this.$emit('check-tags', true)
+      } else {
+        this.$emit('check-tags', false)
+      }
     },
   },
 })

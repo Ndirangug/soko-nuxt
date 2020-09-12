@@ -1,9 +1,5 @@
 <template>
-  <div>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur rerum
-    possimus cum, perspiciatis expedita quibusdam iste aspernatur. Cumque qui
-    repudiandae eum est?
-  </div>
+  <div></div>
 </template>
 
 <script lang="ts">
