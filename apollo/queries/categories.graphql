@@ -1,0 +1,13 @@
+query Categories($categoryId: Int, $pagination: Pagination){
+  categories(category_id: $categoryId, pagination: $pagination){
+    title
+    description
+    products{
+      productID
+      title
+      short_description
+      price
+      thumbnails
+    }
+  }
+}
