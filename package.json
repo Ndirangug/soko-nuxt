@@ -11,7 +11,8 @@
     "lint": "yarn lint:js",
     "test": "yarn test:unit && yarn test:e2e",
     "test:unit": "cross-env TEST=unit ava ./test/specs/**/*",
-    "test:e2e": "cross-env TEST=e2e ava ./test/e2e/**/*"
+    "test:e2e": "cross-env TEST=e2e ava ./test/e2e/**/*",
+    "generate-types": "graphql-codegen --config codegen.yml"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint"
@@ -39,6 +40,10 @@
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
+    "@graphql-codegen/cli": "^1.17.8",
+    "@graphql-codegen/typescript": "^1.17.9",
+    "@graphql-codegen/typescript-graphql-files-modules": "^1.17.8",
+    "@graphql-codegen/typescript-operations": "^1.17.8",
     "@nuxt/types": "^2.14.0",
     "@nuxt/typescript-build": "^2.0.2",
     "@nuxtjs/eslint-config": "^3.1.0",

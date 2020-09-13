@@ -13,3 +13,18 @@ export interface Testimonial {
   customerName: String
   customerLocation: String
 }
+
+interface Product {
+  productID: number
+  title: string
+  description: string
+  price: number
+  thumbnails: string[]
+  images: string[]
+}
+
+interface Category {
+  title: string
+  description: string
+  products: Product[]
+}
