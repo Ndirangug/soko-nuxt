@@ -30,6 +30,7 @@ import Vue from 'vue'
 import Categories from '~/apollo/queries/categories'
 
 export default Vue.extend({
+  // @ts-ignore
   apollo: {
     categories: {
       query: Categories,

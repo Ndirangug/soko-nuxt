@@ -24,9 +24,9 @@ export type Address = {
   /** An autosequence number uniquely identifying each addrress in the addrress book */
   addressID: Scalars['ID']
   /** First line, possibly a street addrress */
-  first_line: Scalars['String']
+  firstLine: Scalars['String']
   /** Seccond line, possibly additional details */
-  second_line?: Maybe<Scalars['String']>
+  secondLine?: Maybe<Scalars['String']>
   /** County */
   county: Scalars['String']
   /** City or town within the county */
@@ -36,7 +36,7 @@ export type Address = {
   /** Reference to the Custmoer to whom this addrress belongs */
   customer: Customer
   /** Shipping options available for this customer */
-  shipping_options: Array<ShippingOption>
+  shippingOptions: Array<ShippingOption>
 }
 
 export type AddressInput = {
