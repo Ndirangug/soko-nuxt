@@ -5,8 +5,8 @@ mutation LogIn($auth_method: AuthMethod!, $auth_payload: AuthPayload) {
     authToken
     customer{
       customerID
-      first_name
-      last_name
+      firstName
+      lastName
       avatarUrl
     }
   }
