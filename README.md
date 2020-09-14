@@ -1,4 +1,4 @@
-[![Heroku](http://heroku-badge.herokuapp.com/?app=soko-web-test&root=/)]
+![Heroku](http://heroku-badge.herokuapp.com/?app=soko-web-test&root=/)
 
 # soko-nuxt
 
