@@ -1,4 +1,4 @@
-![Deploy To Heroku](https://github.com/Ndirangug/soko-nuxt/workflows/Deploy%20To%20Heroku/badge.svg?branch=master)
+[![Heroku](http://heroku-badge.herokuapp.com/?app=soko-web-test&root=/)]
 
 # soko-nuxt
 
