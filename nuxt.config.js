@@ -219,7 +219,10 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'http://localhost:9002/graphql',
+        httpEndpoint:
+          process.env.NODE_ENV === 'dev'
+            ? 'http://localhost:9002/graphql'
+            : 'https://soko-graphql.herokuapp.com/graphql',
       },
     },
   },
