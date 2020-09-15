@@ -220,7 +220,7 @@ export default {
     clientConfigs: {
       default: {
         httpEndpoint:
-          process.env.NODE_ENV === 'dev'
+          process.env.NODE_ENV !== 'production'
             ? 'http://localhost:9002/graphql'
             : 'https://soko-graphql.herokuapp.com/graphql',
       },
