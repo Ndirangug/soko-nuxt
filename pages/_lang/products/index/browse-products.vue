@@ -34,9 +34,5 @@ export default Vue.extend({
     width: 80%;
     margin: 4vw auto;
   }
-
-  .categories {
-    padding: 0 5vw;
-  }
 }
 </style>

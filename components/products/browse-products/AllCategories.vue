@@ -8,7 +8,7 @@
       v-for="(category, i) in categories"
       v-else
       :key="i"
-      class="category d-flex justify-center align-center flex-column flex-nowrap"
+      class="category d-flex justify-center align-center flex-column flex-nowrap px-xs-1 px-sm-2 px-md-4 px-lg-6 px-xl-6"
     >
       <h4>{{ category.title }}</h4>
       <p>{{ category.description }}</p>
