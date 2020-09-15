@@ -1,11 +1,31 @@
 <template>
-  <div class="card-container">
+  <div class="card-container" @focus="cycle = true" @mouseover="cycle = true">
     <v-card
-      class="ma-2 ma-sm-3 mx-md-4 my-md-6 mx-lg-4 my-lg-8 mx-xl-4 my-xl-8"
+      class="card ma-2 ma-sm-3 mx-md-4 my-md-6 mx-lg-4 my-lg-8 mx-xl-4 my-xl-8"
       tile
       :height="cardHeight"
     >
-      <v-img :src="product.thumbnails[0]" />
+      <div class="images">
+        <v-carousel
+          :continuous="true"
+          :cycle="cycle"
+          :show-arrows="false"
+          hide-delimiter-background
+          :delimiter-icon="icons.dash"
+          :height="carouselHeight"
+        >
+          <v-carousel-item
+            v-for="(thumbnail, i) in product.thumbnails"
+            :key="i"
+          >
+            <v-sheet color="grey lighten-5" height="100%" tile>
+              <v-row class="fill-height" align="center" justify="center">
+                <v-img :src="thumbnail" />
+              </v-row>
+            </v-sheet>
+          </v-carousel-item>
+        </v-carousel>
+      </div>
 
       <v-card-title class="text-subtitle-2 text-center">
         {{ product.title }}
@@ -16,6 +36,7 @@
 </template>
 
 <script lang="ts">
+import { mdiMinus } from '@mdi/js'
 import Vue, { PropOptions } from 'vue'
 import { Product } from '~/types/types'
 
@@ -27,8 +48,17 @@ export default Vue.extend({
     } as PropOptions<Product>,
   },
 
+  data() {
+    return {
+      icons: {
+        dash: mdiMinus,
+      },
+      cycle: false,
+    }
+  },
+
   computed: {
-    cardHeight() {
+    cardHeight(): number {
       // @ts-ignore
       switch (this.$vuetify.breakpoint.name) {
         case 'xs':
@@ -44,6 +74,9 @@ export default Vue.extend({
         default:
           return 370
       }
+    },
+    carouselHeight(): number {
+      return 0.7 * this.cardHeight
     },
   },
 
@@ -61,6 +94,11 @@ export default Vue.extend({
 
   .card {
     overflow: hidden;
+
+    button {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
   }
 }
 
