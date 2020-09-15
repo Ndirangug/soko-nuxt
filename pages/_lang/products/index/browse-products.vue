@@ -5,9 +5,9 @@
     </v-scale-transition>
     <div
       class="d-flex justify-center align-center"
-      :class="{ chips: showTags }"
+      :class="{ 'filter-chips': showChips }"
     >
-      <FilterTags v-show="showTags" @check-tags="showTags = $event" />
+      <FilterChips v-show="showChips" @check-tags="showChips = $event" />
     </div>
     <div class="categories">
       <AllCategories />
@@ -23,16 +23,20 @@ export default Vue.extend({
   mixins: [ScreenSizeMixin],
   data() {
     return {
-      showTags: false,
+      showChips: false,
     }
   },
 })
 </script>
 <style lang="scss" scoped>
 .root-container {
-  .chips {
+  .filter-chips {
     width: 80%;
     margin: 4vw auto;
+  }
+
+  .categories {
+    padding: 0 5vw;
   }
 }
 </style>
