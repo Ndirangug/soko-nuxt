@@ -94,11 +94,6 @@ export default Vue.extend({
 
   .card {
     overflow: hidden;
-
-    button {
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-    }
   }
 }
 
@@ -107,5 +102,11 @@ export default Vue.extend({
 }
 // screen <= phone
 @media screen and (max-width: $phone_max_px) {
+}
+</style>
+
+<style lang="css">
+.v-carousel__controls__item {
+  margin: 0 !important;
 }
 </style>
