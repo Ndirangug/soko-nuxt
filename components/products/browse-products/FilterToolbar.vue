@@ -57,7 +57,6 @@
         absolute
         right
         color="primary"
-        :small="screenSize == ScreenSize.PHONE"
         @click="isFilterToolBarFixedShown = !isFilterToolBarFixedShown"
       >
         <v-icon
