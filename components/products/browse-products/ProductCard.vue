@@ -7,8 +7,10 @@
     >
       <v-img :src="product.thumbnails[0]" />
 
-      <v-card-title>{{ product.title }}</v-card-title>
-      <v-card-subtitle>{{ product.price }}</v-card-subtitle>
+      <v-card-title class="text-subtitle-2 text-center">
+        {{ product.title }}
+      </v-card-title>
+      <v-card-subtitle class="text-center">{{ product.price }}</v-card-subtitle>
     </v-card>
   </div>
 </template>
@@ -30,17 +32,17 @@ export default Vue.extend({
       // @ts-ignore
       switch (this.$vuetify.breakpoint.name) {
         case 'xs':
-          return 370
+          return 310
         case 'sm':
-          return 360
+          return 310
         case 'md':
-          return 360
+          return 320
         case 'lg':
-          return 450
+          return 370
         case 'xl':
-          return 400
+          return 370
         default:
-          return 400
+          return 370
       }
     },
   },
