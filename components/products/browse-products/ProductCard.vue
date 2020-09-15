@@ -1,7 +1,7 @@
 <template>
   <div class="card-container">
     <v-card
-      class="ma-2 ma-sm-2 ma-md-4 ma-lg-4 ma-xl-4"
+      class="ma-2 ma-sm-3 mx-md-4 my-md-6 mx-lg-4 my-lg-8 mx-xl-4 my-xl-8"
       tile
       :height="cardHeight"
     >
