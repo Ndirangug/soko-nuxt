@@ -51,7 +51,7 @@
     <!-- search FAB -->
     <v-fab-transition>
       <v-btn
-        class="search-fab elevation-20"
+        class="search-fab elevation-20 mt-2"
         :class="{ 'd-none': !isFilterToolBarFixedHidden }"
         fab
         absolute
@@ -137,6 +137,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .root-container {
   padding: 0 1vw;
+  z-index: 2;
 
   .the-toolbar {
     padding: 0 1vw;
