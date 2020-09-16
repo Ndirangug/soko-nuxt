@@ -1,7 +1,7 @@
 <template>
   <div class="card-container" @focus="cycle = true" @mouseover="cycle = true">
     <v-card
-      class="card mx-xs-1 my-xs-2 ma-sm-3 mx-md-4 my-md-6 mx-lg-4 my-lg-8 mx-xl-4 my-xl-8"
+      class="card ma-2 ma-sm-3 mx-md-4 my-md-6 mx-lg-4 my-lg-8 mx-xl-4 my-xl-8"
       tile
       :height="cardHeight"
     >
