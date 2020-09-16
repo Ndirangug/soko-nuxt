@@ -90,7 +90,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .card-container {
   width: 20vw;
-  min-width: 180px;
+  min-width: 150px;
 
   .card {
     overflow: hidden;
@@ -105,8 +105,15 @@ export default Vue.extend({
 }
 </style>
 
-<style lang="css">
-.v-carousel__controls__item {
-  margin: 0 !important;
+<!-- uncsoped-->
+<style lang="scss">
+.card-container {
+  .card {
+    .images {
+      .v-carousel__controls__item {
+        margin: 0 !important;
+      }
+    }
+  }
 }
 </style>
