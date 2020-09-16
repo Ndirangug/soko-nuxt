@@ -62,9 +62,9 @@ export default Vue.extend({
       // @ts-ignore
       switch (this.$vuetify.breakpoint.name) {
         case 'xs':
-          return 310
+          return 300
         case 'sm':
-          return 310
+          return 300
         case 'md':
           return 320
         case 'lg':
@@ -76,7 +76,15 @@ export default Vue.extend({
       }
     },
     carouselHeight(): number {
-      return 0.7 * this.cardHeight
+      // @ts-ignore
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs':
+          return 0.55 * this.cardHeight
+        case 'sm':
+          return 0.55 * this.cardHeight
+        default:
+          return 0.7 * this.cardHeight
+      }
     },
   },
 
@@ -112,6 +120,31 @@ export default Vue.extend({
     .images {
       .v-carousel__controls__item {
         margin: 0 !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $phone_max_px) {
+  .card-container {
+    .card {
+      .images {
+        .v-carousel__controls__item {
+          margin: 0 -2px !important;
+        }
+      }
+    }
+  }
+}
+
+// phones <  screen <= tablets
+@media only screen and (max-width: $tablet_max_px) and (min-width: $phone_max_px) {
+  .card-container {
+    .card {
+      .images {
+        .v-carousel__controls__item {
+          margin: 0 -4px !important;
+        }
       }
     }
   }
