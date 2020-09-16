@@ -90,7 +90,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .card-container {
   width: 20vw;
-  min-width: 150px;
+  min-width: 130px;
 
   .card {
     overflow: hidden;
