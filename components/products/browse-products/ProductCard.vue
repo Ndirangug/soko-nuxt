@@ -1,10 +1,22 @@
 <template>
   <div class="card-container" @focus="cycle = true" @mouseover="cycle = true">
     <v-card
-      class="card ma-2 ma-sm-3 mx-md-4 my-md-6 mx-lg-4 my-lg-8 mx-xl-4 my-xl-8"
+      class="card ma-2 ma-sm-3 mx-md-4 my-md-6 mx-lg-4 my-lg-8 mx-xl-4 my-xl-8 text-center"
       tile
       :height="cardHeight"
+      @mouseenter.native="showCardAction = true"
+      @mouseleave.native="showCardAction = false"
     >
+      <div class="add-to-saved-items">
+        <v-btn icon :ripple="false" @click="favorited = !favorited">
+          <v-icon v-if="favorited" color="red">
+            {{ icons.favoriteFilled }}
+          </v-icon>
+          <v-icon v-else color="white">
+            {{ icons.favoriteOutline }}
+          </v-icon>
+        </v-btn>
+      </div>
       <div class="images">
         <v-carousel
           :continuous="true"
@@ -25,10 +37,20 @@
             </v-sheet>
           </v-carousel-item>
         </v-carousel>
+
+        <div
+          v-show="showCardAction"
+          class="call-to-action justify-center align-center product-card-action"
+        >
+          <ActionAddToCart />
+        </div>
       </div>
 
       <v-card-title class="text-subtitle-2 text-center">
-        {{ product.title }}
+        <!-- TODO Browse to product details-->
+        <nuxt-link :to="localePath('/')">
+          {{ product.title }}
+        </nuxt-link>
       </v-card-title>
       <v-card-subtitle class="text-center">{{ product.price }}</v-card-subtitle>
     </v-card>
@@ -36,7 +58,7 @@
 </template>
 
 <script lang="ts">
-import { mdiMinus } from '@mdi/js'
+import { mdiHeart, mdiHeartOutline, mdiMinus } from '@mdi/js'
 import Vue, { PropOptions } from 'vue'
 import { Product } from '~/types/types'
 
@@ -52,8 +74,12 @@ export default Vue.extend({
     return {
       icons: {
         dash: mdiMinus,
+        favoriteOutline: mdiHeartOutline,
+        favoriteFilled: mdiHeart,
       },
       cycle: false,
+      showCardAction: false,
+      favorited: false,
     }
   },
 
@@ -88,6 +114,13 @@ export default Vue.extend({
     },
   },
 
+  watch: {
+    favorited(isFavorited: boolean) {
+      // TODO on favorited change, update db
+      console.log(`favorited ${isFavorited}`)
+    },
+  },
+
   mounted() {
     // @ts-ignore
     console.log(this.$vuetify.breakpoint)
@@ -102,6 +135,23 @@ export default Vue.extend({
 
   .card {
     overflow: hidden;
+
+    .add-to-saved-items {
+      z-index: 1;
+      position: absolute;
+      right: 5px;
+    }
+
+    .images {
+      .call-to-action {
+        height: 50px;
+        width: 100%;
+        background-color: $green-primary-transparent;
+        position: relative;
+        top: -50px;
+        margin-bottom: -50px;
+      }
+    }
   }
 }
 
@@ -116,19 +166,14 @@ export default Vue.extend({
 <!-- uncsoped-->
 <style lang="scss">
 .card-container {
+  .v-card__text,
+  .v-card__title {
+    word-break: normal; /* maybe !important  */
+  }
   .card {
     .images {
-      .v-carousel__controls__item {
-        margin: 0 !important;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: $phone_max_px) {
-  .card-container {
-    .card {
-      .images {
+      .v-carousel__controls {
+        z-index: 0;
         .v-carousel__controls__item {
           margin: 0 -2px !important;
         }
@@ -142,8 +187,24 @@ export default Vue.extend({
   .card-container {
     .card {
       .images {
-        .v-carousel__controls__item {
-          margin: 0 -4px !important;
+        .v-carousel__controls {
+          .v-carousel__controls__item {
+            margin: 0 -4px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $phone_max_px) {
+  .card-container {
+    .card {
+      .images {
+        .v-carousel__controls {
+          .v-carousel__controls__item {
+            margin: 0 -2px !important;
+          }
         }
       }
     }
