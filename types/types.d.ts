@@ -259,14 +259,11 @@ export enum VoucherType {
 }
 
 export interface Discount {
-  amount?: number
-  discountType?: DiscountType
+  amount: number
+  discountType: DiscountType
 }
 
-export enum DiscountType {
-  PERCENTAGE,
-  ABSOLUTE,
-}
+export type DiscountType = 'PERCENTAGE' | 'ABSOLUTE'
 
 export interface ShippingOption {
   shippingOptionId?: number

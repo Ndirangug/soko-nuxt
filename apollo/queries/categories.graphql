@@ -8,6 +8,10 @@ query Categories( $pagination: Pagination) {
       shortDescription
       price
       thumbnails
+      discount{
+        amount
+        discountType
+      }
     }
   }
 }

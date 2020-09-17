@@ -17,6 +17,13 @@
           </v-icon>
         </v-btn>
       </div>
+
+      <div v-if="percentageDiscountPresent" class="discount-chip">
+        <v-chip color="red white--text text-capitalize" pill>
+          {{ product.discount.amount }} % off
+        </v-chip>
+      </div>
+
       <div class="images">
         <v-carousel
           :continuous="true"
@@ -63,6 +70,7 @@
 <script lang="ts">
 import { mdiHeart, mdiHeartOutline, mdiMinus } from '@mdi/js'
 import Vue, { PropOptions } from 'vue'
+
 import { Product } from '~/types/types'
 
 export default Vue.extend({
@@ -115,6 +123,13 @@ export default Vue.extend({
           return 0.7 * this.cardHeight
       }
     },
+
+    percentageDiscountPresent(): boolean {
+      return (
+        this.product.discount !== undefined &&
+        this.product.discount.discountType === 'PERCENTAGE'
+      )
+    },
   },
 
   watch: {
@@ -138,6 +153,13 @@ export default Vue.extend({
 
   .card {
     overflow: hidden;
+
+    .discount-chip {
+      z-index: 1;
+      position: absolute;
+      left: 5px;
+      top: 10px;
+    }
 
     .add-to-saved-items {
       z-index: 1;

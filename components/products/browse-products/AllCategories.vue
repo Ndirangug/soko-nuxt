@@ -27,7 +27,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-// import { Product, Category } from '~/types/types'
 // @ts-ignore
 import Categories from '~/apollo/queries/categories'
 

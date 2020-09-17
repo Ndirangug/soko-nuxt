@@ -29,7 +29,7 @@
       "@nuxt/types",
       "nuxt-i18n",
       "./types/libs",
-      "./types/gql"
+      "./types/gql",
     ]
   },
   "exclude": [
