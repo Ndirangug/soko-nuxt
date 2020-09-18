@@ -8,7 +8,13 @@
       @mouseleave.native="showCardAction = false"
     >
       <div class="add-to-saved-items">
-        <v-btn icon :ripple="false" @click="favorited = !favorited">
+        <v-btn
+          icon
+          :ripple="false"
+          :small="this.$vuetify.breakpoint.name == 'sm'"
+          :x-small="this.$vuetify.breakpoint.name == 'xs'"
+          @click="favorited = !favorited"
+        >
           <v-icon v-if="favorited" color="red">
             {{ icons.favoriteFilled }}
           </v-icon>
@@ -19,8 +25,13 @@
       </div>
 
       <div v-if="percentageDiscountPresent" class="discount-chip">
-        <v-chip color="red white--text text-capitalize" pill>
-          {{ product.discount.amount }} % off
+        <v-chip
+          color="red white--text text-capitalize"
+          pill
+          :small="this.$vuetify.breakpoint.name == 'sm'"
+          :x-small="this.$vuetify.breakpoint.name == 'xs'"
+        >
+          {{ product.discount.amount }}% off
         </v-chip>
       </div>
 
@@ -138,11 +149,6 @@ export default Vue.extend({
       console.log(`favorited ${isFavorited}`)
     },
   },
-
-  mounted() {
-    // @ts-ignore
-    console.log(this.$vuetify.breakpoint)
-  },
 })
 </script>
 
@@ -159,12 +165,15 @@ export default Vue.extend({
       position: absolute;
       left: 5px;
       top: 10px;
+      max-width: 50%;
+      overflow: hidden;
     }
 
     .add-to-saved-items {
       z-index: 1;
       position: absolute;
       right: 5px;
+      top: 5px;
     }
 
     .images {
@@ -182,9 +191,35 @@ export default Vue.extend({
 
 // phones <  screen <= tablets
 @media only screen and (max-width: $tablet_max_px) and (min-width: $phone_max_px) {
+  .card-container {
+    .card {
+      .discount-chip {
+        left: 3px;
+        top: 3px;
+      }
+
+      .add-to-saved-items {
+        right: 3px;
+        top: 3px;
+      }
+    }
+  }
 }
 // screen <= phone
 @media screen and (max-width: $phone_max_px) {
+  .card-container {
+    .card {
+      .discount-chip {
+        left: 3px;
+        top: 1px;
+      }
+
+      .add-to-saved-items {
+        right: 3px;
+        top: 1px;
+      }
+    }
+  }
 }
 </style>
 

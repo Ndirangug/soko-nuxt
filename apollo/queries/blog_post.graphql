@@ -1,0 +1,12 @@
+query BlogPost($blogPostID: Int!){
+  blogPost(blogPostID: $blogPostID){
+    blogPostID
+    title
+    content
+    posterImage
+    blogUrl
+    tags
+    author
+    timePublished
+  }
+}

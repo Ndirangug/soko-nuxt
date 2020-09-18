@@ -62,6 +62,8 @@ export default Vue.extend({
       console.log(e)
     },
   },
+
+  layout: 'products',
 })
 </script>
 

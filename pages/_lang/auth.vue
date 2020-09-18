@@ -97,12 +97,7 @@ export default Vue.extend({
   },
 
   layout: 'auth',
-
-  middleware({ route, redirect }) {
-    if (route.path.endsWith('auth/') || route.path.endsWith('auth')) {
-      return redirect('/auth/login')
-    }
-  },
+  middleware: 'login_signup',
 })
 </script>
 
