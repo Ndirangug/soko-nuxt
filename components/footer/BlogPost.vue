@@ -48,7 +48,6 @@ export default Vue.extend({
       required: true,
     } as PropOptions<BlogPost>,
   },
-
   computed: {
     posterWidth(): number {
       // @ts-ignore
