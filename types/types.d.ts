@@ -331,6 +331,18 @@ export interface CustomerServiceAgent {
   avatarUrl?: string
 }
 
+export interface BlogPost {
+  blogPostID: number
+  title: string
+  content: string
+  posterImage: string
+  blogUrl: string
+  tags: string[]
+  author: string
+  timePublished: Date
+}
+
+// Input Types
 export enum PhotoPurpose {
   AVATAR,
   PRODUCT_REVIEW,

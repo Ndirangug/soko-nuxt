@@ -178,6 +178,10 @@ export default {
             wall_art: 'wall art',
             tiles: 'tiles',
           },
+          blog: {
+            featured_blog: 'featured blog',
+            read_more: 'read more',
+          },
           links: {
             home: 'Accueil',
             about: 'À propos',
@@ -248,6 +252,11 @@ export default {
     customVariables: ['~/assets/scss/vuetify_variables.scss'],
     icons: {
       iconfont: 'mdiSvg',
+    },
+    treeShake: {
+      loaderOptions: {
+        progressiveImages: true,
+      },
     },
     theme: {
       dark: false,

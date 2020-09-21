@@ -4,8 +4,25 @@
       <nuxt />
     </v-main>
 
-    <v-footer app absolute>
-      <BlogPost />
+    <v-footer>
+      <div
+        class="blog d-flex justify-center align-center flex-column py-8 px-2 pa-md-16"
+      >
+        <h2 class="text-capitalize text-h3">
+          {{ $t('blog.featured_blog') }}
+        </h2>
+        <BlogPost class="my-10" :blog-post="blogPost" />
+        <v-btn
+          :href="blogPost.blogUrl"
+          text
+          target="_blank"
+          color="primary"
+          class="text-uppercase"
+          :class="{ 'mt-n8': $vuetify.breakpoint.smAndDown }"
+        >
+          {{ $t('blog.read_more') }}
+        </v-btn>
+      </div>
 
       <Subscribe />
 
@@ -13,3 +30,35 @@
     </v-footer>
   </v-app>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import { BlogPost } from '~/apollo/queries/blog_post.graphql'
+
+export default Vue.extend({
+  // @ts-ignore
+  apollo: {
+    blogPost: {
+      query: BlogPost,
+      prefetch: true,
+      variables() {
+        return {
+          blogPostID: 4,
+        }
+      },
+    },
+  },
+})
+</script>
+
+<style lang="scss" scoped>
+.blog {
+  background-color: $grey-background;
+}
+</style>
+
+<style lang="scss">
+.v-footer {
+  padding: 0;
+}
+</style>
