@@ -12,7 +12,7 @@
         ]"
       >
         <h3
-          class="text-center text-md-left mb-2 mb-md-4 text-h5 text-capitalize primary--text"
+          class="text-center text-md-left mb-3 mb-md-6 text-h5 text-md-h4 text-capitalize primary--text"
         >
           {{ blogPost.title }}
         </h3>

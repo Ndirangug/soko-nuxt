@@ -17,14 +17,22 @@
           text
           target="_blank"
           color="primary"
-          class="text-uppercase"
+          class="text-uppercase text-h6"
           :class="{ 'mt-n8': $vuetify.breakpoint.smAndDown }"
         >
           {{ $t('blog.read_more') }}
         </v-btn>
       </div>
 
-      <Subscribe />
+      <div
+        class="subscribe d-flex justify-center align-center flex-column px-2 pt-8 pb-3 pt-md-16 pb-md-10 px-md-16"
+      >
+        <h2 class="text-capitalize text-h3">{{ $t('subscribe.subscribe') }}</h2>
+        <p class="text-center mt-4 mb-2 px-1 px-md-4">
+          {{ $t('subscribe.subscribe_tip') }}
+        </p>
+        <Subscribe />
+      </div>
 
       <Footer />
     </v-footer>
@@ -55,10 +63,14 @@ export default Vue.extend({
 .blog {
   background-color: $grey-background;
 }
+
+.subscribe {
+  background-color: $white;
+}
 </style>
 
 <style lang="scss">
 .v-footer {
-  padding: 0;
+  padding: 0 !important;
 }
 </style>
