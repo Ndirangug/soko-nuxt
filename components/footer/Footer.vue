@@ -1,8 +1,147 @@
 <template>
   <v-container
-    class="root-container d-flex justify-center align-center fkex-columm"
+    class="root-container d-flex justify-center align-center flex-column py-16 px-4 px-sm-6 px-md-8 px-lg-16"
     fluid
   >
-    <h1>Footer</h1>
+    <div
+      class="footer-row d-flex flex-column-reverse flex-sm-row justify-space-between align-center align-sm-start"
+    >
+      <div
+        class="links d-flex justify-space-between align-start flex-wrap px-4 px-sm-0"
+      >
+        <div
+          class="col1 d-flex justify-center align-start flex-column mr-4 mr-sm-6 mr-md-8 mr-lg-16"
+        >
+          <div
+            class="links-group site d-flex justify-center align-start flex-column mb-md-8"
+          >
+            <h6 class="text-button mb-3">{{ $t('footer.site') }}</h6>
+
+            <NuxtLink
+              v-for="link in $t('footer.links_site')"
+              :key="link"
+              :to="localePath(`/${link}`)"
+              class="text-body-2 text-decoration-none white--text text-capitalize my-1"
+            >
+              {{ link }}
+            </NuxtLink>
+          </div>
+        </div>
+        <div
+          class="col2 d-flex justify-center align-start flex-column mr-3 ml-3 ml-md-8 mr-sm-6 mr-md-8 mr-lg-16"
+        >
+          <div
+            class="links-group company d-flex justify-center align-start flex-column mb-md-8"
+          >
+            <h6 class="text-button mb-3">{{ $t('footer.company') }}</h6>
+            <NuxtLink
+              v-for="link in $t('footer.links_company')"
+              :key="link"
+              :to="localePath(`/${link}`)"
+              class="text-body-2 text-decoration-none white--text text-capitalize my-1"
+            >
+              {{ link }}
+            </NuxtLink>
+          </div>
+          <div
+            class="links-group legal d-flex justify-center align-start flex-column mb-md-8"
+          >
+            <h6 class="text-button mb-3">{{ $t('footer.legal') }}</h6>
+            <NuxtLink
+              v-for="link in $t('footer.links_legal')"
+              :key="link"
+              :to="localePath(`/${link}`)"
+              class="text-body-2 text-decoration-none white--text text-capitalize my-1"
+            >
+              {{ link }}
+            </NuxtLink>
+          </div>
+        </div>
+        <div
+          class="col3 d-flex justify-center align-start flex-column ml-4 ml-sm-4 ml-md-8"
+        >
+          <div
+            class="links-group shopping d-flex justify-center align-start flex-column mb-md-8"
+          >
+            <h6 class="text-button mb-3">{{ $t('footer.shopping') }}</h6>
+            <NuxtLink
+              v-for="link in $t('footer.links_shopping')"
+              :key="link"
+              :to="localePath(`/${link}`)"
+              class="text-body-2 text-decoration-none white--text text-capitalize my-1"
+            >
+              {{ link }}
+            </NuxtLink>
+          </div>
+          <div
+            class="links-group selling d-flex justify-center align-start flex-column mb-md-8"
+          >
+            <h6 class="text-button mb-3">{{ $t('footer.selling') }}</h6>
+            <NuxtLink
+              v-for="link in $t('footer.links_selling')"
+              :key="link"
+              :to="localePath(`/${link}`)"
+              class="text-body-2 text-decoration-none white--text text-capitalize my-1"
+            >
+              {{ link }}
+            </NuxtLink>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="app-stores d-flex justify-center align-start flex-column ml-lg-n8"
+        :style="{ width: $vuetify.breakpoint.sm ? '30%' : '' }"
+      >
+        <h6 class="text-button mb-2">{{ $t('footer.download') }}</h6>
+        <p>{{ $t('footer.download_tip') }}</p>
+        <div
+          class="app-store-badges d-flex justify-center align-center"
+          :class="{
+            'flex-column': $vuetify.breakpoint.sm,
+            'align-start': $vuetify.breakpoint.sm,
+            'mb-8': $vuetify.breakpoint.xs,
+          }"
+        >
+          <a target="_blank" href="https://store.apple.com">
+            <v-img
+              max-width="153"
+              src="/footer/badges/Download_on_the_App_Store_Badge.svg"
+            />
+          </a>
+          <a target="_blank" href="https://play.google.com">
+            <v-img
+              max-width="153"
+              src="/footer/badges/Google_Play_Store_badge_EN_small.svg"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-row d-flex justify-space-between align-center">
+      <div class="social"></div>
+      <div class="payment-methods"></div>
+    </div>
   </v-container>
 </template>
+
+<style lang="scss" scoped>
+.root-container {
+  color: $white;
+
+  .footer-row {
+    width: 100%;
+  }
+
+  .links-group {
+    a {
+      color: $grey-text-dark !important;
+
+      &:hover {
+        color: $green-secondary !important;
+      }
+    }
+  }
+}
+</style>

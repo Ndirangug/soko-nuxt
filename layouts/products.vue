@@ -4,11 +4,11 @@
       <nuxt />
     </v-main>
 
-    <v-footer>
+    <v-footer class="mt-4">
       <div
         class="blog d-flex justify-center align-center flex-column py-8 px-2 pa-md-16"
       >
-        <h2 class="text-capitalize text-h3">
+        <h2 class="text-capitalize text-h4 text-md-h3">
           {{ $t('blog.featured_blog') }}
         </h2>
         <BlogPost class="my-10" :blog-post="blogPost" />
@@ -27,14 +27,17 @@
       <div
         class="subscribe d-flex justify-center align-center flex-column px-2 pt-8 pb-3 pt-md-16 pb-md-10 px-md-16"
       >
-        <h2 class="text-capitalize text-h3">{{ $t('subscribe.subscribe') }}</h2>
+        <h2 class="text-capitalize text-h4 text-md-h3">
+          {{ $t('subscribe.subscribe') }}
+        </h2>
         <p class="text-center mt-4 mb-2 px-1 px-md-4">
           {{ $t('subscribe.subscribe_tip') }}
         </p>
         <Subscribe />
       </div>
-
-      <Footer />
+      <div class="footer">
+        <Footer />
+      </div>
     </v-footer>
   </v-app>
 </template>
@@ -66,7 +69,14 @@ export default Vue.extend({
 }
 
 .subscribe {
+  width: 100%;
   background-color: $white;
+  background: url('/footer/subscribe/background.png');
+  background-size: cover;
+  background-position: center;
+}
+.footer {
+  background-color: $black;
   width: 100%;
 }
 </style>
