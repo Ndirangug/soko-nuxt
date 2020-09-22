@@ -196,7 +196,7 @@ export default {
             selling: 'selling',
             download: 'download the soko app',
             download_tip: 'Use less data. Enjoy a richer mobile experience.',
-            payment_methods: 'payment methods.',
+            payment_methods: 'payment methods',
             follow_us:
               'Follow us on social media to catch all the the latest offers, design tips, awesome content and more!',
             links_site: {

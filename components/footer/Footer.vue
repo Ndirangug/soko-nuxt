@@ -119,12 +119,88 @@
       </div>
     </div>
 
-    <div class="footer-row d-flex justify-space-between align-center">
-      <div class="social"></div>
-      <div class="payment-methods"></div>
+    <div
+      class="footer-row d-flex flex-column flex-md-row justify-center justify-md-space-between align-md-start mt-10"
+    >
+      <div
+        class="social px-md-12 mb-8 mb-md-0 d-flex flex-column align-center align-md-start"
+        :style="{ width: $vuetify.breakpoint.mdAndUp ? '50%' : '' }"
+      >
+        <h6 class="mb-4 mb-md-7 text-body-2">{{ $t('footer.follow_us') }}</h6>
+        <div
+          class="icons d-flex justify-center justify-md-space-around align-center flex-wrap"
+        >
+          <v-btn dark href="http://facebook.com" icon class="mx-4 mx-md-4">
+            <v-icon :large="$vuetify.breakpoint.mdAndUp">
+              {{ icons.facebook }}
+            </v-icon>
+          </v-btn>
+          <v-btn dark href="http://pinterest.com" icon class="mx-4 mx-md-4">
+            <v-icon :large="$vuetify.breakpoint.mdAndUp">
+              {{ icons.pinterest }}
+            </v-icon>
+          </v-btn>
+          <v-btn dark href="http://instagram.com" icon class="mx-4 mx-md-4">
+            <v-icon :large="$vuetify.breakpoint.mdAndUp">
+              {{ icons.instagram }}
+            </v-icon>
+          </v-btn>
+          <v-btn dark href="http://twitter.com" icon class="mx-4 mx-md-4">
+            <v-icon :large="$vuetify.breakpoint.mdAndUp">
+              {{ icons.twitter }}
+            </v-icon>
+          </v-btn>
+        </div>
+      </div>
+      <div
+        class="payment-methods px-md-16 d-flex flex-column align-center align-md-start"
+        :style="{ width: $vuetify.breakpoint.mdAndUp ? '50%' : '' }"
+      >
+        <h6 class="mb-4 mb-md-7 text-capitalize text-body-2">
+          {{ $t('footer.payment_methods') }}
+        </h6>
+        <div
+          class="icons d-flex justify-center justify-md-space-around align-center flex-wrap"
+        >
+          <v-icon
+            v-for="(icon, i) in icons.payment_methods"
+            :key="i"
+            class="payment-method-icon mx-4 mx-md-4"
+            dark
+            :large="$vuetify.breakpoint.mdAndUp"
+          >
+            {{ icon }}
+          </v-icon>
+        </div>
+      </div>
     </div>
   </v-container>
 </template>
+
+<script lang="ts">
+import {
+  mdiCash,
+  mdiCreditCard,
+  mdiFacebook,
+  mdiInstagram,
+  mdiPinterest,
+  mdiTwitter,
+} from '@mdi/js'
+import Vue from 'vue'
+export default Vue.extend({
+  data() {
+    return {
+      icons: {
+        facebook: mdiFacebook,
+        instagram: mdiInstagram,
+        pinterest: mdiPinterest,
+        twitter: mdiTwitter,
+        payment_methods: [mdiCash, mdiCreditCard],
+      },
+    }
+  },
+})
+</script>
 
 <style lang="scss" scoped>
 .root-container {
