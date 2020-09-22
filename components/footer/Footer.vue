@@ -106,13 +106,13 @@
           <a target="_blank" href="https://store.apple.com">
             <v-img
               max-width="153"
-              src="/footer/badges/Download_on_the_App_Store_Badge.svg"
+              src="/footer/app-store-badges/Download_on_the_App_Store_Badge.svg"
             />
           </a>
           <a target="_blank" href="https://play.google.com">
             <v-img
               max-width="153"
-              src="/footer/badges/Google_Play_Store_badge_EN_small.svg"
+              src="/footer/app-store-badges/Google_Play_Store_badge_EN_small.svg"
             />
           </a>
         </div>
@@ -153,24 +153,26 @@
         </div>
       </div>
       <div
-        class="payment-methods px-md-16 d-flex flex-column align-center align-md-start"
+        class="payment-methods px-md-2 d-flex flex-column align-center align-md-start"
         :style="{ width: $vuetify.breakpoint.mdAndUp ? '50%' : '' }"
       >
         <h6 class="mb-4 mb-md-7 text-capitalize text-body-2">
           {{ $t('footer.payment_methods') }}
         </h6>
         <div
-          class="icons d-flex justify-center justify-md-space-around align-center flex-wrap"
+          class="icons d-flex flex-column flex-sm-row justify-center justify-md-space-around align-start flex-wrap"
         >
-          <v-icon
+          <v-img
             v-for="(icon, i) in icons.payment_methods"
             :key="i"
-            class="payment-method-icon mx-4 mx-md-4"
-            dark
-            :large="$vuetify.breakpoint.mdAndUp"
-          >
-            {{ icon }}
-          </v-icon>
+            class="payment-method-icon mx-2 mx-md-2 my-2 my-sm-0"
+            :src="icon"
+            max-height="50"
+            min-height="30"
+            max-width="120"
+            min-width="50"
+            contain
+          />
         </div>
       </div>
     </div>
@@ -178,15 +180,9 @@
 </template>
 
 <script lang="ts">
-import {
-  mdiCash,
-  mdiCreditCard,
-  mdiFacebook,
-  mdiInstagram,
-  mdiPinterest,
-  mdiTwitter,
-} from '@mdi/js'
+import { mdiFacebook, mdiInstagram, mdiPinterest, mdiTwitter } from '@mdi/js'
 import Vue from 'vue'
+
 export default Vue.extend({
   data() {
     return {
@@ -195,7 +191,12 @@ export default Vue.extend({
         instagram: mdiInstagram,
         pinterest: mdiPinterest,
         twitter: mdiTwitter,
-        payment_methods: [mdiCash, mdiCreditCard],
+        payment_methods: [
+          '/footer/payment-icons/lipa_na_mpesa.png',
+          '/footer/payment-icons/mc_vrt_rev.svg',
+          '/footer/payment-icons/visa.svg',
+          '/footer/payment-icons/Money_Flat_Icon.svg',
+        ],
       },
     }
   },
