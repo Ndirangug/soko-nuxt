@@ -62,10 +62,12 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .blog {
   background-color: $grey-background;
+  width: 100%;
 }
 
 .subscribe {
   background-color: $white;
+  width: 100%;
 }
 </style>
 
