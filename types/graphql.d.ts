@@ -31,3 +31,11 @@ declare module '*/blog_post.graphql' {
 
   export default defaultDocument
 }
+
+declare module '*/products.graphql' {
+  import { DocumentNode } from 'graphql'
+  const defaultDocument: DocumentNode
+  export const Products: DocumentNode
+
+  export default defaultDocument
+}

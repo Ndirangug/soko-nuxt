@@ -11,7 +11,7 @@
     <AdsStrip />
 
     <!-- ##### the actual products ###### ------ -->
-    <nuxt-child />
+    <nuxt-child :category="category" />
 
     <!-- ##### blog ##### -->
 

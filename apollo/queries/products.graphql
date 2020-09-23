@@ -1,0 +1,13 @@
+query Products($filter: ProductsFilter!, $sort: SortOptions, $pagination: Pagination) {
+  products(filter: $filter, sort: $sort, pagination: $pagination) {
+    productID
+    title
+    shortDescription
+    price
+    thumbnails
+    discount {
+      amount
+      discountType
+    }
+  }
+}

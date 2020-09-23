@@ -9,8 +9,11 @@
     >
       <FilterChips v-show="showChips" @check-tags="showChips = $event" />
     </div>
-    <div class="categories">
+    <div v-if="noCategorySelected" class="categories">
       <AllCategories />
+    </div>
+    <div v-else>
+      <ProductsGrid :category="category" />
     </div>
   </div>
 </template>
@@ -21,10 +24,24 @@ import { ScreenSizeMixin } from '~/components/mixins/ScreenSize'
 
 export default Vue.extend({
   mixins: [ScreenSizeMixin],
+  props: {
+    category: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       showChips: false,
     }
+  },
+  computed: {
+    noCategorySelected(): boolean {
+      return (
+        this.category ===
+        this.$t('products.browse_products.browse_categories').toString()
+      )
+    },
   },
 })
 </script>

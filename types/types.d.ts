@@ -366,31 +366,29 @@ export interface ProductsFilter {
 }
 
 export interface DynamicFilterInput {
-  filterName?: string
-  values?: string[]
-  condition?: FilterCondition
+  filterName: string
+  values: string[]
+  condition: FilterCondition
 }
 
-export enum FilterCondition {
-  EQUAL,
-  LESS_THAN_OR_EQUAL,
-  LESS_THAN,
-  GREATER_THAN_OR_EQUAL,
-  GREATER_THAN,
-}
+export type FilterCondition =
+  | 'EQUAL'
+  | 'LESS_THAN_OR_EQUAL'
+  | 'LESS_THAN'
+  | 'GREATER_THAN_OR_EQUAL'
+  | 'GREATER_THAN'
 
 export interface Pagination {
-  start?: number
-  first?: number
+  start: number
+  first: number
 }
 
-export enum SortOptions {
-  PRICE_ASCENDING,
-  PRICE_DESCENDING,
-  POPULARITY,
-  PRODUCT_RATING,
-  SELLER_RATING,
-}
+export type SortOptions =
+  | 'PRICE_ASCENDING'
+  | 'PRICE_DESCENDING'
+  | 'POPULARITY'
+  | 'PRODUCT_RATING'
+  | 'SELLER_RATING'
 
 export enum AuthMethod {
   USERNAME_PASSWORD,
