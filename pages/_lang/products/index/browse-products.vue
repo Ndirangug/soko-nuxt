@@ -16,9 +16,7 @@
       <div
         class="products-grid-container d-flex flex-column justify-center align-start"
       >
-        <p>Showing</p>
         <ProductsGrid :category="category" />
-        <div class="page-numbers align-self-center">page</div>
       </div>
     </div>
   </div>

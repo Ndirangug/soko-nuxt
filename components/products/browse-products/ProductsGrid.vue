@@ -1,12 +1,46 @@
+// TODO refine pagination
 <template>
   <div class="root-container">
-    <div class="d-flex justify-center align-center flex-wrap">
-      <ProductCard
-        v-for="(product, i) in products"
-        :key="i"
-        :product="product"
-      />
-    </div>
+    <v-container fluid>
+      <v-data-iterator
+        :items="products"
+        :items-per-page.sync="pagination.first"
+        :page="pagination.start"
+        hide-default-footer
+        :server-items-length="totalResults"
+        item-key="productID"
+      >
+        <template v-slot:header>
+          <p class="iterator-header">
+            {{ $t('products.browse_products.showing_results') }}
+            {{ `${firstResult} - ${lastResult}` }}
+            {{ $t('products.browse_products.of') + ' ' }}
+            {{ totalResults }}
+          </p>
+        </template>
+
+        <template v-slot:default="props">
+          <div class="d-flex justify-center align-center flex-wrap">
+            <ProductCard
+              v-for="(item, i) in props.items"
+              :key="i"
+              :product="item"
+            />
+          </div>
+        </template>
+
+        <template v-slot:footer>
+          <div class="text-center mt-6">
+            <v-pagination
+              v-model="pagination.start"
+              :length="numberOfPages"
+              total-visible="6"
+              circle
+            ></v-pagination>
+          </div>
+        </template>
+      </v-data-iterator>
+    </v-container>
   </div>
 </template>
 
@@ -38,12 +72,13 @@ export default Vue.extend({
 
   data(): ProductsGridData {
     return {
+      totalResults: 200,
       showMoreEnabled: true,
       defaultResultsSize: 30,
       // TODO Vmodel on this
       pagination: {
         start: 1,
-        first: 30,
+        first: 5,
       },
       filter: {
         // @ts-ignore
@@ -84,6 +119,23 @@ export default Vue.extend({
         sort: this.sort,
       }
     },
+    numberOfPages(): number {
+      // @ts-ignore
+      return (this.totalResults / this.pagination.first).toFixed()
+    },
+    firstResult(): number {
+      // @ts-ignore
+      return (this.pagination.start - 1) * this.pagination.first + 1
+    },
+    lastResult(): number {
+      // @ts-ignore
+      const calculatedLastResult = this.pagination.start * this.pagination.first
+      // @ts-ignore
+      return calculatedLastResult > this.totalResults
+        ? // @ts-ignore
+          this.totalResults
+        : calculatedLastResult
+    },
   },
 
   methods: {
@@ -120,3 +172,11 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style lang="scss">
+.iterator-header {
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+</style>
