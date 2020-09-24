@@ -424,3 +424,11 @@ export interface ConfigurableInput {
   configurableName?: string
   customerPreferrence?: string
 }
+
+// Query Variables
+
+export type ProductsQueryVariables = {
+  filter: ProductsFilter
+  pagination: Pagination
+  sort: SortOptions
+}

@@ -13,13 +13,20 @@
       <AllCategories />
     </div>
     <div v-else>
-      <ProductsGrid :category="category" />
+      <div
+        class="products-grid-container d-flex flex-column justify-center align-start"
+      >
+        <p>Showing</p>
+        <ProductsGrid :category="category" />
+        <div class="page-numbers align-self-center">page</div>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+// TODO remove this and use vuetify breakpoint service instead
 import { ScreenSizeMixin } from '~/components/mixins/ScreenSize'
 
 export default Vue.extend({
@@ -33,6 +40,7 @@ export default Vue.extend({
   data() {
     return {
       showChips: false,
+      pagination: {},
     }
   },
   computed: {
