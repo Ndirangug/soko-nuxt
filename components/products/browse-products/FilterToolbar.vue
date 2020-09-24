@@ -172,7 +172,7 @@ export default Vue.extend({
 .toolbar-fixed-shown {
   width: 90%;
   margin: auto;
-  opacity: 100% !important;
+  opacity: 1 !important;
 }
 .toolbar-fixed-hidden {
   width: 90%;
