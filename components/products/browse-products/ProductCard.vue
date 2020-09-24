@@ -73,7 +73,9 @@
           {{ product.title }}
         </nuxt-link>
       </v-card-title>
-      <v-card-subtitle class="text-center">{{ product.price }}</v-card-subtitle>
+      <v-card-subtitle class="text-center">
+        {{ product.price }}
+      </v-card-subtitle>
     </v-card>
   </div>
 </template>

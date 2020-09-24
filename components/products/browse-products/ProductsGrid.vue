@@ -21,8 +21,13 @@
 
         <template v-slot:default="props">
           <div class="d-flex justify-center align-center flex-wrap">
+            <v-skeleton-loader
+              v-if="$apollo.loading"
+              type="image list-item-two-line"
+            />
             <ProductCard
               v-for="(item, i) in props.items"
+              v-else
               :key="i"
               :product="item"
             />
@@ -121,11 +126,11 @@ export default Vue.extend({
     },
     numberOfPages(): number {
       // @ts-ignore
-      return (this.totalResults / this.pagination.first).toFixed()
+      return Math.ceil(this.totalResults / this.pagination.first)
     },
     firstResult(): number {
       // @ts-ignore
-      return (this.pagination.start - 1) * this.pagination.first + 1
+      return Math.ceil(this.pagination.start - 1) * this.pagination.first + 1
     },
     lastResult(): number {
       // @ts-ignore
