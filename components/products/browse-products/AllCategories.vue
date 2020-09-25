@@ -27,8 +27,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-// @ts-ignore
-import Categories from '~/apollo/queries/categories'
+import Categories from '~/apollo/queries/categories.graphql'
+import { CategoriesQueryVariables } from '~/types/types'
 
 export default Vue.extend({
   // @ts-ignore
@@ -36,7 +36,7 @@ export default Vue.extend({
     categories: {
       query: Categories,
       prefetch: true,
-      variables() {
+      variables(): CategoriesQueryVariables {
         return {
           pagination: {
             start: 1,

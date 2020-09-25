@@ -6,7 +6,23 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import ProductDetails from '~/apollo/queries/product_details.graphql'
+import { ProductDetailsQueryVariables } from '~/types/types'
+
 export default Vue.extend({
+  // @ts-ignore
+  apollo: {
+    productDetails: {
+      query: ProductDetails,
+      prefetch: true,
+      variables(): ProductDetailsQueryVariables {
+        return {
+          // @ts-ignore
+          productID: this.productID,
+        }
+      },
+    },
+  },
   computed: {
     productID(): number {
       const idFromQueryParams: number =

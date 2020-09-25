@@ -39,3 +39,12 @@ declare module '*/products.graphql' {
 
   export default defaultDocument
 }
+
+declare module '*/product_details.graphql' {
+  import { DocumentNode } from 'graphql'
+  const defaultDocument: DocumentNode
+  export const ProductDetailsComplete: DocumentNode
+  export const ProductDetailsPartial: DocumentNode
+
+  export default defaultDocument
+}

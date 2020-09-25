@@ -1,0 +1,96 @@
+query ProductDetails($productID: Int!) {
+  productDetails(productID: $productID) {
+    productID
+    title
+    shortDescription
+    price
+    discount {
+      amount
+      discountType
+    }
+    images
+    thumbnails
+    descriptionDocument
+    descriptionText
+    configurables {
+      configurableID
+      configurableType
+      optionsAvailable {
+        configurableOptionID
+        name
+        thumbnailUrl
+      }
+    }
+    productReviews {
+      productReviewID
+      customer {
+        firstName
+        lastName
+        avatarUrl
+      }
+      date
+      starRating
+      reviewMessage
+      attachments
+      reply {
+        seller {
+          sellerName
+        }
+        date
+        replyMessage
+      }
+    }
+    seller {
+      sellerID
+      sellerName
+      dispatchLocation
+      sellerScore
+    }
+    productOverallRating {
+      overallScore
+      numberOfRatings
+      fiveStar
+      fourStar
+      threeStar
+      twoStar
+      oneStar
+    }
+    relatedProducts {
+      productID
+      title
+      shortDescription
+      price
+      thumbnails
+      discount {
+        amount
+        discountType
+      }
+    }
+    similarFromOtherSellers {
+      productID
+      title
+      shortDescription
+      price
+      thumbnails
+      discount {
+        amount
+        discountType
+      }
+    }
+    vouchersApplicable {
+      voucherID
+      voucherCode
+      dateStarted
+      dateExpire
+      voucherType
+      discount {
+        amount
+        discountType
+      }
+      applyOnOrder
+    }
+    inventoryRemaining
+    tags
+  }
+}
+

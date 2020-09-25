@@ -67,7 +67,7 @@
       <v-card-title class="text-subtitle-2 text-center">
         <!-- TODO Browse to product details-->
         <nuxt-link
-          :to="localePath('/product-details')"
+          :to="localePath('/product-details?id=' + product.productID)"
           class="text-decoration-none black--text"
         >
           {{ product.title }}

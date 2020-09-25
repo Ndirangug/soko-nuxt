@@ -241,7 +241,7 @@ export interface ModeOfRefund {
 
 export interface Voucher {
   voucherID?: number
-  vouherCode?: string
+  voucherCode?: string
   rule?: string // TODO  consider this
   description?: string
   productsApplicable?: Product[]
@@ -432,3 +432,11 @@ export type ProductsQueryVariables = {
   pagination: Pagination
   sort: SortOptions
 }
+
+export type CategoriesQueryVariables = { pagination: Pagination }
+
+export type CustomerQueryVariables = { customerID: number }
+
+export type BlogPostQueryVariables = { blogPostID: number }
+
+export type ProductDetailsQueryVariables = { productID: number }

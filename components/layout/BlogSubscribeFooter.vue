@@ -39,6 +39,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { BlogPost } from '~/apollo/queries/blog_post.graphql'
+import { BlogPostQueryVariables } from '~/types/types'
 
 export default Vue.extend({
   props: {
@@ -52,8 +53,7 @@ export default Vue.extend({
     blogPost: {
       query: BlogPost,
       prefetch: true,
-      // @ts-ignore
-      variables() {
+      variables(): BlogPostQueryVariables {
         return {
           // @ts-ignore
           blogPostID: this.blogPostId,
