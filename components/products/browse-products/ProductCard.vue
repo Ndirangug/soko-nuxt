@@ -146,9 +146,9 @@ export default Vue.extend({
   },
 
   watch: {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     favorited(isFavorited: boolean) {
       // TODO on favorited change, update db
-      console.log(`favorited ${isFavorited}`)
     },
   },
 })
