@@ -1,14 +1,13 @@
-// TODO MAKE ABSOLUTE, POSITION = TOOLBARPOSITION
 <template>
   <v-navigation-drawer
-    v-model="drawerState"
+    v-model="drawer"
     temporary
     hide-overlay
     class="nav-drawer"
   >
     <v-list-item>
       <v-list-item-icon class="back-button">
-        <v-btn icon @click="drawerState = false">
+        <v-btn icon @click="drawer = false">
           <v-icon>{{ icons.backArrow }}</v-icon>
         </v-btn>
       </v-list-item-icon>
@@ -102,16 +101,11 @@ import {
   mdiBookshelf,
   mdiArrowLeft,
 } from '@mdi/js'
+import { uiStore } from '~/store'
 export default Vue.extend({
-  props: {
-    drawer: {
-      type: Boolean,
-      required: true,
-    },
-  },
   data() {
     return {
-      drawerState: false,
+      drawer: false,
       items: [
         {
           title: this.$t('products.profile'),
@@ -175,13 +169,18 @@ export default Vue.extend({
     }
   },
 
-  watch: {
-    drawer(val: boolean) {
-      this.$emit('toggle-navdrawer', val)
-      this.drawerState = val
+  computed: {
+    drawerOpenState() {
+      return uiStore.isNavDrawerOpen
     },
-    drawerState(val: boolean) {
-      this.$emit('toggle-navdrawer', val)
+  },
+
+  watch: {
+    drawer(isOpen: boolean) {
+      uiStore.toggleNavDrawer(isOpen)
+    },
+    drawerOpenState() {
+      this.drawer = this.drawerOpenState
     },
   },
 })

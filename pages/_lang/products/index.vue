@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="root-container"
-    @toggle-navdrawer="onToggleNavDrawer"
-    @category-does-not-exist="onCategoryDoesNotExist"
-  >
+  <div class="root-container" @category-does-not-exist="onCategoryDoesNotExist">
     <!-- #####   top banner section of page   #####-->
     <BannerAndToolbar :category="category.replace('_', '-')" />
 
@@ -25,12 +21,6 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  data() {
-    return {
-      drawerState: false,
-    }
-  },
-
   computed: {
     availableCategories(): string[] {
       return [...Object.keys(this.$t('all_categories'))]
@@ -55,9 +45,6 @@ export default Vue.extend({
   },
 
   methods: {
-    onToggleNavDrawer(drawerState: boolean) {
-      this.drawerState = drawerState
-    },
     onCategoryDoesNotExist(e: string) {
       console.log(e)
     },

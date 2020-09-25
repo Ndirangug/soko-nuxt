@@ -1,9 +1,5 @@
 <template>
-  <div id="logo">
-    <h1 :class="{ 'white--text': dark, 'black--text': !dark }">
-      S<span class="primary--text">O</span>KO
-    </h1>
-  </div>
+  <GreenWhiteLogo :dark="dark" />
 </template>
 
 <script lang="ts">

@@ -17,7 +17,7 @@
       }"
     >
       <v-app-bar-nav-icon
-        v-show="screenSize == ScreenSize.LARGE_SCREEN"
+        v-show="$vuetify.breakpoint.mdAndUp"
         class="black--text filter-icon"
       >
         <!-- TODO PLACE in bottom navigation for phones -->
@@ -25,24 +25,24 @@
       </v-app-bar-nav-icon>
 
       <v-toolbar-title
-        v-show="screenSize == ScreenSize.LARGE_SCREEN"
+        v-show="$vuetify.breakpoint.mdAndUp"
         class="toolbar-title font-weight-normal text-capitalize"
       >
         {{ $t('products.browse_products.filter') }}
       </v-toolbar-title>
       <v-divider
-        v-show="screenSize == ScreenSize.LARGE_SCREEN"
+        v-show="$vuetify.breakpoint.mdAndUp"
         class="mx-4 font-weight-black"
         inset
         vertical
       ></v-divider>
       <SearchBar />
-      <v-spacer v-show="screenSize == ScreenSize.LARGE_SCREEN"></v-spacer>
+      <v-spacer v-show="$vuetify.breakpoint.mdAndUp"></v-spacer>
 
       <!-- TODO PLACE in bottom navigation for phones -->
       <!-- sort by -->
       <SortBy
-        v-show="screenSize == ScreenSize.LARGE_SCREEN"
+        v-show="$vuetify.breakpoint.mdAndUp"
         id="sortby-dropdown"
         @sort-changed="sortBy = $event"
       />
@@ -61,11 +61,11 @@
       >
         <v-icon
           v-if="!isFilterToolBarFixedShown"
-          :small="screenSize == ScreenSize.PHONE"
+          :small="$vuetify.breakpoint.xs"
         >
           {{ icons.search }}
         </v-icon>
-        <v-icon v-else :small="screenSize == ScreenSize.PHONE">
+        <v-icon v-else :small="$vuetify.breakpoint.xs">
           {{ icons.cancel }}
         </v-icon>
       </v-btn>
@@ -76,10 +76,8 @@
 <script lang="ts">
 import { mdiClose, mdiFilterMenu, mdiMagnify } from '@mdi/js'
 import Vue from 'vue'
-import { ScreenSizeMixin } from '~/components/mixins/ScreenSize'
 
 export default Vue.extend({
-  mixins: [ScreenSizeMixin],
   data() {
     return {
       windowOffsetTop: 0,
@@ -109,17 +107,25 @@ export default Vue.extend({
       // @ts-ignore
       this.windowOffsetTop = e.target.scrollingElement.scrollTop
       // @ts-ignore
-      switch (this.screenSize) {
+      switch (this.$vuetify.breakpoint.name) {
         // @ts-ignore
-        case this.ScreenSize.LARGE_SCREEN:
+        case 'xl':
           this.isFilterToolBarFixedHidden = this.windowOffsetTop > 1040
           break
         // @ts-ignore
-        case this.ScreenSize.TABLET:
+        case 'lg':
+          this.isFilterToolBarFixedHidden = this.windowOffsetTop > 1040
+          break
+        // @ts-ignore
+        case 'md':
+          this.isFilterToolBarFixedHidden = this.windowOffsetTop > 1040
+          break
+        // @ts-ignore
+        case 'sm':
           this.isFilterToolBarFixedHidden = this.windowOffsetTop > 950
           break
         // @ts-ignore
-        case this.ScreenSize.PHONE:
+        case 'xs':
           this.isFilterToolBarFixedHidden = this.windowOffsetTop > 860
           break
         default:
