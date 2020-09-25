@@ -1,6 +1,8 @@
 <template>
   <v-app>
-    <v-toolbar />
+    <TopToolbar />
+
+    <NavDrawer />
 
     <v-main>
       <nuxt />
