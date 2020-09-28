@@ -103,7 +103,7 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 #auth-flex-container {
-  background: url('/auth/background.png');
+  background: url('/auth/background.jpg');
   background: {
     attachment: fixed;
     size: cover;

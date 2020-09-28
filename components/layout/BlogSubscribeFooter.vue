@@ -73,7 +73,7 @@ export default Vue.extend({
 .subscribe {
   width: 100%;
   background-color: $white;
-  background: url('/footer/subscribe/background.png');
+  background: url('/footer/subscribe/background.jpg');
   background-size: cover;
   background-position: center;
 }

@@ -41,6 +41,8 @@
               :length="numberOfPages"
               total-visible="6"
               circle
+              :next-icon="icons.next"
+              :prev-icon="icons.prev"
             ></v-pagination>
           </div>
         </template>
@@ -50,6 +52,7 @@
 </template>
 
 <script lang="ts">
+import { mdiChevronLeft, mdiChevronRight } from '@mdi/js'
 import Vue from 'vue'
 // @ts-ignore
 import Products from '~/apollo/queries/products'
@@ -77,6 +80,10 @@ export default Vue.extend({
 
   data(): ProductsGridData {
     return {
+      icons: {
+        prev: mdiChevronLeft,
+        next: mdiChevronRight,
+      },
       totalResults: 200,
       showMoreEnabled: true,
       defaultResultsSize: 30,

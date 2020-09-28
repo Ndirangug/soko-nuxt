@@ -37,7 +37,7 @@ export default Vue.extend({
         backgroundImage:
           'url("/products/' +
           this.category.replace(' ', '-').toLowerCase() +
-          '/banner.png")',
+          '/banner.jpg")',
       },
     }
   },

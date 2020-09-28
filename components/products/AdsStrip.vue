@@ -31,14 +31,14 @@ export default Vue.extend({
     return {
       ads: [
         [
-          '/products/ads/ad1.png',
-          '/products/ads/ad2.png',
-          '/products/ads/ad3.png',
+          '/products/ads/ad1.jpg',
+          '/products/ads/ad2.jpg',
+          '/products/ads/ad3.jpg',
         ],
         [
-          '/products/ads/ad1.png',
-          '/products/ads/ad2.png',
-          '/products/ads/ad3.png',
+          '/products/ads/ad1.jpg',
+          '/products/ads/ad2.jpg',
+          '/products/ads/ad3.jpg',
         ],
       ],
     }

@@ -105,12 +105,14 @@
         >
           <a target="_blank" href="https://store.apple.com">
             <v-img
+              eager
               max-width="153"
               src="/footer/app-store-badges/Download_on_the_App_Store_Badge.svg"
             />
           </a>
           <a target="_blank" href="https://play.google.com">
             <v-img
+              eager
               max-width="153"
               src="/footer/app-store-badges/Google_Play_Store_badge_EN_small.svg"
             />
@@ -165,6 +167,7 @@
           <v-img
             v-for="(icon, i) in icons.payment_methods"
             :key="i"
+            eager
             class="payment-method-icon mx-2 mx-md-2 my-2 my-sm-0"
             :src="icon"
             max-height="50"
