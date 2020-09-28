@@ -39,7 +39,7 @@
             <v-pagination
               v-model="pagination.start"
               :length="numberOfPages"
-              total-visible="6"
+              total-visible="5"
               circle
               :next-icon="icons.next"
               :prev-icon="icons.prev"
