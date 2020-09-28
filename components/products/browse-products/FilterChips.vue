@@ -10,6 +10,7 @@
       :key="i"
       link
       close
+      :close-icon="icons.close"
       @click:close="tags.splice(i, 1)"
       @input="onActiveStateChange($event, i)"
     >
@@ -19,10 +20,14 @@
 </template>
 
 <script lang="ts">
+import { mdiClose } from '@mdi/js'
 import Vue from 'vue'
 export default Vue.extend({
   data() {
     return {
+      icons: {
+        close: mdiClose,
+      },
       tags: this.$route.query.tags
         ? this.$route.query.tags.toString().split(',')
         : [],

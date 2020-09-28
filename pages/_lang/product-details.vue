@@ -1,6 +1,13 @@
 <template>
   <div>
-    <h1>Product Details</h1>
+    <div class="product-images">
+      <v-skeleton-loader v-if="$apollo.loading" type="image" />
+      <ProductDetailsCarousel
+        v-else
+        :images="productDetails.images"
+        :thumbnails="productDetails.thumbnails"
+      />
+    </div>
   </div>
 </template>
 
@@ -23,6 +30,7 @@ export default Vue.extend({
       },
     },
   },
+
   computed: {
     productID(): number {
       const idFromQueryParams: number =
