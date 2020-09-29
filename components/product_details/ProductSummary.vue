@@ -131,11 +131,11 @@ export default Vue.extend({
       text-transform: capitalize;
       text-decoration: none;
       color: $grey-text-dark;
-      font-size: 0.9em !important;
+      font-size: 0.8em !important;
     }
     .breadcrumb-divider {
       color: $grey-text-dark;
-      font-size: 0.9em !important;
+      font-size: 0.8em !important;
     }
   }
 }
