@@ -232,6 +232,10 @@ export default {
               become_a_seller: 'become a seller',
             },
           },
+          product_details: {
+            customer_ratings: 'customer ratings',
+          },
+          currency: 'Kshs',
           links: {
             home: 'Accueil',
             about: 'À propos',
@@ -324,7 +328,7 @@ export default {
         },
         light: {
           primary: colors.green.darken1,
-          accent: colors.green.lighten5,
+          accent: colors.green.lighten4,
           secondary: '#A4D9A7',
           info: colors.teal.lighten1,
           warning: colors.amber.base,

@@ -86,10 +86,11 @@
 <script lang="ts">
 import { mdiHeart, mdiHeartOutline, mdiMinus } from '@mdi/js'
 import Vue, { PropOptions } from 'vue'
-
+import { ProductDiscountMixin } from '~/components/mixins/ProductDiscount'
 import { Product } from '~/types/types'
 
 export default Vue.extend({
+  mixins: [ProductDiscountMixin],
   props: {
     product: {
       type: Object,
@@ -138,37 +139,6 @@ export default Vue.extend({
         default:
           return 0.7 * this.cardHeight
       }
-    },
-
-    percentageDiscountPresent(): boolean {
-      return (
-        this.product.discount !== undefined &&
-        this.product.discount.discountType === 'PERCENTAGE'
-      )
-    },
-
-    priceBeforeDiscount(): number {
-      return this.product.price
-    },
-
-    priceAfterDiscount(): number {
-      let price = this.priceBeforeDiscount
-
-      if (this.percentageDiscountPresent) {
-        const discountValue = price * (this.product.discount.amount / 100)
-        price = price - discountValue
-      }
-      return price
-    },
-
-    productPrice(): number {
-      let productPrice = this.priceBeforeDiscount
-
-      if (this.percentageDiscountPresent) {
-        productPrice = this.priceAfterDiscount
-      }
-
-      return productPrice
     },
   },
 
