@@ -1,3 +1,4 @@
+// TODO: Add controls to view full screen, zoom, pan
 <template>
   <div class="product-carousel-container">
     <div class="images">
@@ -13,7 +14,11 @@
       class="thumbnails mx-auto ml-sm-10 ml-md-16 pl-md-8 ml-lg-16 pl-lg-16"
       :class="{ 'thumbnails-xs': $vuetify.breakpoint.xs }"
     >
-      <v-item-group v-model="model" class="text-center" mandatory>
+      <v-item-group
+        v-model="model"
+        class="text-center ml-xl-16 pl-xl-16"
+        mandatory
+      >
         <v-item
           v-for="(thumbnail, i) in thumbnails"
           :key="i"
