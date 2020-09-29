@@ -305,7 +305,9 @@ export default {
     },
     treeShake: {
       loaderOptions: {
-        progressiveImages: true,
+        progressiveImages: {
+          registerStylesSSR: true,
+        },
       },
     },
     theme: {
