@@ -68,13 +68,13 @@ export interface EmailPreferrencs {
 }
 
 export interface Product {
-  productID?: number
-  title?: string
-  shortDescription?: string
-  price?: number
-  discount?: Discount
+  productID: number
+  title: string
+  shortDescription: string
+  price: number
+  discount: Discount
   images?: string[]
-  thumbnails?: string[]
+  thumbnails: string[]
   descriptionDocument?: string
   descriptionText?: string
   configurables?: Configurable[]

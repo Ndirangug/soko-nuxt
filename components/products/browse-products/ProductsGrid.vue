@@ -21,13 +21,8 @@
 
         <template v-slot:default="props">
           <div class="d-flex justify-center align-center flex-wrap">
-            <v-skeleton-loader
-              v-if="$apollo.loading"
-              type="image list-item-two-line"
-            />
             <ProductCard
               v-for="(item, i) in props.items"
-              v-else
               :key="i"
               :product="item"
             />

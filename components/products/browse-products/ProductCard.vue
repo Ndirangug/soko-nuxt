@@ -1,6 +1,8 @@
 <template>
   <div class="card-container" @focus="cycle = true" @mouseover="cycle = true">
+    <v-skeleton-loader v-if="$apollo.loading" type="image list-item-two-line" />
     <v-card
+      v-else
       class="card ma-2 ma-sm-3 mx-md-4 my-md-6 mx-lg-4 my-lg-8 mx-xl-4 my-xl-8 text-center"
       tile
       :height="cardHeight"
@@ -73,6 +75,7 @@
           {{ product.title }}
         </nuxt-link>
       </v-card-title>
+      <!-- TODO Display price before and after didscount -->
       <v-card-subtitle class="text-center">
         {{ product.price }}
       </v-card-subtitle>
@@ -142,6 +145,30 @@ export default Vue.extend({
         this.product.discount !== undefined &&
         this.product.discount.discountType === 'PERCENTAGE'
       )
+    },
+
+    priceBeforeDiscount(): number {
+      return this.product.price
+    },
+
+    priceAfterDiscount(): number {
+      let price = this.priceBeforeDiscount
+
+      if (this.percentageDiscountPresent) {
+        const discountValue = price * (this.product.discount.amount / 100)
+        price = price - discountValue
+      }
+      return price
+    },
+
+    productPrice(): number {
+      let productPrice = this.priceBeforeDiscount
+
+      if (this.percentageDiscountPresent) {
+        productPrice = this.priceAfterDiscount
+      }
+
+      return productPrice
     },
   },
 
