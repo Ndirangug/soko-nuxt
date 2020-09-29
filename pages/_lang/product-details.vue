@@ -12,7 +12,8 @@
       class="product-summary"
       :class="[topOffSet, { 'position-initial': $vuetify.breakpoint.xs }]"
     >
-      <ProductSummary />
+      <v-skeleton-loader v-if="$apollo.loading" type="card" />
+      <ProductSummary v-else :product="productDetails" />
     </div>
   </div>
 </template>
@@ -78,11 +79,11 @@ export default Vue.extend({
   .top-sm {
     top: -57vw;
   }
-  .top-xs {
-  }
 
   .position-initial {
     position: initial;
+    float: none;
+    width: 100%;
   }
 }
 </style>
