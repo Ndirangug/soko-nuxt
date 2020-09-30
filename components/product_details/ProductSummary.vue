@@ -7,88 +7,103 @@
     <div
       class="root-flex-container d-flex flex-column justify-start align-start"
     >
-      <div class="breadcrumbs">
-        <v-breadcrumbs :items="breadcrumbs">
-          <template v-slot:item="{ item }">
-            <v-hover v-slot:default="{ hover }">
-              <v-fade-transition>
-                <nuxt-link
-                  class="breadcrumb-item text-subtitle-2"
-                  :class="{ 'primary--text': hover }"
-                  :to="item.to != '#' ? localePath(`${item.to}`) : '#'"
+      <div class="summary d-flex flex-column justify-start align-start">
+        <div class="breadcrumbs">
+          <v-breadcrumbs :items="breadcrumbs">
+            <template v-slot:item="{ item }">
+              <v-hover v-slot:default="{ hover }">
+                <v-fade-transition>
+                  <nuxt-link
+                    class="breadcrumb-item text-subtitle-2"
+                    :class="{ 'primary--text': hover }"
+                    :to="item.to != '#' ? localePath(`${item.to}`) : '#'"
+                  >
+                    {{ item.text }}
+                  </nuxt-link>
+                </v-fade-transition>
+              </v-hover>
+            </template>
+
+            <template v-slot:divider>
+              <div class="breadcrumb-divider text-subtitle-2">/</div>
+            </template>
+          </v-breadcrumbs>
+        </div>
+
+        <div class="product-title mt-md-1 mt-lg-2 mb-2 mb-sm-1 mb-md-1 mb-lg-4">
+          <h1 class="text-h5 text-md-h4 text-lg-h3">{{ product.title }}</h1>
+        </div>
+
+        <div
+          class="price-reviews d-flex flex-column flex-sm-row justify-sm-space-between align-sm-center flex-sm-wrap"
+        >
+          <div class="price">
+            <div v-if="percentageDiscountPresent" class="price-before-discount">
+              <v-badge offset-x="-0.6vw" offset-y="1.3vw" color="accent" tile>
+                <div slot="badge" class="black--text font-weight-medium">
+                  {{ `-${product.discount.amount}%` }}
+                </div>
+
+                <p
+                  class="grey--text text-decoration-line-through ma-0"
+                  :class="{ 'text-body-2': $vuetify.breakpoint.smAndDown }"
                 >
-                  {{ item.text }}
-                </nuxt-link>
-              </v-fade-transition>
-            </v-hover>
-          </template>
+                  {{ $t('currency') }}
+                  {{
+                    new Intl.NumberFormat('en-US', {
+                      style: 'decimal',
+                      maximumFractionDigits: 0,
+                    }).format(priceBeforeDiscount)
+                  }}
+                </p>
+              </v-badge>
+            </div>
 
-          <template v-slot:divider>
-            <div class="breadcrumb-divider text-subtitle-2">/</div>
-          </template>
-        </v-breadcrumbs>
-      </div>
-
-      <div class="product-title mt-2 mb-4 mb-md-6 mb-lg-8">
-        <h1 class="text-h4 text-lg-h3">{{ product.title }}</h1>
-      </div>
-
-      <div
-        class="price-reviews d-flex justify-space-between align-center flex-wrap"
-      >
-        <div class="price">
-          <div v-if="percentageDiscountPresent" class="price-before-discount">
-            <v-badge offset-x="-0.6vw" offset-y="0.6vw" color="accent" tile>
-              <div slot="badge" class="black--text font-weight-bold">
-                {{ `-${product.discount.amount}%` }}
-              </div>
-              <p class="grey--text text-decoration-line-through ma-0">
+            <div class="price-after-discount">
+              <p
+                class="primary--text text-h5 text-md-h4 text-lg-h3 font-weight-bold"
+              >
                 {{ $t('currency') }}
                 {{
                   new Intl.NumberFormat('en-US', {
                     style: 'decimal',
                     maximumFractionDigits: 0,
-                  }).format(priceBeforeDiscount)
+                  }).format(productPrice)
                 }}
               </p>
-            </v-badge>
-          </div>
-
-          <div class="price-after-discount">
-            <p class="primary--text text-h4 text-lg-h3 font-weight-bold">
-              {{ $t('currency') }}
-              {{
-                new Intl.NumberFormat('en-US', {
-                  style: 'decimal',
-                  maximumFractionDigits: 0,
-                }).format(productPrice)
-              }}
-            </p>
-          </div>
-        </div>
-
-        <div class="reviews mb-lg-n6">
-          <div class="d-flex align-center justify-end flex-wrap">
-            <div class="star-rating mr-1">
-              <v-rating
-                background-color="grey"
-                color="yellow accent-2"
-                readonly
-                dense
-                :value="product.productOverallRating.overallScore"
-              />
             </div>
-            <div class="label">
-              <nuxt-link to="#" class="text-capitalize text-decoration-none">
-                {{ product.productOverallRating.numberOfRatings }}
-                {{ $t('product_details.customer_ratings') }}
-              </nuxt-link>
+          </div>
+
+          <div class="reviews mt-n5 mt-md-n3 mb-1 mb-md-1 mt-lg-0 mb-lg-n6">
+            <div class="d-flex align-center justify-sm-end flex-wrap">
+              <div class="star-rating mr-2 mr-md-1">
+                <v-rating
+                  background-color="grey"
+                  color="yellow accent-2"
+                  readonly
+                  dense
+                  :small="$vuetify.breakpoint.smAndDown"
+                  :value="product.productOverallRating.overallScore"
+                />
+              </div>
+              <div class="label">
+                <nuxt-link
+                  to="#"
+                  class="text-capitalize text-decoration-none"
+                  :class="{ 'text-caption': $vuetify.breakpoint.smAndDown }"
+                >
+                  {{ product.productOverallRating.numberOfRatings }}
+                  {{ $t('product_details.customer_ratings') }}
+                </nuxt-link>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <v-divider class="divider" />
+
+      <div class="seller-and-shipping-info"></div>
     </div>
   </v-sheet>
 </template>
@@ -187,23 +202,25 @@ export default Vue.extend({
 .product-summary-container {
   background-color: $grey-background-transparent;
 
-  .breadcrumbs {
-    .breadcrumb-item {
-      text-transform: capitalize;
-      text-decoration: none;
-      color: $grey-text-dark;
-      font-size: 0.8em !important;
-    }
-    .breadcrumb-divider {
-      color: $grey-text-dark;
-      font-size: 0.8em !important;
-    }
-  }
-
-  .price-reviews {
+  .summary {
     width: 100%;
-  }
+    .breadcrumbs {
+      .breadcrumb-item {
+        text-transform: capitalize;
+        text-decoration: none;
+        color: $grey-text-dark;
+        font-size: 0.8em !important;
+      }
+      .breadcrumb-divider {
+        color: $grey-text-dark;
+        font-size: 0.8em !important;
+      }
+    }
 
+    .price-reviews {
+      width: 100%;
+    }
+  }
   .divider {
     border-color: rgba(0, 0, 0, 0.32) !important;
     width: 100%;
