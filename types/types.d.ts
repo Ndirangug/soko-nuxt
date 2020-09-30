@@ -111,15 +111,15 @@ export interface ProductView {
 }
 
 export interface Configurable {
-  configurableID?: number
-  configurableType?: string
-  optionsAvailable?: ConfigurableOption[]
+  configurableID: number
+  configurableType: string
+  optionsAvailable: ConfigurableOption[]
 }
 
 export interface ConfigurableOption {
-  configurableOptionId?: number
-  name?: string
-  thumbnailUrl?: string
+  configurableOptionId: number
+  name: string
+  thumbnailUrl: string
 }
 
 export interface ProductOverallRating {

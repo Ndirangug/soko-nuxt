@@ -10,7 +10,10 @@
     </div>
     <div
       class="product-summary"
-      :class="[topOffSet, { 'position-initial': $vuetify.breakpoint.xs }]"
+      :class="[
+        topOffSet,
+        { 'position-initial': $vuetify.breakpoint.smAndDown },
+      ]"
     >
       <v-skeleton-loader v-if="$apollo.loading" type="card" />
       <ProductSummary v-else :product="productDetails" />

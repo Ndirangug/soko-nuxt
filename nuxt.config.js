@@ -254,6 +254,7 @@ export default {
             description: 'description',
             reviews: 'reviews',
             shipping_and_returns: 'shipping and returns',
+            shipping_and_returns_policy: 'shipping and returns policy',
             launch_3d_demo: 'launch 3d demo',
           },
           currency: 'Kshs',

@@ -1,8 +1,9 @@
+// TODO Consider where to place shipping info on size md
 <template>
   <v-sheet
     class="product-summary-container px-sm-4 py-sm-3 px-md-6"
-    :height="$vuetify.breakpoint.smAndUp ? sheetHeight : ''"
-    :width="$vuetify.breakpoint.smAndUp ? sheetWidth : ''"
+    :height="$vuetify.breakpoint.mdAndUp ? sheetHeight : ''"
+    :width="$vuetify.breakpoint.mdAndUp ? sheetWidth : ''"
   >
     <div
       class="root-flex-container d-flex flex-column justify-start align-start"
@@ -163,13 +164,44 @@
           </div>
         </div>
 
-        <div class="shipping"></div>
+        <div v-if="!$vuetify.breakpoint.md" class="shipping mt-2">
+          <h6 class="text-body-1 text-sentence">
+            <span class="text-sentence">
+              {{ $t('product_details.shipping_from') }}
+            </span>
+            <span class="font-italic grey--text text--darken-2">
+              {{ product.seller.dispatchLocation }}
+            </span>
+            <span id="delivery-icon" class="ml-2">
+              <v-icon dark>
+                {{ icons.delivery }}
+              </v-icon>
+            </span>
+          </h6>
+
+          <p class="text-body-2 text-sentence mt-3">
+            {{ $t('product_details.for') }}
+            <nuxt-link to="#">
+              {{ $t('product_details.shipping_details') }}
+            </nuxt-link>
+            {{ $t('product_details.and_expected_delivery_times_see') }}
+            <nuxt-link to="#">
+              {{ $t('product_details.shipping_and_returns_policy') }}
+            </nuxt-link>
+          </p>
+          <p></p>
+        </div>
+      </div>
+
+      <div class="configure mt-sm-6 mt-md-6 mt-lg-8">
+        <Configurables :configurables="product.configurables" />
       </div>
     </div>
   </v-sheet>
 </template>
 
 <script lang="ts">
+import { mdiTruckDeliveryOutline } from '@mdi/js'
 import Vue, { PropOptions } from 'vue'
 import { ProductDiscountMixin } from '~/components/mixins/ProductDiscount'
 import { Product } from '~/types/types'
@@ -187,6 +219,13 @@ export default Vue.extend({
       type: Object,
       required: true,
     } as PropOptions<Product>,
+  },
+  data() {
+    return {
+      icons: {
+        delivery: mdiTruckDeliveryOutline,
+      },
+    }
   },
   computed: {
     sheetHeight(): string {
@@ -282,10 +321,29 @@ export default Vue.extend({
       width: 100%;
     }
   }
+
   .divider {
     border-color: rgba(0, 0, 0, 0.32) !important;
     width: 100%;
   }
+
+  .seller-and-shipping-info {
+    width: 100%;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.text-sentence {
+  @include sentence-case();
+}
+
+#delivery-icon {
+  background-color: $black;
+  border-radius: 10vw;
+  padding: 0.5vw;
 }
 </style>
 
@@ -307,20 +365,6 @@ export default Vue.extend({
         padding: 0 !important;
       }
     }
-  }
-
-  .seller-and-shipping-info {
-    width: 100%;
-
-    p {
-      margin-bottom: 0;
-    }
-  }
-}
-
-text-sentence {
-  &:first-letter {
-    text-transform: uppercase;
   }
 }
 </style>
