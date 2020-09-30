@@ -80,6 +80,7 @@ export interface Product {
   configurables?: Configurable[]
   productReviews?: ProductReview[]
   seller?: Seller
+  brand: string
   productOverallRating?: ProductOverallRating
   relatedProducts?: Product[]
   similarFromOtherSellers?: Product[]

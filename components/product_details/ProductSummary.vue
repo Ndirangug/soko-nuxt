@@ -103,7 +103,68 @@
 
       <v-divider class="divider" />
 
-      <div class="seller-and-shipping-info"></div>
+      <div
+        class="seller-and-shipping-info d-flex flex-column justify-start align-stretch mt-1"
+        :class="{ 'text-caption': $vuetify.breakpoint.sm }"
+      >
+        <div class="seller-info">
+          <div class="brand text-capitalize my-1">
+            <p>
+              {{ $t('product_details.brand') + ':' }}
+              <nuxt-link
+                class="text-decoration-none"
+                :to="`/products/browse-products?brand=${product.brand}`"
+              >
+                {{ product.brand }}
+              </nuxt-link>
+            </p>
+          </div>
+
+          <div
+            class="seller d-flex align-center justify-space-between flex-wrap my-1"
+          >
+            <p class="mr-2">
+              <span class="text-capitalize">
+                {{ $t('product_details.seller') + ':' }}
+              </span>
+
+              <nuxt-link
+                class="text-decoration-none text-capitalize"
+                :to="`/sellers/?id=${product.seller.sellerID}`"
+              >
+                {{ product.seller.sellerName }}
+              </nuxt-link>
+              |
+              <nuxt-link
+                class="text-decoration-none"
+                :to="`/products/browse-products?seller=${product.seller.sellerID}`"
+              >
+                <span class="text-sentence">
+                  {{ $t('product_details.similar_from') }}
+                </span>
+
+                <span class="text-capitalize">
+                  {{ product.seller.sellerName }}
+                </span>
+              </nuxt-link>
+            </p>
+
+            <p>
+              <span class="text-capitalize">
+                {{ $t('product_details.seller_score') + ':' }}
+              </span>
+
+              {{
+                new Intl.NumberFormat('en-US', { style: 'percent' }).format(
+                  product.seller.sellerScore
+                )
+              }}
+            </p>
+          </div>
+        </div>
+
+        <div class="shipping"></div>
+      </div>
     </div>
   </v-sheet>
 </template>
@@ -246,6 +307,20 @@ export default Vue.extend({
         padding: 0 !important;
       }
     }
+  }
+
+  .seller-and-shipping-info {
+    width: 100%;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+text-sentence {
+  &:first-letter {
+    text-transform: uppercase;
   }
 }
 </style>
