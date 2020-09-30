@@ -11,7 +11,7 @@
         :items="configurableOptions[i]"
         solo
         :dense="$vuetify.breakpoint.smAndDown"
-        @change.self="updateSelectThumbnail($event, i)"
+        @change.self="onConfigurableChanged($event, i)"
       >
         <template v-slot:prepend-inner>
           <v-img :src="selectedOptionThumbnails[i]" width="20" />
@@ -99,6 +99,16 @@ export default Vue.extend({
       )
       this.selectedOptionThumbnails[index] =
         option !== undefined ? option.thumbnailUrl : ''
+    },
+
+    updateCarousel() {
+      // TODO: IMPLEMENT THIS
+    },
+
+    onConfigurableChanged(optionSelected: string, index: number) {
+      // TODO MAKE ASYNC
+      this.updateSelectThumbnail(optionSelected, index)
+      this.updateCarousel()
     },
   },
 })

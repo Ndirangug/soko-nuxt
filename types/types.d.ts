@@ -87,7 +87,7 @@ export interface Product {
   vouchersApplicable?: Voucher[]
   inventoryRemaining?: number
   categories?: Category[]
-  tags?: string[]
+  tags: string[]
 }
 
 export interface Category {

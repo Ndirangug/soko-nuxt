@@ -137,7 +137,6 @@
               </nuxt-link>
               |
               <nuxt-link
-                class="text-decoration-none"
                 :to="`/products/browse-products?seller=${product.seller.sellerID}`"
               >
                 <span class="text-sentence">
@@ -164,7 +163,7 @@
           </div>
         </div>
 
-        <div v-if="!$vuetify.breakpoint.md" class="shipping mt-2">
+        <div v-if="!$vuetify.breakpoint.md" class="shipping mt-6">
           <h6 class="text-body-1 text-sentence">
             <span class="text-sentence">
               {{ $t('product_details.shipping_from') }}
@@ -181,20 +180,59 @@
 
           <p class="text-body-2 text-sentence mt-3">
             {{ $t('product_details.for') }}
-            <nuxt-link to="#">
+            <nuxt-link to="#" class="text-decoration-none">
               {{ $t('product_details.shipping_details') }}
             </nuxt-link>
             {{ $t('product_details.and_expected_delivery_times_see') }}
-            <nuxt-link to="#">
+            <nuxt-link to="#" class="text-decoration-none">
               {{ $t('product_details.shipping_and_returns_policy') }}
             </nuxt-link>
           </p>
           <p></p>
         </div>
+        <div
+          v-else
+          class="shipping-md align-self-end mt-n8 d-flex justify-end align-center"
+        >
+          <h6 class="text-body-1 mr-2">
+            <v-hover v-slot:default="{ hover }">
+              <v-fade-transition>
+                <nuxt-link
+                  to="#"
+                  class="text-capitalize grey--text text--darken-2 font-italic"
+                  :class="{ 'text-decoration-none': !hover }"
+                >
+                  {{ $t('product_details.shipping_details') }}
+                </nuxt-link>
+              </v-fade-transition>
+            </v-hover>
+          </h6>
+          <span id="delivery-icon">
+            <v-icon dark>
+              {{ icons.delivery }}
+            </v-icon>
+          </span>
+        </div>
       </div>
 
-      <div class="configure mt-sm-6 mt-md-6 mt-lg-8">
+      <div class="configure fill-width mt-sm-6 mt-md-6 mt-lg-8">
         <Configurables :configurables="product.configurables" />
+      </div>
+
+      <div class="quantity-input">
+        <QuantityInput />
+      </div>
+
+      <div class="summary-actions fill-width">
+        <SummaryActions />
+      </div>
+
+      <div class="share fill-width mt-5 justify-self-end">
+        <ShareProduct />
+      </div>
+
+      <div class="tags fill-width mt-2">
+        <ProductTags :tags="product.tags" />
       </div>
     </div>
   </v-sheet>
@@ -334,6 +372,10 @@ export default Vue.extend({
       margin-bottom: 0;
     }
   }
+
+  .fill-width {
+    width: 100%;
+  }
 }
 
 .text-sentence {
@@ -347,6 +389,7 @@ export default Vue.extend({
 }
 </style>
 
+// unsccoped so that it overrides default vuetify styles
 <style lang="scss">
 .product-summary-container {
   .breadcrumbs {

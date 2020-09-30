@@ -11,8 +11,8 @@
     </div>
 
     <div
-      class="thumbnails mx-auto ml-sm-10 ml-md-16 pl-md-8 ml-lg-16 pl-lg-16"
-      :class="{ 'thumbnails-xs': $vuetify.breakpoint.xs }"
+      class="thumbnails mx-auto ml-md-16 pl-md-8 ml-lg-16 pl-lg-16"
+      :class="{ 'thumbnails-smAndDown': $vuetify.breakpoint.smAndDown }"
     >
       <v-item-group
         v-model="model"
@@ -150,7 +150,7 @@ export default Vue.extend({
     }
   }
 
-  .thumbnails-xs {
+  .thumbnails-smAndDown {
     position: relative;
     top: -10px;
   }
