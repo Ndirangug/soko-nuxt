@@ -1,7 +1,7 @@
-// TODO Consider where to place shipping info on size md
+// FIXME Content overflowing on screen size md
 <template>
   <v-sheet
-    class="product-summary-container px-sm-4 py-sm-3 px-md-6"
+    class="product-summary-container px-6 py-6 px-sm-10 py-sm-10 px-md-6 py-md-3"
     :height="$vuetify.breakpoint.mdAndUp ? sheetHeight : ''"
     :width="$vuetify.breakpoint.mdAndUp ? sheetWidth : ''"
   >
@@ -16,7 +16,10 @@
                 <v-fade-transition>
                   <nuxt-link
                     class="breadcrumb-item text-subtitle-2"
-                    :class="{ 'primary--text': hover }"
+                    :class="{
+                      'primary--text': hover,
+                      'text-caption': $vuetify.breakpoint.smAndDown,
+                    }"
                     :to="item.to != '#' ? localePath(`${item.to}`) : '#'"
                   >
                     {{ item.text }}
@@ -31,7 +34,9 @@
           </v-breadcrumbs>
         </div>
 
-        <div class="product-title mt-md-1 mt-lg-2 mb-2 mb-sm-1 mb-md-1 mb-lg-4">
+        <div
+          class="product-title mt-1 mt-md-1 mt-lg-2 mb-2 mb-sm-1 mb-md-1 mb-lg-4"
+        >
           <h1 class="text-h5 text-md-h4 text-lg-h3">{{ product.title }}</h1>
         </div>
 
@@ -75,7 +80,7 @@
             </div>
           </div>
 
-          <div class="reviews mt-n5 mt-md-n3 mb-1 mb-md-1 mt-lg-0 mb-lg-n6">
+          <div class="reviews mt-n5 mt-md-n3 mb-3 mb-md-1 mt-lg-0 mb-lg-n6">
             <div class="d-flex align-center justify-sm-end flex-wrap">
               <div class="star-rating mr-2 mr-md-1">
                 <v-rating
@@ -94,7 +99,7 @@
                   :class="{ 'text-caption': $vuetify.breakpoint.smAndDown }"
                 >
                   {{ product.productOverallRating.numberOfRatings }}
-                  {{ $t('product_details.customer_ratings') }}
+                  {{ $t('product_details.customer_reviews') }}
                 </nuxt-link>
               </div>
             </div>
@@ -105,8 +110,8 @@
       <v-divider class="divider" />
 
       <div
-        class="seller-and-shipping-info d-flex flex-column justify-start align-stretch mt-1"
-        :class="{ 'text-caption': $vuetify.breakpoint.sm }"
+        class="seller-and-shipping-info d-flex flex-column justify-start align-stretch mt-3 mt-md-1 font-weight-regular"
+        :class="{ 'text-subtitle-2': $vuetify.breakpoint.smAndDown }"
       >
         <div class="seller-info">
           <div class="brand text-capitalize my-1">
@@ -122,7 +127,7 @@
           </div>
 
           <div
-            class="seller d-flex align-center justify-space-between flex-wrap my-1"
+            class="seller d-flex flex-column flex-lg-row align-start align-lg-center justify-center justify-lg-space-between flex-lg-wrap my-1"
           >
             <p class="mr-2">
               <span class="text-capitalize">
@@ -150,7 +155,7 @@
             </p>
 
             <p>
-              <span class="text-capitalize">
+              <span class="text-capitalize mt-1 mt-md-0">
                 {{ $t('product_details.seller_score') + ':' }}
               </span>
 
@@ -163,8 +168,18 @@
           </div>
         </div>
 
-        <div v-if="!$vuetify.breakpoint.md" class="shipping mt-6">
-          <h6 class="text-body-1 text-sentence">
+        <div
+          v-if="!$vuetify.breakpoint.md"
+          class="shipping mt-6"
+          :class="{ 'shipping-smAndDown': $vuetify.breakpoint.smAndDown }"
+        >
+          <h6
+            class="text-sentence"
+            :class="{
+              'text-subtitle-2': $vuetify.breakpoint.smAndDown,
+              'text-body-1 ': $vuetify.breakpoint.mdAndUp,
+            }"
+          >
             <span class="text-sentence">
               {{ $t('product_details.shipping_from') }}
             </span>
@@ -172,7 +187,7 @@
               {{ product.seller.dispatchLocation }}
             </span>
             <span id="delivery-icon" class="ml-2">
-              <v-icon dark>
+              <v-icon :small="$vuetify.breakpoint.smAndDown" dark>
                 {{ icons.delivery }}
               </v-icon>
             </span>
@@ -215,7 +230,7 @@
         </div>
       </div>
 
-      <div class="configure fill-width mt-sm-6 mt-md-6 mt-lg-8">
+      <div class="configure fill-width mt-6 mt-sm-6 mt-md-4 mt-lg-8">
         <Configurables :configurables="product.configurables" />
       </div>
 
@@ -227,7 +242,7 @@
         <SummaryActions />
       </div>
 
-      <div class="share fill-width mt-5 justify-self-end">
+      <div class="share fill-width mt-10 mt-md-5 mt-lg-10 justify-self-end">
         <ShareProduct />
       </div>
 
@@ -370,6 +385,16 @@ export default Vue.extend({
 
     p {
       margin-bottom: 0;
+    }
+
+    .shipping-smAndDown {
+      background: $light-background-darker;
+      padding: 5vw;
+      border-radius: 1vw;
+
+      h6 {
+        font-size: 1vw;
+      }
     }
   }
 

@@ -27,12 +27,20 @@
           <v-btn
             :input-value="active"
             icon
-            class="mx-2 mx-sm-3 mx-md-4 mx-lg-6"
+            class="mx-0 mx-sm-0 mx-md-4 mx-lg-6"
             @click="toggle"
           >
-            <v-img :width="thumbnailWidth" :src="thumbnail">
+            <v-img
+              v-if="$vuetify.breakpoint.mdAndUp"
+              :width="thumbnailWidth"
+              :src="thumbnail"
+            >
               <div class="overlay" :class="{ 'overlay-active': active }"></div>
             </v-img>
+
+            <v-icon v-else :color="active ? 'white' : ''">
+              {{ icons.dash }}
+            </v-icon>
           </v-btn>
         </v-item>
       </v-item-group>
@@ -41,6 +49,7 @@
 </template>
 
 <script lang="ts">
+import { mdiMinus } from '@mdi/js'
 import Vue from 'vue'
 
 export default Vue.extend({
@@ -58,6 +67,9 @@ export default Vue.extend({
   data() {
     return {
       model: 0,
+      icons: {
+        dash: mdiMinus,
+      },
     }
   },
 
@@ -152,7 +164,8 @@ export default Vue.extend({
 
   .thumbnails-smAndDown {
     position: relative;
-    top: -10px;
+    top: -35px;
+    margin-bottom: -38px;
   }
 }
 </style>

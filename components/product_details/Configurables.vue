@@ -7,14 +7,26 @@
       class="mr-1 mr-sm-4 mr-md-3 mr-lg-4"
     >
       <v-select
-        :label="configurable.configurableType"
         :items="configurableOptions[i]"
         solo
         :dense="$vuetify.breakpoint.smAndDown"
         @change.self="onConfigurableChanged($event, i)"
       >
         <template v-slot:prepend-inner>
-          <v-img :src="selectedOptionThumbnails[i]" width="20" />
+          <v-img
+            class="mx-2 mb-1"
+            :src="selectedOptionThumbnails[i]"
+            width="20"
+          />
+        </template>
+
+        <template v-slot:label>
+          <div class="text-capitalize">
+            {{
+              `${$t('product_details.select')} 
+              ${configurable.configurableType}`
+            }}
+          </div>
         </template>
       </v-select>
     </v-responsive>

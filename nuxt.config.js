@@ -233,7 +233,7 @@ export default {
             },
           },
           product_details: {
-            customer_ratings: 'customer ratings',
+            customer_reviews: 'customer reviews',
             brand: 'brand',
             seller: 'seller',
             similar_from: 'similar from',
