@@ -21,6 +21,10 @@
         <ProductSummary v-else :product="productDetails" />
       </div>
     </v-scroll-x-transition>
+
+    <div class="details">
+      <DetailsTabs />
+    </div>
   </div>
 </template>
 
