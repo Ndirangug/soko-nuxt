@@ -1,6 +1,12 @@
 <template>
   <div id="logo">
-    <h1 :class="{ 'white--text': dark, 'black--text': !dark }">
+    <h1
+      :class="{
+        'white--text': dark,
+        'black--text': !dark,
+        'text-h4': $vuetify.breakpoint.smAndDown,
+      }"
+    >
       L<span class="primary--text">O</span>REM
     </h1>
   </div>

@@ -7,6 +7,7 @@
     <v-toolbar
       :dark="dark"
       class="the-toolbar"
+      :dense="$vuetify.breakpoint.smAndDown"
       :style="{ 'background-color': dark ? 'grey' : '' }"
     >
       <v-app-bar-nav-icon
@@ -17,7 +18,10 @@
         <ToolBarMenuIcon :dark="dark" />
       </v-app-bar-nav-icon>
 
-      <v-toolbar-title class="toolbar-title font-weight-bold text-uppercase">
+      <v-toolbar-title
+        class="toolbar-title font-weight-bold text-uppercase"
+        :class="{ 'pl-0': $vuetify.breakpoint.smAndDown }"
+      >
         {{ category }}
       </v-toolbar-title>
 
@@ -26,7 +30,10 @@
       <!--  ***  my account dropown *** -->
       <MyAccountDropdown :dark="dark" />
 
-      <ToolBarCartIcon :dark="dark" />
+      <ToolBarCartIcon
+        :class="{ 'mr-n3': $vuetify.breakpoint.smAndDown }"
+        :dark="dark"
+      />
     </v-toolbar>
     <!-- navdrawer create eevent to control navdraweropening -->
   </div>

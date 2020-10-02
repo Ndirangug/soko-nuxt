@@ -1,5 +1,5 @@
 <template>
-  <div class="toolbar-button d-flex justify-center align-center mx-2">
+  <div class="toolbar-button d-flex justify-center align-center mx-0">
     <v-menu transition="slide-y-transition" bottom>
       <template
         v-slot:activator="{ on, attrs }"
@@ -8,12 +8,14 @@
         <v-btn
           :dark="dark"
           icon
-          x-large
+          :x-large="$vuetify.breakpoint.mdAndUp"
           v-bind="attrs"
           :class="{ 'white--text': dark, 'black--text': !dark }"
           v-on="on"
         >
-          <v-icon large>{{ icons.myAccount }}</v-icon>
+          <v-icon large>
+            {{ icons.myAccount }}
+          </v-icon>
         </v-btn>
         <h4
           v-show="$vuetify.breakpoint.smAndUp"

@@ -1,6 +1,10 @@
 <template>
   <div class="card-container" @focus="cycle = true" @mouseover="cycle = true">
-    <v-skeleton-loader v-if="$apollo.loading" type="image list-item-two-line" />
+    <v-skeleton-loader
+      v-if="$apollo.loading"
+      type="card"
+      class="ma-2 ma-sm-3 mx-md-4 my-md-6 mx-lg-4 my-lg-8 mx-xl-4 my-xl-8 text-center"
+    />
     <v-card
       v-else
       class="card ma-2 ma-sm-3 mx-md-4 my-md-6 mx-lg-4 my-lg-8 mx-xl-4 my-xl-8 text-center"
@@ -11,6 +15,7 @@
     >
       <div class="add-to-saved-items">
         <v-btn
+          v-show="!isLoading"
           icon
           :ripple="false"
           :small="this.$vuetify.breakpoint.name == 'sm'"
@@ -26,7 +31,11 @@
         </v-btn>
       </div>
 
-      <div v-if="percentageDiscountPresent" class="discount-chip">
+      <div
+        v-if="percentageDiscountPresent"
+        v-show="!isLoading"
+        class="discount-chip"
+      >
         <v-chip
           color="red white--text text-capitalize"
           pill
@@ -87,10 +96,11 @@
 import { mdiHeart, mdiHeartOutline, mdiMinus } from '@mdi/js'
 import Vue, { PropOptions } from 'vue'
 import { ProductDiscountMixin } from '~/components/mixins/ProductDiscount'
+import { IsLoadingMixin } from '~/components/mixins/Loading'
 import { Product } from '~/types/types'
 
 export default Vue.extend({
-  mixins: [ProductDiscountMixin],
+  mixins: [ProductDiscountMixin, IsLoadingMixin],
   props: {
     product: {
       type: Object,

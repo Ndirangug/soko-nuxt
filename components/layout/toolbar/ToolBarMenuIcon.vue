@@ -2,13 +2,15 @@
   <v-icon
     v-if="drawerOpenState"
     :class="{ 'white--text': dark, 'black--text': !dark }"
-    x-large
+    :x-large="$vuetify.breakpoint.mdAndUp"
+    :large="$vuetify.breakpoint.smAndDown"
     >{{ icons.menuOpen }}</v-icon
   >
   <v-icon
     v-else
     :class="{ 'white--text': dark, 'black--text': !dark }"
-    x-large
+    :x-large="$vuetify.breakpoint.mdAndUp"
+    :large="$vuetify.breakpoint.smAndDown"
     >{{ icons.menu }}</v-icon
   >
 </template>

@@ -1,6 +1,10 @@
 <template>
   <div class="root-container">
-    <v-toolbar :dark="dark" class="the-toolbar">
+    <v-toolbar
+      :dark="dark"
+      :dense="$vuetify.breakpoint.smAndDown"
+      class="the-toolbar"
+    >
       <v-app-bar-nav-icon
         :dark="dark"
         :class="{ 'white--text': dark, 'black--text': !dark }"
@@ -9,7 +13,10 @@
         <ToolBarMenuIcon :dark="dark" />
       </v-app-bar-nav-icon>
 
-      <v-toolbar-title class="toolbar-title font-weight-bold text-uppercase">
+      <v-toolbar-title
+        class="toolbar-title font-weight-bold text-uppercase"
+        :class="{ 'ml-n3': $vuetify.breakpoint.smAndDown }"
+      >
         <GreenWhiteLogo :dark="dark" />
       </v-toolbar-title>
 
@@ -19,7 +26,10 @@
       <MyAccountDropdown :dark="dark" />
 
       <!--  ***  cart button *** -->
-      <ToolBarCartIcon :dark="dark" />
+      <ToolBarCartIcon
+        :class="{ 'mr-n2': $vuetify.breakpoint.smAndDown }"
+        :dark="dark"
+      />
     </v-toolbar>
   </div>
 </template>

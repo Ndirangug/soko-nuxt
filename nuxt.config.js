@@ -365,4 +365,13 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+  /*
+   ** Customizing the Progress Bar
+   ** See https://nuxtjs.org/api/configuration-loading/#customizing-the-progress-bar
+   */
+  loading: {
+    color: 'green',
+    height: '8px',
+    continuous: true,
+  },
 }

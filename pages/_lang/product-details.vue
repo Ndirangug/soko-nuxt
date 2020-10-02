@@ -17,7 +17,7 @@
           { 'position-initial': $vuetify.breakpoint.smAndDown },
         ]"
       >
-        <v-skeleton-loader v-if="$apollo.loading" type="card" />
+        <v-skeleton-loader v-if="$apollo.loading" type="image" />
         <ProductSummary v-else :product="productDetails" />
       </div>
     </v-scroll-x-transition>
@@ -28,8 +28,10 @@
 import Vue from 'vue'
 import ProductDetails from '~/apollo/queries/product_details.graphql'
 import { ProductDetailsQueryVariables } from '~/types/types'
+import { IsLoadingMixin } from '~/components/mixins/Loading'
 
 export default Vue.extend({
+  mixins: [IsLoadingMixin],
   // @ts-ignore
   apollo: {
     productDetails: {
