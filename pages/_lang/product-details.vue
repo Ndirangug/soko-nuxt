@@ -8,16 +8,19 @@
         :thumbnails="productDetails.thumbnails"
       />
     </div>
-    <div
-      class="product-summary"
-      :class="[
-        topOffSet,
-        { 'position-initial': $vuetify.breakpoint.smAndDown },
-      ]"
-    >
-      <v-skeleton-loader v-if="$apollo.loading" type="card" />
-      <ProductSummary v-else :product="productDetails" />
-    </div>
+
+    <v-scroll-x-transition>
+      <div
+        class="product-summary"
+        :class="[
+          topOffSet,
+          { 'position-initial': $vuetify.breakpoint.smAndDown },
+        ]"
+      >
+        <v-skeleton-loader v-if="$apollo.loading" type="card" />
+        <ProductSummary v-else :product="productDetails" />
+      </div>
+    </v-scroll-x-transition>
   </div>
 </template>
 
@@ -74,10 +77,10 @@ export default Vue.extend({
     top: -55vw;
   }
   .top-lg {
-    top: -55vw;
+    top: -57vw;
   }
   .top-md {
-    top: -56vw;
+    top: -59vw;
   }
   .top-sm {
     top: -57vw;

@@ -43,7 +43,7 @@ export default Vue.extend({
 
       // @ts-ignore
       if (this.$vuetify.breakpoint.mdAndUp) {
-        width = '14vw'
+        width = '16vw'
         // @ts-ignore
       } else if (this.$vuetify.breakpoint.sm) {
         width = '20vw'

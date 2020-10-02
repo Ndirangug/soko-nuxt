@@ -4,7 +4,7 @@
       v-for="(configurable, i) in configurables"
       :key="i"
       :max-width="maxWidth"
-      class="mr-1 mr-sm-4 mr-md-3 mr-lg-4"
+      class="mr-1 mr-sm-4 mr-md-3 mr-lg-4 mb-md-n3 mb-lg-0"
     >
       <v-select
         :items="configurableOptions[i]"
@@ -87,7 +87,7 @@ export default Vue.extend({
           width = '45%'
           break
         case 'sm':
-          width = '50%'
+          width = '45%'
           break
         case 'xs':
           width = '80%'
