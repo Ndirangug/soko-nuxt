@@ -23,7 +23,7 @@ import Vue from 'vue'
 export default Vue.extend({
   computed: {
     availableCategories(): string[] {
-      return [...Object.keys(this.$t('all_categories'))]
+      return [...Object.keys(this.$t('allCategories'))]
     },
     category(): string {
       const queryCategory = this.$route.query.category
@@ -36,7 +36,7 @@ export default Vue.extend({
         : 'null'
 
       if (this.availableCategories.includes(queryCategory)) {
-        return this.$t(`all_categories.${queryCategory}`).toString()
+        return this.$t(`allCategories.${queryCategory}`).toString()
       } else {
         this.$emit('category-does-not-exist', queryCategory)
         return this.$t('products.browse_products.browse_categories').toString()

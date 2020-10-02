@@ -1,0 +1,23 @@
+export const auth = {
+  login: 'Ingia',
+  create_account: 'Create Account',
+  logintip:
+    'Login to access your orders, your history, enjoy a personalized experience and more',
+  signuptip: 'Sign up tiip',
+  google_login: 'Log in with Google',
+  facebook_login: 'Log in with Facebook',
+  google_signup: 'Sign up with Google',
+  facebook_signup: 'Sign up with Facebook',
+  or: 'or',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  remember_me: 'Remember me',
+  forgot_password: 'Forgot Password',
+  dont_have_account: "Don't have an account?",
+  already_have_account: 'Already have an account?',
+  create_one: 'Create one',
+  fast_and_easy: 'fast and easy',
+  agree: 'By signing up, I agree to the',
+  terms_and_conditions: 'terms and conditions',
+}

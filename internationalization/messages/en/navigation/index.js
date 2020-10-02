@@ -1,0 +1,30 @@
+export const navigation = {
+  shop_by_category: 'shop by category',
+  rooms: {
+    title: 'rooms',
+    living_room: 'living room',
+    bathroom: 'bathroom',
+    dining_room: 'dining room',
+    kitchen: 'kitchen',
+    washroom: 'washroom',
+    balcony: 'balcony',
+    porch: 'porch',
+  },
+  specifics: {
+    title: 'specifics',
+    for_your_wall: 'for your wall',
+    fresh_flowers: 'fresh flowers',
+    flooring: 'flooring',
+    carpets_and_rugs: 'carpets and rugs',
+    furniture: 'furniture',
+    kitchen_fittings: 'kitchen fittings',
+    storage_units: 'storage units',
+    floating_shelves: 'floating shelves',
+  },
+  other_categories: {
+    sofas: 'sofas',
+    lighting: 'lighting',
+    wall_art: 'wall art',
+    tiles: 'tiles',
+  },
+}
