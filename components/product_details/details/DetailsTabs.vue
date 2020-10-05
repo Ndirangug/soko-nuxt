@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-tabs v-model="activeTab" grow centered>
-      <v-tab>{{ $t('product_details.description') }}</v-tab>
-      <v-tab>{{ $t('product_details.reviews') }}</v-tab>
-      <v-tab>{{ $t('product_details.shipping_and_returns') }}</v-tab>
+      <v-tab>{{ $t('productDetails.description') }}</v-tab>
+      <v-tab>{{ $t('productDetails.reviews') }}</v-tab>
+      <v-tab>{{ $t('productDetails.shipping_and_returns') }}</v-tab>
     </v-tabs>
 
     <v-tabs-items v-model="activeTab">

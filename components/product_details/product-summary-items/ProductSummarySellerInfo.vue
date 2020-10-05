@@ -2,7 +2,7 @@
   <div class="seller-info-container">
     <div class="brand text-capitalize my-1">
       <p>
-        {{ $t('product_details.brand') + ':' }}
+        {{ $t('productDetails.brand') + ':' }}
         <nuxt-link
           class="text-decoration-none"
           :to="`/products/browse-products?brand=${product.brand}`"
@@ -17,7 +17,7 @@
     >
       <p class="mr-2">
         <span class="text-capitalize">
-          {{ $t('product_details.seller') + ':' }}
+          {{ $t('productDetails.seller') + ':' }}
         </span>
 
         <nuxt-link
@@ -31,7 +31,7 @@
           :to="`/products/browse-products?seller=${product.seller.sellerID}`"
         >
           <span class="text-sentence">
-            {{ $t('product_details.similar_from') }}
+            {{ $t('productDetails.similar_from') }}
           </span>
 
           <span class="text-capitalize">
@@ -42,7 +42,7 @@
 
       <p>
         <span class="text-capitalize mt-1 mt-md-0">
-          {{ $t('product_details.seller_score') + ':' }}
+          {{ $t('productDetails.seller_score') + ':' }}
         </span>
 
         {{

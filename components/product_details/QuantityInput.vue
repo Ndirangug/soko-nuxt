@@ -17,7 +17,7 @@
         </div>
       </template>
       <template v-slot:label>
-        <div class="text-capitalize">{{ $t('product_details.quantity') }}</div>
+        <div class="text-capitalize">{{ $t('productDetails.quantity') }}</div>
       </template>
     </v-text-field>
   </div>

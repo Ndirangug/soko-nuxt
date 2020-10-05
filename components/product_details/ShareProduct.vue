@@ -2,7 +2,7 @@
   <div class="share-container d-flex flex-column align-start mx-auto">
     <div v-if="!$vuetify.breakpoint.md">
       <h6 class="text-caption font-weight-medium font-italic mb-1">
-        {{ $t('product_details.share_with_friends') }}
+        {{ $t('productDetails.share_with_friends') }}
       </h6>
       <div class="share-buttons d-flex justify-center align-center">
         <v-btn

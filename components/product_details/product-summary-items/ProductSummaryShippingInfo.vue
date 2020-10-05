@@ -13,7 +13,7 @@
         }"
       >
         <span class="text-sentence">
-          {{ $t('product_details.shipping_from') }}
+          {{ $t('productDetails.shipping_from') }}
         </span>
         <span class="font-italic grey--text text--darken-2">
           {{ dispatchLocation }}
@@ -26,13 +26,13 @@
       </h6>
 
       <p class="text-body-2 text-sentence mt-3">
-        {{ $t('product_details.for') }}
+        {{ $t('productDetails.for') }}
         <nuxt-link to="#" class="text-decoration-none">
-          {{ $t('product_details.shipping_details') }}
+          {{ $t('productDetails.shipping_details') }}
         </nuxt-link>
-        {{ $t('product_details.and_expected_delivery_times_see') }}
+        {{ $t('productDetails.and_expected_delivery_times_see') }}
         <nuxt-link to="#" class="text-decoration-none">
-          {{ $t('product_details.shipping_and_returns_policy') }}
+          {{ $t('productDetails.shipping_and_returns_policy') }}
         </nuxt-link>
       </p>
       <p></p>
@@ -49,7 +49,7 @@
               class="text-capitalize grey--text text--darken-2 font-italic"
               :class="{ 'text-decoration-none': !hover }"
             >
-              {{ $t('product_details.shipping_details') }}
+              {{ $t('productDetails.shipping_details') }}
             </nuxt-link>
           </v-fade-transition>
         </v-hover>

@@ -23,7 +23,7 @@
         <template v-slot:label>
           <div class="text-capitalize">
             {{
-              `${$t('product_details.select')} 
+              `${$t('productDetails.select')} 
               ${configurable.configurableType}`
             }}
           </div>

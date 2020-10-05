@@ -17,7 +17,7 @@
         :class="{ 'text-caption': $vuetify.breakpoint.smAndDown }"
       >
         {{ product.productOverallRating.numberOfRatings }}
-        {{ $t('product_details.customer_reviews') }}
+        {{ $t('productDetails.customer_reviews') }}
       </nuxt-link>
     </div>
   </div>

@@ -17,7 +17,7 @@
         @click="addToCart"
       >
         <v-icon>{{ icons.addToCart }}</v-icon>
-        <span v-show="!showFab">{{ $t('product_details.add_to_cart') }}</span>
+        <span v-show="!showFab">{{ $t('productDetails.add_to_cart') }}</span>
       </v-btn>
     </v-fab-transition>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="tags-container mx-auto">
     <span class="text-uppercase grey--text text--darken-2 text-caption">
-      {{ $t('product_details.tags') + ':' }}
+      {{ $t('productDetails.tags') + ':' }}
     </span>
     <nuxt-link
       v-for="(tag, i) in tags"
