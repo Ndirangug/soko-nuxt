@@ -12,7 +12,7 @@
     </div>
     <div class="label">
       <nuxt-link
-        to="#"
+        to="#product_reviews"
         class="text-capitalize text-decoration-none"
         :class="{ 'text-caption': $vuetify.breakpoint.smAndDown }"
       >
