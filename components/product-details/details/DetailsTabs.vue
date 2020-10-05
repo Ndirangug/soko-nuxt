@@ -1,13 +1,13 @@
 <template>
   <div>
     <v-tabs v-model="activeTab" grow centered>
-      <v-tab :to="localePath('/product-details/product-description')">
+      <v-tab :to="localePath('/product-details/description')">
         {{ $t('productDetails.description') }}
       </v-tab>
-      <v-tab :to="localePath('/product-details/product-reviews')">
+      <v-tab :to="localePath('/product-details/reviews')">
         {{ $t('productDetails.reviews') }}
       </v-tab>
-      <v-tab :to="localePath('/product-details/product-shipping-and-returns')">
+      <v-tab :to="localePath('/product-details/shipping-and-returns')">
         {{ $t('productDetails.shipping_and_returns') }}
       </v-tab>
     </v-tabs>

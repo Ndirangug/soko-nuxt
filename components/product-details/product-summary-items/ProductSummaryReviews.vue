@@ -12,9 +12,10 @@
     </div>
     <div class="label">
       <nuxt-link
-        :to="localePath('product-details/reviews')"
+        :to="localePath('/product-details/reviews')"
         class="text-capitalize text-decoration-none"
         :class="{ 'text-caption': $vuetify.breakpoint.smAndDown }"
+        @click="$vuetify.goTo('#product-reviews', goToOptions)"
       >
         {{ product.productOverallRating.numberOfRatings }}
         {{ $t('productDetails.customer_reviews') }}
@@ -43,6 +44,14 @@ export default Vue.extend({
     product(): ProductRatingsSegment {
       return {
         productOverallRating: this.productRatingsSegment.productOverallRating,
+      }
+    },
+
+    goToOptions() {
+      return {
+        duration: 200,
+        offset: 20,
+        easing: 'easeInQuad',
       }
     },
   },
