@@ -97,7 +97,7 @@ export default Vue.extend({
   },
 
   layout: 'auth',
-  middleware: 'login_signup',
+  middleware: 'login-signup',
 })
 </script>
 

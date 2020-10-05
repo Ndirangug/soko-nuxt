@@ -68,6 +68,7 @@ export default Vue.extend({
   },
 
   layout: 'product-details',
+  middleware: ['product-details'],
 })
 </script>
 
