@@ -5,7 +5,7 @@
         {{ $t('productDetails.brand') + ':' }}
         <nuxt-link
           class="text-decoration-none"
-          :to="`/products/browse-products?brand=${product.brand}`"
+          :to="localePath(`/products/browse-products?brand=${product.brand}`)"
         >
           {{ product.brand }}
         </nuxt-link>
@@ -22,13 +22,17 @@
 
         <nuxt-link
           class="text-decoration-none text-capitalize"
-          :to="`/sellers/?id=${product.seller.sellerID}`"
+          :to="localePath(`/sellers/?id=${product.seller.sellerID}`)"
         >
           {{ product.seller.sellerName }}
         </nuxt-link>
         |
         <nuxt-link
-          :to="`/products/browse-products?seller=${product.seller.sellerID}`"
+          :to="
+            localePath(
+              `/products/browse-products?seller=${product.seller.sellerID}`
+            )
+          "
         >
           <span class="text-sentence">
             {{ $t('productDetails.similar_from') }}
