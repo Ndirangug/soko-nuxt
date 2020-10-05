@@ -28,17 +28,17 @@
       <p class="text-body-2 text-sentence mt-3">
         {{ $t('productDetails.for') }}
         <nuxt-link
-          :to="shippingDetailsRoute"
+          to="#"
           class="text-decoration-none"
-          @click="scrollToShipping"
+          @click.native.prevent="scrollToShipping"
         >
           {{ $t('productDetails.shipping_details') }}
         </nuxt-link>
         {{ $t('productDetails.and_expected_delivery_times_see') }}
         <nuxt-link
-          :to="shippingDetailsRoute"
+          to="#"
           class="text-decoration-none"
-          @click="scrollToShipping"
+          @click.native.prevent="scrollToShipping"
         >
           {{ $t('productDetails.shipping_and_returns_policy') }}
         </nuxt-link>
@@ -53,10 +53,10 @@
         <v-hover v-slot:default="{ hover }">
           <v-fade-transition>
             <nuxt-link
-              :to="shippingDetailsRoute"
+              to="#"
               class="text-capitalize grey--text text--darken-2 font-italic"
               :class="{ 'text-decoration-none': !hover }"
-              @click="scrollToShipping"
+              @click.native.prevent="scrollToShipping"
             >
               {{ $t('productDetails.shipping_details') }}
             </nuxt-link>
@@ -107,8 +107,15 @@ export default Vue.extend({
 
   methods: {
     scrollToShipping() {
-      // @ts-ignore
-      this.$vuetify.goTo('#product-shipping-and-returns', this.goToOptions)
+      if (this.$route.path.endsWith('shipping-and-returns')) {
+        // @ts-ignore
+        this.$vuetify.goTo('#product-shipping-and-returns', this.goToOptions)
+      } else {
+        this.$router.push(this.shippingDetailsRoute, () => {
+          // @ts-ignore
+          this.$vuetify.goTo('#product-shipping-and-returns', this.goToOptions)
+        })
+      }
     },
   },
 })

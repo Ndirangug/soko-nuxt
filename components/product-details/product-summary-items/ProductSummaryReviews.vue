@@ -12,10 +12,10 @@
     </div>
     <div class="label">
       <nuxt-link
-        :to="localePath('/product-details/reviews')"
+        to="#"
         class="text-capitalize text-decoration-none"
         :class="{ 'text-caption': $vuetify.breakpoint.smAndDown }"
-        @click="$vuetify.goTo('#product-reviews', goToOptions)"
+        @click.native.prevent="scrollToReviews"
       >
         {{ product.productOverallRating.numberOfRatings }}
         {{ $t('productDetails.customer_reviews') }}
@@ -52,6 +52,20 @@ export default Vue.extend({
         duration: 200,
         offset: 20,
         easing: 'easeInQuad',
+      }
+    },
+  },
+
+  methods: {
+    scrollToReviews() {
+      if (this.$route.path.endsWith('reviews')) {
+        // @ts-ignore
+        this.$vuetify.goTo('#product-reviews', this.goToOptions)
+      } else {
+        this.$router.push(this.localePath('/product-details/reviews'), () => {
+          // @ts-ignore
+          this.$vuetify.goTo('#product-reviews', this.goToOptions)
+        })
       }
     },
   },

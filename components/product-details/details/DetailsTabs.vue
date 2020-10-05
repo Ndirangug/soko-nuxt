@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <v-tabs v-model="activeTab" grow centered>
+  <div class="details-root-container pb-16">
+    <v-tabs v-model="activeTab" class="tab-buttons" grow centered>
       <v-tab :to="localePath('/product-details/description')">
         {{ $t('productDetails.description') }}
       </v-tab>
@@ -26,3 +26,13 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style lang="scss" scoped>
+.details-root-container {
+  width: 100%;
+
+  .tab-buttons {
+    text-align: center;
+  }
+}
+</style>
