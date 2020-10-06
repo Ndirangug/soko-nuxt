@@ -1,15 +1,21 @@
 <template>
-  <div class="details-root-container pb-16">
+  <div class="details-root-container px-md-16 pt-16 pb-16">
     <v-tabs centered grow>
-      <v-tab :to="localePath('/product-details/description')">
+      <v-tab
+        class="tab-button"
+        :to="localePath('/product-details/description')"
+      >
         {{ $t('productDetails.description') }}
       </v-tab>
 
-      <v-tab :to="localePath('/product-details/reviews')">
+      <v-tab class="tab-button" :to="localePath('/product-details/reviews')">
         {{ $t('productDetails.reviews') }}
       </v-tab>
 
-      <v-tab :to="localePath('/product-details/shipping-and-returns')">
+      <v-tab
+        class="tab-button"
+        :to="localePath('/product-details/shipping-and-returns')"
+      >
         {{ $t('productDetails.shipping_and_returns') }}
       </v-tab>
     </v-tabs>
@@ -39,15 +45,10 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .details-root-container {
   width: 100%;
-}
-</style>
+  background-color: $grey-background;
 
-//
-<style lang="scss">
-// .v-tabs {
-//   .v-item-group {
-//     width: 100%;
-//   }
-// }
-//
+  .tab-button {
+    background-color: $grey-background;
+  }
+}
 </style>

@@ -149,6 +149,7 @@ export default Vue.extend({
     width: fit-content;
     position: relative;
     top: -100px;
+    margin-bottom: -50px;
 
     .overlay {
       background-color: $grey-background-transparent;

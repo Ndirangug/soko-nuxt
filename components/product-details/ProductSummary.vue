@@ -4,6 +4,7 @@
     class="product-summary-container px-6 py-6 px-sm-10 py-sm-10 px-md-6 py-md-3"
     :max-height="$vuetify.breakpoint.mdAndUp ? sheetHeight : ''"
     :width="$vuetify.breakpoint.mdAndUp ? sheetWidth : ''"
+    :class="{ 'bg-smAndDown': $vuetify.breakpoint.smAndDown }"
   >
     <div
       class="root-flex-container d-flex flex-column justify-center align-start"
@@ -167,5 +168,9 @@ export default Vue.extend({
   .fill-width {
     width: 100%;
   }
+}
+
+.bg-smAndDown {
+  background-color: $grey-background;
 }
 </style>
