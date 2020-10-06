@@ -1,13 +1,13 @@
 <template>
   <div id="product-description" class="product-description-container">
     <div class="short-description">
-      <p>{{ shortDescription }}</p>
+      <p>{{ productDetails.descriptionText }}</p>
     </div>
     <div class="banner">
       <v-img
-        v-for="(bannerImage, i) in bannerImages"
+        v-for="(url, i) in productDetails.descriptionDocument"
         :key="i"
-        :src="bannerImage"
+        :src="url"
       />
     </div>
 
@@ -16,13 +16,18 @@
         <div class="key-features my-4">
           <v-simple-table>
             <thead>
-              <th class="text-capitalize">key features</th>
+              <th class="text-capitalize">
+                {{ $t('productDetails.key_features') }}
+              </th>
             </thead>
             <tbody>
               <tr>
                 <td>
                   <ol>
-                    <li v-for="(feature, i) in features" :key="i">
+                    <li
+                      v-for="(feature, i) in productDetails.keyFeatures"
+                      :key="i"
+                    >
                       {{ feature }}
                     </li>
                   </ol>
@@ -35,7 +40,9 @@
         <div class="specifications mx-2 my-4">
           <v-simple-table>
             <thead>
-              <th colspan="2" class="text-capitalize">specifications</th>
+              <th colspan="2" class="text-capitalize">
+                $t('productDetails.specifications')
+              </th>
             </thead>
             <tbody>
               <tr v-for="(spec, i) in Object.keys(specifications)" :key="i">
@@ -49,7 +56,9 @@
         <div class="package-contents my-4">
           <v-simple-table>
             <thead>
-              <th colspan="2" class="text-capitalize">package contents</th>
+              <th colspan="2" class="text-capitalize">
+                {{ $t('productDetails.package_contents') }}
+              </th>
             </thead>
             <tbody>
               <tr v-for="(packageContent, i) in packageContents" :key="i">
@@ -70,11 +79,11 @@
     >
       <v-btn rounded large class="text-capitalize px-sm-8">
         <v-icon>{{ icons.demo }}</v-icon>
-        enter design mode
+        {{ $t('productDetails.enter_design_mode') }}
       </v-btn>
       <v-btn rounded large class="text-capitalize px-sm-8">
         <v-icon>{{ icons.addToCart }}</v-icon>
-        add to cart
+        {{ $t('productDetails.add_to_cart') }}
       </v-btn>
     </v-responsive>
   </div>
@@ -83,19 +92,31 @@
 <script lang="ts">
 import { mdiCartPlus, mdiRulerSquareCompass } from '@mdi/js'
 import Vue from 'vue'
+import { ProductDescription } from '*/product_description.graphql'
+import { ProductDescriptionQueryVariables } from '~/types/types'
 export default Vue.extend({
   props: {
-    bannerImages: {
-      type: Array,
+    // TODO: GET THESE PASSED HERE
+    // configurables: {
+    //   type: Object,
+    //   required: true,
+    // },
+    productId: {
+      type: Number,
       required: true,
     },
-    shortDescription: {
-      type: String,
-      required: true,
-    },
-    demoUrl: {
-      type: String,
-      required: true,
+  },
+  // @ts-ignore
+  apollo: {
+    productDetails: {
+      query: ProductDescription,
+      prefetch: true,
+      variables(): ProductDescriptionQueryVariables {
+        return {
+          // @ts-ignore
+          productID: this.productId,
+        }
+      },
     },
   },
   data() {
@@ -104,35 +125,6 @@ export default Vue.extend({
         demo: mdiRulerSquareCompass,
         addToCart: mdiCartPlus,
       },
-      bannerUrl: '/product-details/banner1.jpg',
-      features: [
-        'harum corporis optio quibusdam maiores et error, ',
-        'iste assumenda quis eligendi in!',
-        'Lorem ipsum, dolor sit amet consectetur adipisicing',
-        ' elit. Deleniti ut',
-        'adipisci sapiente alias enim voluptates voluptatum eum nulla',
-      ],
-      specifications: {
-        fabric: 'velvet',
-        material: 'wood',
-        color: 'brown',
-        weight: '2kg',
-        dimensions: '140 * 40 * 60',
-      },
-      packageContents: [
-        {
-          item: 'couch',
-          quantity: 3,
-        },
-        {
-          item: 'pillow',
-          quantity: 6,
-        },
-        {
-          item: 'footstool',
-          quantity: 1,
-        },
-      ],
     }
   },
 
@@ -162,6 +154,39 @@ export default Vue.extend({
       }
 
       return width
+    },
+
+    // TODO GET THESE FROM PROPS
+    configurables() {
+      return { color: 'red', material: 'fabric' }
+    },
+
+    specifications() {
+      return {
+        // @ts-ignore
+        ...this.configurables,
+        // @ts-ignore
+        mass: this.productDetails.mass,
+        // @ts-ignore
+        dimensions: this.productDetails.dimensions,
+      }
+    },
+
+    packageContents() {
+      return [
+        {
+          item: 'couch',
+          quantity: 3,
+        },
+        {
+          item: 'pillow',
+          quantity: 6,
+        },
+        {
+          item: 'footstool',
+          quantity: 1,
+        },
+      ]
     },
   },
 })

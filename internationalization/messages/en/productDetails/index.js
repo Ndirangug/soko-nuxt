@@ -21,4 +21,8 @@ export const productDetails = {
   shipping_and_returns: 'shipping and returns',
   shipping_and_returns_policy: 'shipping and returns policy',
   launch_3d_demo: 'launch 3d demo',
+  key_features: 'key features',
+  specifications: 'specifications',
+  package_contents: 'package contents',
+  enter_design_mode: 'enter design mode',
 }

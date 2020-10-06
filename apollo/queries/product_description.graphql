@@ -4,5 +4,16 @@ query ProductDescription($productID: Int!) {
     descriptionDocument
     descriptionText
     demoUrl
+    keyFeatures
+    mass{
+      value
+      units
+    }
+    dimensions{
+      length
+      width
+      height
+      units
+    }
   }
 }

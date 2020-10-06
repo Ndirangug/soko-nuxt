@@ -78,6 +78,9 @@ export interface Product {
   descriptionDocument?: string[]
   descriptionText?: string
   demoUrl?: string
+  keyFeatures?: string[]
+  mass?: ProductMass
+  dimensions?: ProductDimensions
   configurables?: Configurable[]
   productReviews?: ProductReview[]
   seller?: Seller
@@ -90,6 +93,22 @@ export interface Product {
   categories?: Category[]
   tags: string[]
 }
+
+export interface ProductDimensions {
+  length: number
+  width: number
+  height: number
+  units: ProductDimensionsUnits
+}
+
+export interface ProductMass {
+  value: number
+  units: ProductMassUnits
+}
+
+type ProductDimensionsUnits = 'M' | 'CM'
+
+type ProductMassUnits = 'KG' | 'G'
 
 export interface Category {
   categoryID?: number
