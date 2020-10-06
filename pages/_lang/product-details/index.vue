@@ -23,7 +23,7 @@
     </v-scroll-x-transition>
 
     <div class="details">
-      <DetailsTabs />
+      <DetailsTabs :product-id="productDetails.productID" />
     </div>
   </div>
 </template>

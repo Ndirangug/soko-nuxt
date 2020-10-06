@@ -16,9 +16,11 @@
         <div class="key-features my-4">
           <v-simple-table>
             <thead>
-              <th class="text-capitalize">
-                {{ $t('productDetails.key_features') }}
-              </th>
+              <tr>
+                <th class="text-capitalize">
+                  {{ $t('productDetails.key_features') }}
+                </th>
+              </tr>
             </thead>
             <tbody>
               <tr>
@@ -40,9 +42,11 @@
         <div class="specifications mx-2 my-4">
           <v-simple-table>
             <thead>
-              <th colspan="2" class="text-capitalize">
-                $t('productDetails.specifications')
-              </th>
+              <tr>
+                <th colspan="2" class="text-capitalize">
+                  {{ $t('productDetails.specifications') }}
+                </th>
+              </tr>
             </thead>
             <tbody>
               <tr v-for="(spec, i) in Object.keys(specifications)" :key="i">
@@ -56,9 +60,11 @@
         <div class="package-contents my-4">
           <v-simple-table>
             <thead>
-              <th colspan="2" class="text-capitalize">
-                {{ $t('productDetails.package_contents') }}
-              </th>
+              <tr>
+                <th colspan="2" class="text-capitalize">
+                  {{ $t('productDetails.package_contents') }}
+                </th>
+              </tr>
             </thead>
             <tbody>
               <tr v-for="(packageContent, i) in packageContents" :key="i">
@@ -90,10 +96,12 @@
 </template>
 
 <script lang="ts">
-import { mdiCartPlus, mdiRulerSquareCompass } from '@mdi/js'
 import Vue from 'vue'
-import { ProductDescription } from '*/product_description.graphql'
+import { mdiCartPlus, mdiRulerSquareCompass } from '@mdi/js'
+
+import { ProductDescription } from '~/apollo/queries/product_description.graphql'
 import { ProductDescriptionQueryVariables } from '~/types/types'
+
 export default Vue.extend({
   props: {
     // TODO: GET THESE PASSED HERE
@@ -102,7 +110,7 @@ export default Vue.extend({
     //   required: true,
     // },
     productId: {
-      type: Number,
+      type: String,
       required: true,
     },
   },
@@ -114,7 +122,7 @@ export default Vue.extend({
       variables(): ProductDescriptionQueryVariables {
         return {
           // @ts-ignore
-          productID: this.productId,
+          productID: parseInt(this.productId),
         }
       },
     },
@@ -162,13 +170,32 @@ export default Vue.extend({
     },
 
     specifications() {
+      const mass = `${
+        // @ts-ignore
+        this.productDetails.mass.value
+        // @ts-ignore
+      } ${this.productDetails.mass.units.toLowerCase()}`
+
+      // @ts-ignore
+      const dimensions = `${this.productDetails.dimensions.length} x 
+      ${
+        // @ts-ignore
+        this.productDetails.dimensions.width
+      } x ${
+        // @ts-ignore
+        this.productDetails.dimensions.height
+      } (${
+        // @ts-ignore
+        this.productDetails.dimensions.units.toLowerCase()
+      })`
+
       return {
         // @ts-ignore
         ...this.configurables,
         // @ts-ignore
-        mass: this.productDetails.mass,
+        mass,
         // @ts-ignore
-        dimensions: this.productDetails.dimensions,
+        dimensions,
       }
     },
 

@@ -12,7 +12,7 @@
       </v-tab>
     </v-tabs>
 
-    <nuxt-child />
+    <nuxt-child :product-id="productId" />
   </div>
 </template>
 
@@ -20,6 +20,12 @@
 import Vue from 'vue'
 
 export default Vue.extend({
+  props: {
+    productId: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       activeTab: null,
