@@ -1,12 +1,14 @@
 <template>
   <div class="details-root-container pb-16">
-    <v-tabs v-model="activeTab" class="tab-buttons" grow centered>
+    <v-tabs centered grow>
       <v-tab :to="localePath('/product-details/description')">
         {{ $t('productDetails.description') }}
       </v-tab>
+
       <v-tab :to="localePath('/product-details/reviews')">
         {{ $t('productDetails.reviews') }}
       </v-tab>
+
       <v-tab :to="localePath('/product-details/shipping-and-returns')">
         {{ $t('productDetails.shipping_and_returns') }}
       </v-tab>
@@ -37,9 +39,15 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .details-root-container {
   width: 100%;
-
-  .tab-buttons {
-    text-align: center;
-  }
 }
+</style>
+
+//
+<style lang="scss">
+// .v-tabs {
+//   .v-item-group {
+//     width: 100%;
+//   }
+// }
+//
 </style>

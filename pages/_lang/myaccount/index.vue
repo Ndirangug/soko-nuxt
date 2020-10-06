@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>My Account</h1>
-    <v-tabs>
+    <v-tabs centered grow>
       <v-tab :to="localePath('/myaccount/overview')">Overview</v-tab>
       <v-tab :to="localePath('/myaccount/profile')">Profile</v-tab>
       <v-tab :to="localePath('/myaccount/orders')">Orders</v-tab>

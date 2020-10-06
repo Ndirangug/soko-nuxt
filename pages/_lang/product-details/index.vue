@@ -82,15 +82,15 @@ export default Vue.extend({
 
   .top-xl {
     top: -55vw;
+    margin-bottom: -55vw;
   }
   .top-lg {
     top: -57vw;
+    margin-bottom: -57vw;
   }
   .top-md {
     top: -59vw;
-  }
-  .top-sm {
-    top: -57vw;
+    margin-bottom: -59vw;
   }
 
   .position-initial {
