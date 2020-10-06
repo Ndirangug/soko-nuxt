@@ -155,7 +155,7 @@ export default {
    */
   loading: {
     color: 'green',
-    height: '8px',
+    height: '6px',
     continuous: true,
   },
 }
