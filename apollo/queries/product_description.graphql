@@ -1,0 +1,8 @@
+query ProductDescription($productID: Int!) {
+  productDetails(productID: $productID) {
+    productID
+    descriptionDocument
+    descriptionText
+    demoUrl
+  }
+}

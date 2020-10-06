@@ -1,0 +1,33 @@
+query ProductReviews($productID: Int!) {
+  productDetails(productID: $productID) {
+    productID
+    productOverallRating {
+      overallScore
+      numberOfRatings
+      fiveStar
+      fourStar
+      threeStar
+      twoStar
+      oneStar
+    }
+    productReviews {
+      productReviewID
+      customer {
+        firstName
+        lastName
+        avatarUrl
+      }
+      date
+      starRating
+      reviewMessage
+      attachments
+      reply {
+        seller {
+          sellerName
+        }
+        date
+        replyMessage
+      }
+    }
+  }
+}

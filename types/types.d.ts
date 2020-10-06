@@ -77,6 +77,7 @@ export interface Product {
   thumbnails: string[]
   descriptionDocument?: string[]
   descriptionText?: string
+  demoUrl?: string
   configurables?: Configurable[]
   productReviews?: ProductReview[]
   seller?: Seller
@@ -441,3 +442,6 @@ export type CustomerQueryVariables = { customerID: number }
 export type BlogPostQueryVariables = { blogPostID: number }
 
 export type ProductDetailsQueryVariables = { productID: number }
+export type ProductDetailsSummaryQueryVariables = ProductDetailsQueryVariables
+export type ProductDescriptionQueryVariables = ProductDetailsQueryVariables
+export type ProductReviewsQueryVariables = ProductDetailsQueryVariables

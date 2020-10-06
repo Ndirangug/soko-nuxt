@@ -1,0 +1,39 @@
+query ProductDetailsSummary($productID: Int!) {
+  productDetails(productID: $productID) {
+    productID
+    title
+    shortDescription
+    price
+    discount {
+      amount
+      discountType
+    }
+    images
+    thumbnails
+    configurables {
+      configurableID
+      configurableType
+      optionsAvailable {
+        configurableOptionID
+        name
+        thumbnailUrl
+      }
+    }
+    seller {
+      sellerID
+      sellerName
+      dispatchLocation
+      sellerScore
+    }
+    productOverallRating {
+      overallScore
+      numberOfRatings
+    }
+    vouchersApplicable {
+      voucherID
+      voucherCode
+    }
+    inventoryRemaining
+    tags
+  }
+}

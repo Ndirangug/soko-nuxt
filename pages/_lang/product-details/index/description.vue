@@ -1,7 +1,14 @@
 <template>
   <div id="product-description" class="product-description-container">
+    <div class="short-description">
+      <p>{{ shortDescription }}</p>
+    </div>
     <div class="banner">
-      <v-img :src="bannerUrl" />
+      <v-img
+        v-for="(bannerImage, i) in bannerImages"
+        :key="i"
+        :src="bannerImage"
+      />
     </div>
 
     <div class="detail-tables">
@@ -56,13 +63,14 @@
       </div>
     </div>
 
+    <div class="demo-preview"></div>
     <v-responsive
       class="buttons mt-10 px-sm-16 py-1 mx-auto"
       :width="buttonsContainerWidth"
     >
       <v-btn rounded large class="text-capitalize px-sm-8">
         <v-icon>{{ icons.demo }}</v-icon>
-        launch 3d demo
+        enter design mode
       </v-btn>
       <v-btn rounded large class="text-capitalize px-sm-8">
         <v-icon>{{ icons.addToCart }}</v-icon>
@@ -76,6 +84,20 @@
 import { mdiCartPlus, mdiRulerSquareCompass } from '@mdi/js'
 import Vue from 'vue'
 export default Vue.extend({
+  props: {
+    bannerImages: {
+      type: Array,
+      required: true,
+    },
+    shortDescription: {
+      type: String,
+      required: true,
+    },
+    demoUrl: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       icons: {

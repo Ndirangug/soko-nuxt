@@ -43,8 +43,31 @@ declare module '*/products.graphql' {
 declare module '*/product_details.graphql' {
   import { DocumentNode } from 'graphql'
   const defaultDocument: DocumentNode
-  export const ProductDetailsComplete: DocumentNode
-  export const ProductDetailsPartial: DocumentNode
+  export const ProductDetails: DocumentNode
+
+  export default defaultDocument
+}
+
+declare module '*/product_details_summary.graphql' {
+  import { DocumentNode } from 'graphql'
+  const defaultDocument: DocumentNode
+  export const ProductDetailsSummary: DocumentNode
+
+  export default defaultDocument
+}
+
+declare module '*/product_description.graphql' {
+  import { DocumentNode } from 'graphql'
+  const defaultDocument: DocumentNode
+  export const ProductDescription: DocumentNode
+
+  export default defaultDocument
+}
+
+declare module '*/product_reviews.graphql' {
+  import { DocumentNode } from 'graphql'
+  const defaultDocument: DocumentNode
+  export const ProductReviews: DocumentNode
 
   export default defaultDocument
 }

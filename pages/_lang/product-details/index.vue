@@ -30,8 +30,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import ProductDetails from '~/apollo/queries/product_details.graphql'
-import { ProductDetailsQueryVariables } from '~/types/types'
+import { ProductDetailsSummary } from '~/apollo/queries/product_details_summary.graphql'
+import { ProductDetailsSummaryQueryVariables } from '~/types/types'
 import { IsLoadingMixin } from '~/components/mixins/Loading'
 
 export default Vue.extend({
@@ -39,9 +39,9 @@ export default Vue.extend({
   // @ts-ignore
   apollo: {
     productDetails: {
-      query: ProductDetails,
+      query: ProductDetailsSummary,
       prefetch: true,
-      variables(): ProductDetailsQueryVariables {
+      variables(): ProductDetailsSummaryQueryVariables {
         return {
           // @ts-ignore
           productID: this.productID,
