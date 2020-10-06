@@ -34,9 +34,9 @@ export default Vue.extend({
   data() {
     return {
       ads: [
-        { poster: '/products/ads/ad1.jpg', link: '#' },
-        { poster: '/products/ads/ad2.jpg', link: '#' },
-        { poster: '/products/ads/ad3.jpg', link: '#' },
+        { poster: '/categories/ads/ad1.jpg', link: '#' },
+        { poster: '/categories/ads/ad2.jpg', link: '#' },
+        { poster: '/categories/ads/ad3.jpg', link: '#' },
       ],
     }
   },

@@ -75,7 +75,7 @@ export interface Product {
   discount: Discount
   images?: string[]
   thumbnails: string[]
-  descriptionDocument?: string
+  descriptionDocument?: string[]
   descriptionText?: string
   configurables?: Configurable[]
   productReviews?: ProductReview[]
