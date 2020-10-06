@@ -1,9 +1,10 @@
 import { Middleware } from '@nuxt/types'
+import { trimTrailingSlash } from '~/utils/custom-trim'
 
 const myaccount: Middleware = ({ route, redirect, store }) => {
   if (
-    route.path === '/myaccount' ||
-    route.path === `/${store.$i18n.locale}/myaccount`
+    trimTrailingSlash(route.path) === '/myaccount' ||
+    trimTrailingSlash(route.path) === `/${store.$i18n.locale}/myaccount`
   ) {
     return redirect(`/${store.$i18n.locale}/myaccount/overview`)
   }
