@@ -26,6 +26,7 @@
 <script lang="ts">
 import { mdiMinus, mdiPlus } from '@mdi/js'
 import Vue from 'vue'
+import { EventBus } from '~/utils/event-bus'
 export default Vue.extend({
   data() {
     return {
@@ -59,6 +60,7 @@ export default Vue.extend({
     model(value) {
       // TODO UPDATE IN PRODUCT-DETAILS/SUMMARY
       console.log(value)
+      EventBus.$emit('update:quantity', value)
     },
   },
 

@@ -1,3 +1,4 @@
+<!--  eslint-disable vue/no-v-html -->
 <template>
   <div
     id="product-description"
@@ -111,18 +112,34 @@
         /> -->
         <!-- https://giphy.com/gifs/l2Sq11YKEUHDIEkyk/html5 -->
         <!-- https://media.giphy.com/media/cZ6ER64remMTfarft3/giphy.gif -->
-        <PanoramicPreview />
+        <PanoramicPreview
+          :preview-url="productDetails.demoPreviewUrl"
+          :demo-url="productDetails.demoUrl"
+        />
       </div>
 
       <v-responsive
         class="buttons mt-2 px-sm-16 py-1 mx-auto"
         :width="buttonsContainerWidth"
       >
-        <v-btn rounded large class="text-capitalize px-sm-8 my-2">
+        <v-btn rounded large class="text-capitalize px-sm-8 mx-1 my-2">
           <v-icon>{{ icons.demo }}</v-icon>
-          {{ $t('productDetails.enter_360') }}
+          {{ $t('productDetails.enter') }}
+          <span
+            class="text-lowercase"
+            v-html="$t('productDetails.three_sixty')"
+          >
+          </span>
+
+          {{ $t('productDetails.demo') }}
         </v-btn>
-        <v-btn rounded large class="text-capitalize px-sm-8 my-2">
+
+        <v-btn
+          rounded
+          large
+          class="text-capitalize px-sm-8 mx-1 my-2"
+          @click="addToCart()"
+        >
           <v-icon>{{ icons.addToCart }}</v-icon>
           {{ $t('productDetails.add_to_cart') }}
         </v-btn>
@@ -137,6 +154,7 @@ import { mdiCartPlus, mdiRulerSquareCompass } from '@mdi/js'
 
 import { ProductDescription } from '~/apollo/queries/product_description.graphql'
 import { ProductDescriptionQueryVariables } from '~/types/types'
+import { EventBus } from '~/utils/event-bus'
 
 export default Vue.extend({
   props: {
@@ -169,6 +187,7 @@ export default Vue.extend({
         demo: mdiRulerSquareCompass,
         addToCart: mdiCartPlus,
       },
+      configurables: {},
     }
   },
 
@@ -198,11 +217,6 @@ export default Vue.extend({
       }
 
       return width
-    },
-
-    // TODO GET THESE FROM PROPS
-    configurables() {
-      return { color: 'red', material: 'fabric' }
     },
 
     specifications() {
@@ -250,6 +264,26 @@ export default Vue.extend({
           quantity: 1,
         },
       ]
+    },
+  },
+
+  mounted() {
+    // @ts-ignore
+    EventBus.$on('update:configurable', this.onUpdateConfigurables)
+  },
+
+  methods: {
+    onUpdateConfigurables(configurable: { [key: string]: string }) {
+      // @ts-ignore
+      this.configurables = {
+        // @ts-ignore
+        ...this.configurables,
+        // @ts-ignore
+        ...configurable,
+      }
+    },
+    addToCart() {
+      EventBus.$emit('add-to-cart')
     },
   },
 })

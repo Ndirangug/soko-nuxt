@@ -11,6 +11,7 @@
         <v-img
           :width="$vuetify.breakpoint.smAndUp ? thumbnailWidth : '40px'"
           :max-width="$vuetify.breakpoint.smAndUp ? thumbnailWidth : '40px'"
+          :max-height="$vuetify.breakpoint.smAndUp ? thumbnailWidth : '40px'"
           :src="thumbnail"
         >
           <div

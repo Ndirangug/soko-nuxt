@@ -36,6 +36,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Configurable, ConfigurableOption } from '~/types/types'
+import { EventBus } from '~/utils/event-bus'
 
 export default Vue.extend({
   props: {
@@ -114,13 +115,24 @@ export default Vue.extend({
     },
 
     updateCarousel() {
-      // TODO: IMPLEMENT THIS
+      // TODO: IMPLEMENT THIS with imgeas  matching configurables
     },
 
     onConfigurableChanged(optionSelected: string, index: number) {
       // TODO MAKE ASYNC
       this.updateSelectThumbnail(optionSelected, index)
       this.updateCarousel()
+      this.emitConfigurableChanged(optionSelected, index)
+    },
+
+    emitConfigurableChanged(optionSelected: string, index: number) {
+      // @ts-ignore
+      const chandedConfigurable: string = this.configurables[index]
+        .configurableType
+
+      EventBus.$emit('update:configurable', {
+        [chandedConfigurable]: optionSelected,
+      })
     },
   },
 })

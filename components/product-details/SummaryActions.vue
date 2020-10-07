@@ -31,6 +31,7 @@
 <script lang="ts">
 import { mdiCartPlus, mdiHeart, mdiHeartOutline } from '@mdi/js'
 import Vue from 'vue'
+import { EventBus } from '~/utils/event-bus'
 export default Vue.extend({
   data() {
     return {
@@ -54,8 +55,7 @@ export default Vue.extend({
 
   methods: {
     addToCart() {
-      // TODO:IMPLEMENT THIS
-      console.log('add to ccart')
+      EventBus.$emit('add-to-cart')
     },
 
     onIntersect(

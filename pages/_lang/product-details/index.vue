@@ -33,6 +33,7 @@ import Vue from 'vue'
 import { ProductDetailsSummary } from '~/apollo/queries/product_details_summary.graphql'
 import { ProductDetailsSummaryQueryVariables } from '~/types/types'
 import { IsLoadingMixin } from '~/components/mixins/Loading'
+import { EventBus } from '~/utils/event-bus'
 
 export default Vue.extend({
   mixins: [IsLoadingMixin],
@@ -50,6 +51,15 @@ export default Vue.extend({
     },
   },
 
+  data() {
+    return {
+      customerInput: {
+        configurables: {},
+        quantity: 0,
+      },
+    }
+  },
+
   computed: {
     productID(): number {
       const idFromQueryParams: number =
@@ -64,6 +74,35 @@ export default Vue.extend({
     topOffSet(): string {
       // @ts-ignore
       return `top-${this.$vuetify.breakpoint.name}`
+    },
+  },
+
+  mounted() {
+    // @ts-ignore
+    EventBus.$on('update:configurable', this.onUpdateConfigurables)
+    // @ts-ignore
+    EventBus.$on('update:quantity', this.onUpdateQuantity)
+    // @ts-ignore
+    EventBus.$on('add-to-cart', this.onAddToCart)
+  },
+
+  methods: {
+    onUpdateConfigurables(configurable: { [key: string]: string }) {
+      // @ts-ignore
+      this.customerInput.configurables = {
+        // @ts-ignore
+        ...this.customerInput.configurables,
+        ...configurable,
+      }
+    },
+    onUpdateQuantity(quantity: number) {
+      // @ts-ignore
+      this.customerInput.quantity = quantity
+    },
+    onAddToCart() {
+      console.log('add to cart')
+      // @ts-ignore
+      console.log(this.customerInput)
     },
   },
 

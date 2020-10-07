@@ -1,6 +1,6 @@
 <template>
   <v-responsive :width="previewWidth">
-    <Pano source="/product-details/1/360/panorama.jpg" />
+    <Pano :source="previewUrl" />
   </v-responsive>
 </template>
 
@@ -8,6 +8,16 @@
 import Vue from 'vue'
 
 export default Vue.extend({
+  props: {
+    previewUrl: {
+      type: String,
+      required: true,
+    },
+    demoUrl: {
+      type: String,
+      required: true,
+    },
+  },
   computed: {
     previewWidth(): number {
       let width = 0

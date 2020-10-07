@@ -4,6 +4,7 @@ query ProductDescription($productID: Int!) {
     descriptionDocument
     descriptionText
     demoUrl
+    demoPreviewUrl
     keyFeatures
     mass{
       value
