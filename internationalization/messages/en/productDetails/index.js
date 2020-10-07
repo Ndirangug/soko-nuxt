@@ -25,4 +25,5 @@ export const productDetails = {
   specifications: 'specifications',
   package_contents: 'package contents',
   enter_design_mode: 'enter design mode',
+  enter_360: 'enter 360&deg demo',
 }

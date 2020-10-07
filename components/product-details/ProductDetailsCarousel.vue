@@ -11,9 +11,16 @@
     </div>
 
     <div
-      class="thumbnails mx-auto ml-md-16 pl-md-8 ml-lg-16 pl-lg-16"
+      class="thumbnails d-flex mx-auto ml-md-8 ml-lg-16"
       :class="{ 'thumbnails-smAndDown': $vuetify.breakpoint.smAndDown }"
     >
+      <div class="3d-button">
+        <ThreeDButton
+          :thumbnail-width="thumbnailWidth"
+          :thumbnail="thumbnails[0]"
+        />
+      </div>
+
       <v-item-group
         v-model="model"
         class="text-center ml-xl-16 pl-xl-16"
@@ -35,7 +42,7 @@
               :width="thumbnailWidth"
               :src="thumbnail"
             >
-              <div class="overlay" :class="{ 'overlay-active': active }"></div>
+              <div class="overlay" :class="{ 'overlay-hover': active }"></div>
             </v-img>
 
             <v-icon v-else :color="active ? 'white' : ''">
@@ -157,7 +164,7 @@ export default Vue.extend({
       width: 100%;
     }
 
-    .overlay-active {
+    .overlay-hover {
       background-color: transparent !important;
       border: solid 0.2em $grey-background;
     }

@@ -18,7 +18,7 @@
 
       <div class="detail-tables mt-6">
         <div
-          class="tables-container d-flex flex-column flex-md-row flex-md-wrap"
+          class="tables-container d-flex flex-column justify-center align-center flex-md-row flex-md-wrap"
         >
           <div class="key-features my-4">
             <v-simple-table
@@ -101,14 +101,26 @@
         </div>
       </div>
 
-      <div class="demo-preview"></div>
+      <div class="demo-preview mt-8 mb-2">
+        <!-- TODO turn thisi into a 360 degreeesp preview -->
+        <!-- <v-img
+          alt="360 degrees preview"
+          class="mx-auto"
+          :width="previewWidth"
+          src="/product-details/1/360/panorama.jpg"
+        /> -->
+        <!-- https://giphy.com/gifs/l2Sq11YKEUHDIEkyk/html5 -->
+        <!-- https://media.giphy.com/media/cZ6ER64remMTfarft3/giphy.gif -->
+        <PanoramicPreview />
+      </div>
+
       <v-responsive
-        class="buttons mt-10 px-sm-16 py-1 mx-auto"
+        class="buttons mt-2 px-sm-16 py-1 mx-auto"
         :width="buttonsContainerWidth"
       >
         <v-btn rounded large class="text-capitalize px-sm-8 my-2">
           <v-icon>{{ icons.demo }}</v-icon>
-          {{ $t('productDetails.enter_design_mode') }}
+          {{ $t('productDetails.enter_360') }}
         </v-btn>
         <v-btn rounded large class="text-capitalize px-sm-8 my-2">
           <v-icon>{{ icons.addToCart }}</v-icon>
