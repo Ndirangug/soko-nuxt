@@ -1,4 +1,3 @@
-<!--  eslint-disable vue/no-v-html -->
 <template>
   <div
     id="product-description"
@@ -103,15 +102,6 @@
       </div>
 
       <div class="demo-preview mt-8 mb-2">
-        <!-- TODO turn thisi into a 360 degreeesp preview -->
-        <!-- <v-img
-          alt="360 degrees preview"
-          class="mx-auto"
-          :width="previewWidth"
-          src="/product-details/1/360/panorama.jpg"
-        /> -->
-        <!-- https://giphy.com/gifs/l2Sq11YKEUHDIEkyk/html5 -->
-        <!-- https://media.giphy.com/media/cZ6ER64remMTfarft3/giphy.gif -->
         <PanoramicPreview
           :preview-url="productDetails.demoPreviewUrl"
           :demo-url="productDetails.demoUrl"
@@ -124,14 +114,8 @@
       >
         <v-btn rounded large class="text-capitalize px-sm-8 mx-1 my-2">
           <v-icon>{{ icons.demo }}</v-icon>
-          {{ $t('productDetails.enter') }}
-          <span
-            class="text-lowercase"
-            v-html="$t('productDetails.three_sixty')"
-          >
-          </span>
-
-          {{ $t('productDetails.demo') }}
+          <!-- eslint-disable-next-line vue/no-v-html -->
+          <span v-html="$t('productDetails.enter_demo')"> </span>
         </v-btn>
 
         <v-btn

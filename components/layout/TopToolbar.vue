@@ -27,7 +27,7 @@
 
       <!--  ***  cart button *** -->
       <ToolBarCartIcon
-        :class="{ 'mr-n2': $vuetify.breakpoint.smAndDown }"
+        :class="{ 'mr-n2': $vuetify.breakpoint.xs }"
         :dark="dark"
       />
     </v-toolbar>
