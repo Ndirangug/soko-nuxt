@@ -1,4 +1,4 @@
-query ProductReviews($productID: Int!) {
+query ProductReviews($productID: Int!, $sentiment: [String!]!, $stars: [Int!]!, $sort: ReviewsSortOptions, $pagination: Pagination) {
   productDetails(productID: $productID) {
     productID
     productOverallRating {
@@ -10,7 +10,7 @@ query ProductReviews($productID: Int!) {
       twoStar
       oneStar
     }
-    productReviews {
+    productReviews(sentiment: $sentiment, stars: $stars, sort: $sort, pagination: $pagination) {
       productReviewID
       customer {
         firstName

@@ -10,7 +10,7 @@
             v-on="on"
           />
         </template>
-        <span>{{ $t('product_details.three_sixty_tip') }}</span>
+        <span>{{ $t('productDetails.three_sixty_tip') }}</span>
       </v-tooltip>
     </client-only>
   </v-responsive>

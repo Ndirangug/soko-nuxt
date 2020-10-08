@@ -411,6 +411,8 @@ export type SortOptions =
   | 'PRODUCT_RATING'
   | 'SELLER_RATING'
 
+export type ReviewsSortOptions = 'POSITIVE_FIRST' | 'NEGATIVE_FIRST'
+
 export enum AuthMethod {
   USERNAME_PASSWORD,
   GOOGLE,
@@ -463,4 +465,11 @@ export type BlogPostQueryVariables = { blogPostID: number }
 export type ProductDetailsQueryVariables = { productID: number }
 export type ProductDetailsSummaryQueryVariables = ProductDetailsQueryVariables
 export type ProductDescriptionQueryVariables = ProductDetailsQueryVariables
-export type ProductReviewsQueryVariables = ProductDetailsQueryVariables
+
+export type ProductReviewsQueryVariables = {
+  productID: number
+  sentiment: string[]
+  stars: number[]
+  sort: ReviewsSortOptions
+  pagination: Pagination
+}
