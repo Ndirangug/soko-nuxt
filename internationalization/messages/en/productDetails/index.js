@@ -1,3 +1,5 @@
+import { reviews } from './reviews'
+
 export const productDetails = {
   customer_reviews: 'customer reviews',
   brand: 'brand',
@@ -17,7 +19,6 @@ export const productDetails = {
   share_with_friends: 'share with friends',
   tags: 'tags',
   description: 'description',
-  reviews: 'reviews',
   shipping_and_returns: 'shipping and returns',
   shipping_and_returns_policy: 'shipping and returns policy',
   launch_3d_demo: 'launch 3d demo',
@@ -28,4 +29,5 @@ export const productDetails = {
   enter_demo: 'enter 360&deg demo',
   enter3d: 'enter 3D world',
   three_sixty_tip: 'tap or click and drag up/down/left/right',
+  reviews,
 }

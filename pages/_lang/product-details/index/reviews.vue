@@ -1,6 +1,30 @@
 <template>
-  <div id="product-reviews" class="product-reviews-container">
-    <h1>Reviews</h1>
+  <div id="product-reviews" class="product-reviews-container pt-3 pt-md-4">
+    <v-skeleton-loader v-if="$apollo.loading" type="image" />
+    <div v-else>
+      <div class="flex-container d-flex justify-center align-center flex-wrap">
+        <div
+          class="overrall-rating d-flex flex-column justify-center align-center"
+        >
+          <p class="text-body-2 text-md-body-1">
+            {{ $t('productDetails.reviews.overrall_rating') }}
+          </p>
+          <p class="text-h1">
+            {{ productDetails.productOverallRating.overallScore }}
+          </p>
+          <p class="text-caption">{{ $t('productDetails.reviews.out_of') }}</p>
+          <div class="star-rating"></div>
+          <p>
+            {{ productDetails.productOverallRating.numberOfRatings }}
+            {{ $t('productDetails.reviews.label') }}
+          </p>
+          <div class="progress-bars"></div>
+        </div>
+        <div
+          class="reviews d-flex flex-column justify-center align-center"
+        ></div>
+      </div>
+    </div>
   </div>
 </template>
 
