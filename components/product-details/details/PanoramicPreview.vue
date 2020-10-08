@@ -3,15 +3,12 @@
     <client-only>
       <v-tooltip attach=".three-sixty-preview" internal-activator absolute top>
         <template v-slot:activator="{ on, attrs }">
-          <v-pannellum
-            :src="previewUrl"
-            :preview="previewPlaceholder"
-            class="three-sixty-preview"
-            orientation
+          <Pano
             v-bind="attrs"
+            class="three-sixty-preview"
+            :source="previewUrl"
             v-on="on"
           />
-          <!-- <Pano :source="previewUrl" /> -->
         </template>
         <span>{{ $t('product_details.three_sixty_tip') }}</span>
       </v-tooltip>
