@@ -5,12 +5,17 @@ query ProductDescription($productID: Int!) {
     descriptionText
     demoUrl
     demoPreviewUrl
+    packageContents {
+      packageContentID
+      item
+      quantity
+    }
     keyFeatures
-    mass{
+    mass {
       value
       units
     }
-    dimensions{
+    dimensions {
       length
       width
       height

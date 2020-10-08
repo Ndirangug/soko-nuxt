@@ -13,7 +13,7 @@
           class="tab-button text-overline text-md-button"
           :to="localePath('/product-details/reviews')"
         >
-          {{ $t('productDetails.reviews') }}
+          {{ $t('productDetails.reviews.label') }}
         </v-tab>
 
         <v-tab
