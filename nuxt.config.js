@@ -42,7 +42,11 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['@/plugins/axios-accessor.ts'],
+  plugins: [
+    '@/plugins/axios-accessor.ts',
+    '@/plugins/vue-pannellum.client.js',
+    '@/plugins/vuejs-vr.client.js',
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components

@@ -1,6 +1,21 @@
 <template>
-  <v-responsive :width="previewWidth">
-    <Pano :source="previewUrl" />
+  <v-responsive :width="previewWidth" :height="previewHeight" class="mx-auto">
+    <client-only>
+      <v-tooltip attach=".three-sixty-preview" internal-activator absolute top>
+        <template v-slot:activator="{ on, attrs }">
+          <v-pannellum
+            :src="previewUrl"
+            :preview="previewPlaceholder"
+            class="three-sixty-preview"
+            orientation
+            v-bind="attrs"
+            v-on="on"
+          />
+          <!-- <Pano :source="previewUrl" /> -->
+        </template>
+        <span>{{ $t('product_details.three_sixty_tip') }}</span>
+      </v-tooltip>
+    </client-only>
   </v-responsive>
 </template>
 
@@ -45,6 +60,21 @@ export default Vue.extend({
 
       return width
     },
+
+    previewHeight(): number {
+      return Math.floor(0.6 * this.previewWidth)
+    },
+
+    previewPlaceholder(): string {
+      return this.previewUrl.replace('panorama.jpg', 'panorama-preview.jpg')
+    },
   },
 })
 </script>
+
+<style lang="scss" scoped>
+.three-sixty-preview {
+  width: 100%;
+  height: 100%;
+}
+</style>

@@ -115,7 +115,8 @@
         <v-btn rounded large class="text-capitalize px-sm-8 mx-1 my-2">
           <v-icon>{{ icons.demo }}</v-icon>
           <!-- eslint-disable-next-line vue/no-v-html -->
-          <span v-html="$t('productDetails.enter_demo')"> </span>
+          <!-- <span v-html="$t('productDetails.enter3d')"> </span> -->
+          {{ $t('productDetails.enter3d') }}
         </v-btn>
 
         <v-btn

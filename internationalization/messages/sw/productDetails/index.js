@@ -26,4 +26,6 @@ export const productDetails = {
   package_contents: 'package contents',
   enter_design_mode: 'enter design mode',
   enter_demo: 'enter 360&deg demo',
+  enter3d: 'enter 3D world',
+  three_sixty_tip: 'tap or click and drag up/down/left/right',
 }

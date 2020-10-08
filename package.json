@@ -36,7 +36,9 @@
     "nuxt": "^2.14.0",
     "nuxt-i18n": "^6.13.12",
     "nuxt-ssr-screen-size": "github:hugojerez/nuxt-ssr-screen-size",
+    "vue-pannellum": "^0.5.1",
     "vue-typed-mixins": "^0.2.0",
+    "vuejs-vr": "^1.1.0",
     "vuex-module-decorators": "^0.17.0"
   },
   "devDependencies": {
