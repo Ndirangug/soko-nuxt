@@ -4,11 +4,11 @@ export const reviews = {
   out_of: 'out of',
   sentiments: {
     positive: 'posititve',
-    critical: 'posititve',
+    critical: 'critical',
   },
-  all: 'out of',
-  sort_by: 'out of',
-  default: 'out of',
-  positive_first: 'out of',
-  negative_first: 'out of',
+  all: 'all',
+  sort_by: 'sort by',
+  default: 'default',
+  positive_first: 'positive first',
+  negative_first: 'negative_first',
 }
