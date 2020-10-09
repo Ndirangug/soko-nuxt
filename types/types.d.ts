@@ -153,14 +153,14 @@ export interface ProductOverallRating {
 }
 
 export interface ProductReview {
-  productReviewId?: number
-  customer?: Customer
-  date?: Date
-  starRating?: number
-  reviewMessage?: string
+  productReviewId: number
+  customer: Customer
+  date: Date
+  starRating: number
+  reviewMessage: string
   attachments?: string[]
   reply?: ProductReviewReply
-  productReviewed?: Product
+  productReviewed: Product
 }
 
 export interface ProductReviewReply {

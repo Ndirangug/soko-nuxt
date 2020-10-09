@@ -2,7 +2,12 @@
   <div
     class="reviews-list-container d-flex flex-column justify-center align-center"
   >
-    <ReviewsListItem v-for="(review, i) in reviews" :key="i" :review="review" />
+    <ReviewsListItem
+      v-for="(review, i) in reviews"
+      :key="i"
+      class="mb-6"
+      :review="review"
+    />
   </div>
 </template>
 
