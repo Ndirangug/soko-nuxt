@@ -3,7 +3,7 @@
     <v-skeleton-loader v-if="$apollo.loading" type="image" />
     <div v-else>
       <div
-        class="flex-container d-flex flex-column flex-md-row justify-center align-start"
+        class="flex-container d-flex flex-column flex-md-row justify-center align-center align-md-start"
       >
         <div
           class="overall-rating"
