@@ -1,10 +1,10 @@
 <template>
   <div class="reviews-container d-flex flex-column justify-center align-center">
-    <div class="fillter-chips">
+    <div class="filter-chips">
       <ReviewsFilterChips @update:filters="onUpdateFilters($event)" />
     </div>
 
-    <div class="sort-by align-self-end">
+    <div class="sort-by align-self-end mt-8 mb-6">
       <ReviewsSortBy />
     </div>
 
@@ -31,3 +31,11 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style lang="scss" scoped>
+.reviews-container {
+  .filter-chips {
+    max-width: 115%;
+  }
+}
+</style>

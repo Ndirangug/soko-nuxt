@@ -1,6 +1,6 @@
 <template>
   <div class="reviews-sort-by-container d-flex justify-end align-center">
-    <p>Sort by:</p>
+    <p>Sort by: most positive</p>
   </div>
 </template>
 

@@ -1,12 +1,12 @@
 <template>
-  <div id="product-reviews" class="product-reviews-container pt-3 pt-md-4">
+  <div id="product-reviews" class="product-reviews-container pt-6 pt-md-8">
     <v-skeleton-loader v-if="$apollo.loading" type="image" />
     <div v-else>
       <div
         class="flex-container d-flex flex-column flex-md-row justify-center align-center align-md-start"
       >
         <div
-          class="overall-rating"
+          class="overall-rating mb-8 mb-md-0"
           :style="{ 'max-width': $vuetify.breakpoint.mdAndUp ? '35%' : '100%' }"
         >
           <OverrallRatingSummary

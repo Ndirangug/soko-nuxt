@@ -2,37 +2,39 @@
   <div
     class="overrall-rating-container d-flex flex-column justify-center align-center"
   >
-    <p class="text-body-2 text-md-body-1">
+    <p class="text-body-2 text-sm-body-1 text-capitalize font-weight-medium">
       {{ $t('productDetails.reviews.overrall_rating') }}
     </p>
 
-    <p class="text-h1">
+    <p class="text-h1 font-weight-medium mb-0">
       {{ overallRating.overallScore }}
     </p>
 
-    <p class="text-caption">{{ $t('productDetails.reviews.out_of') }}</p>
+    <p class="text-subtitle-1 mb-0">
+      {{ $t('productDetails.reviews.out_of') }}
+    </p>
 
-    <div class="star-rating">
+    <div class="star-rating mt-1 mb-1">
       <v-rating
         background-color="grey"
         color="yellow accent-2"
         readonly
         dense
-        :small="$vuetify.breakpoint.smAndDown"
+        :small="$vuetify.breakpoint.xs"
         :value="overallRating.overallScore"
       />
     </div>
 
-    <p>
+    <p class="text-subtitle-2 font-weight-regular">
       {{ overallRating.numberOfRatings }}
       {{ $t('productDetails.reviews.label') }}
     </p>
 
     <div
-      class="progress-bars d-flex flex-column-reverse justify-center align-center"
+      class="progress-bars d-flex flex-column justify-center align-center mt-5"
     >
       <div class="progress d-flex justify-center align-center">
-        <p class="progress-label">1</p>
+        <p class="progress-label mb-0 mr-5">5</p>
         <v-progress-linear
           class="progress-progress-bar"
           background-color="accent"
@@ -44,7 +46,7 @@
       </div>
 
       <div class="progress d-flex justify-center align-center">
-        <p class="progress-label">2</p>
+        <p class="progress-label mb-0 mr-5">4</p>
         <v-progress-linear
           class="progress-progress-bar"
           background-color="accent"
@@ -56,7 +58,7 @@
       </div>
 
       <div class="progress d-flex justify-center align-center">
-        <p class="progress-label">3</p>
+        <p class="progress-label mb-0 mr-5">3</p>
         <v-progress-linear
           class="progress-progress-bar"
           background-color="accent"
@@ -68,7 +70,7 @@
       </div>
 
       <div class="progress d-flex justify-center align-center">
-        <p class="progress-label">4</p>
+        <p class="progress-label mb-0 mr-5">2</p>
         <v-progress-linear
           class="progress-progress-bar"
           background-color="accent"
@@ -80,7 +82,7 @@
       </div>
 
       <div class="progress d-flex justify-center align-center">
-        <p class="progress-label">5</p>
+        <p class="progress-label mb-0 mr-5">1</p>
         <v-progress-linear
           class="progress-progress-bar"
           background-color="accent"
@@ -136,3 +138,9 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style lang="scss" scoped>
+.progress-progress-bar {
+  min-width: 150px;
+}
+</style>

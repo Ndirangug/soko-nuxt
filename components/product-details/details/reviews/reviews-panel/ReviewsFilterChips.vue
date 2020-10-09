@@ -1,6 +1,12 @@
 <template>
   <div class="filter-chips-container d-flex justify-center align-center">
-    <v-chip-group v-model="model" color="primary" multiple mandatory>
+    <v-chip-group
+      v-model="model"
+      color="primary"
+      show-arrows
+      multiple
+      mandatory
+    >
       <v-chip>
         {{ $t(`productDetails.reviews.${chipsMap[0]}`) }}
       </v-chip>
