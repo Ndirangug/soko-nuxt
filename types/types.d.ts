@@ -143,13 +143,13 @@ export interface ConfigurableOption {
 }
 
 export interface ProductOverallRating {
-  overallScore?: number
-  numberOfRatings?: number
-  fiveStar?: number
-  fourStar?: number
-  threeStar?: number
-  twoStar?: number
-  oneStar?: number
+  overallScore: number
+  numberOfRatings: number
+  fiveStar: number
+  fourStar: number
+  threeStar: number
+  twoStar: number
+  oneStar: number
 }
 
 export interface ProductReview {

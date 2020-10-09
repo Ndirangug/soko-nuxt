@@ -2,14 +2,28 @@
   <div id="product-reviews" class="product-reviews-container pt-3 pt-md-4">
     <v-skeleton-loader v-if="$apollo.loading" type="image" />
     <div v-else>
-      <div class="flex-container d-flex justify-center align-center flex-wrap">
-        <div class="overall-rating">
+      <div
+        class="flex-container d-flex flex-column flex-md-row justify-center align-start"
+      >
+        <div
+          class="overall-rating"
+          :style="{ 'max-width': $vuetify.breakpoint.mdAndUp ? '35%' : '100%' }"
+        >
           <OverrallRatingSummary
             :overall-rating="productDetails.productOverallRating"
           />
         </div>
 
-        <div class="reviews">
+        <v-divider
+          v-if="$vuetify.breakpoint.mdAndUp"
+          class="divider mx-8"
+          vertical
+        />
+
+        <div
+          class="reviews"
+          :style="{ 'max-width': $vuetify.breakpoint.mdAndUp ? '65%' : '100%' }"
+        >
           <ReviewsPanel :reviews="productDetails.productReviews" />
         </div>
       </div>

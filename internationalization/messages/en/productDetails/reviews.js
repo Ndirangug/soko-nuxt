@@ -1,7 +1,7 @@
 export const reviews = {
   label: 'reviews',
   overrall_rating: 'overrall rating',
-  out_of: 'out of',
+  out_of: 'out of 5',
   sentiments: {
     positive: 'posititve',
     critical: 'critical',
