@@ -84,15 +84,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: '~/apollo/client-configs/default.js',
-      // default: {
-      //   httpEndpoint:
-      //     process.env.NODE_ENV !== 'production'
-      //       ? 'http://localhost:9002/graphql'
-      //       : 'https://soko-graphql.herokuapp.com/graphql',
-      // },
     },
-    // setup a global error handler (see below for example)
-    // errorHandler: '~/plugins/apollo-error-handler.js',
   },
   styleResources: {
     scss: ['./assets/scss/vars/*.scss', './assets/scss/mixins/*.scss'],
@@ -157,8 +149,8 @@ export default {
    ** See https://nuxtjs.org/api/configuration-loading/#customizing-the-progress-bar
    */
   loading: {
-    color: 'green',
-    height: '6px',
+    color: 'black',
+    height: '5px',
     continuous: true,
   },
 }
