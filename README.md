@@ -1,4 +1,4 @@
-![Heroku](http://heroku-badge.herokuapp.com/?app=soko-web-test&root=/)
+![Cloud Build](https://storage.googleapis.com/soko-51dd8-badges/builds/soko-nuxt/branches/master.svg)
 
 # soko-nuxt
 
