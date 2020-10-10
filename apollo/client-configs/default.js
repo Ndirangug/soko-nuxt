@@ -14,8 +14,8 @@ export default function (_ctx) {
     // httpEndpoint: ctx.app.$env.GRAPHQL_URL,
     httpEndpoint:
       process.env.NODE_ENV !== 'production'
-        ? 'http://localhost:9002/graphql'
-        : 'https://soko-graphql.herokuapp.com/graphql',
+        ? 'http://localhost:8080/graphql'
+        : 'https://soko-graphql.uc.r.appspot.com/graphql',
 
     httpLinkOptions: {
       credentials: 'same-origin',
