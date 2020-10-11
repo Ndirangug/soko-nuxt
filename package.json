@@ -33,6 +33,7 @@
     "@nuxtjs/vuetify": "^1.11.2",
     "cookie-universal-nuxt": "^2.1.4",
     "cross-fetch": "^3.0.6",
+    "google-auth-library": "^6.1.1",
     "graphql-tag": "^2.11.0",
     "jsonwebtoken": "^8.5.1",
     "nuxt": "^2.14.0",
