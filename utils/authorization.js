@@ -2,8 +2,8 @@ export const getGoogleCloudIAPAuthHeader = async function () {
   // follow this tutorial
   // https://engineering.q42.nl/google-identity-aware-proxy/
 
-  import jwt from 'jsonwebtoken'
-  import axios from 'axios'
+  const jwt = require('jsonwebtoken')
+  const axios = require('axios')
 
   const _24hoursInSeconds = 60 * 60 * 24
 
