@@ -36,7 +36,9 @@ export const getGoogleCloudIAPAuthHeader = async function () {
   }
 
   const idToken =
-    response.data.id_token !== undefined ? response.data.id_token : ''
+    response.data !== undefined && response.data.id_token !== undefined
+      ? response.data.id_token
+      : ''
 
   //   const authHeader = {
   //     UserAgent: 'c2fIAP',
