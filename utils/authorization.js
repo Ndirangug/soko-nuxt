@@ -42,7 +42,7 @@ export const getGoogleCloudIAPAuthHeader = async function () {
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
-  const url = 'soko-graphql.uc.r.appspot.com/graphql'
+  const url = 'https://www.googleapis.com/oauth2/v4/token'
   const targetAudience =
     '1079250023096-9ecq9q30ci0nvdt9jkbkvcbl6lier7kl.apps.googleusercontent.com'
 
