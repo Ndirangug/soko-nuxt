@@ -10,17 +10,12 @@ export * from '~/utils/store-accessor'
 export const actions = {
   // @ts-ignore
   // eslint-disable-next-line no-empty-pattern
-  async nuxtServerInit({}, { store, app }) {
+  async nuxtServerInit({}, { store }) {
     // do it once more like so..
     initialiseStores(store)
 
     const authToken = await getGoogleCloudIAPAuthHeader()
     process.env.AUTH_TOKEN = authToken
-    console.log(authToken)
 
-    const _24hoursInSeconds = 60 * 60
-    app.$cookies.set('IAP_AUTH_TOKEN', authToken, {
-      maxAge: _24hoursInSeconds,
-    })
   },
 }

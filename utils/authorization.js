@@ -32,8 +32,7 @@ export const getGoogleCloudIAPAuthHeader = async function () {
       grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
       assertion: generatedToken,
     })
-    console.log(response)
-    console.log('')
+
     return response.data.id_token !== undefined ? response.data.id_token : ''
   } catch (error) {
     console.log(error)
