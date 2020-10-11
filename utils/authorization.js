@@ -2,8 +2,8 @@ export const getGoogleCloudIAPAuthHeader = async function () {
   // follow this tutorial
   // https://engineering.q42.nl/google-identity-aware-proxy/
 
-  const jwt = require('jsonwebtoken')
-  const axios = require('axios').default
+  import jwt from 'jsonwebtoken'
+  import axios from 'axios'
 
   const _24hoursInSeconds = 60 * 60 * 24
 
@@ -24,13 +24,18 @@ export const getGoogleCloudIAPAuthHeader = async function () {
   })
 
   const openIDTokenURL = 'https://www.googleapis.com/oauth2/v4/token'
+  let response = {}
 
-  const response = await axios.post(openIDTokenURL, {
-    grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-    assertion: generatedToken,
-  })
+  try {
+    response = await axios.post(openIDTokenURL, {
+      grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+      assertion: generatedToken,
+    })
+  } catch (error) {
+    console.log(error)
+  }
 
-  const idToken = response.data.id_token
+  const idToken = response.data.id_token ? response.data.id_token : ''
 
   //   const authHeader = {
   //     UserAgent: 'c2fIAP',
