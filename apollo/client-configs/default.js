@@ -19,9 +19,12 @@ export default function (_ctx) {
         : 'https://soko-graphql.uc.r.appspot.com/graphql',
 
     httpLinkOptions: {
-      credentials: 'include',
+      // credentials: 'include',
+      headers: {
+        Authorization: `Bearer ${process.env.AUTH_TOKEN}`,
+      },
     },
 
-    tokenName: 'IAP_AUTH_TOKEN',
+    // tokenName: 'IAP_AUTH_TOKEN',
   }
 }

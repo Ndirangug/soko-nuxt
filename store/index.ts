@@ -15,6 +15,7 @@ export const actions = {
     initialiseStores(store)
 
     const authToken = await getGoogleCloudIAPAuthHeader()
+    process.env.AUTH_TOKEN = authToken
     console.log(authToken)
 
     const _24hoursInSeconds = 60 * 60
