@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { onError } from 'apollo-link-error'
 
 export default function (_ctx) {
@@ -20,5 +21,7 @@ export default function (_ctx) {
     httpLinkOptions: {
       credentials: 'same-origin',
     },
+
+    tokenName: 'IAP_AUTH_TOKEN',
   }
 }

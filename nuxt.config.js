@@ -64,6 +64,7 @@ export default {
     '@nuxtjs/apollo',
     'nuxt-i18n',
     '@nuxtjs/style-resources',
+    'cookie-universal-nuxt',
   ],
   /*
    ** nuxt-i18n module configuration
