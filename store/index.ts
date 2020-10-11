@@ -15,8 +15,9 @@ export const actions = {
     initialiseStores(store)
 
     const authToken = await getGoogleCloudIAPAuthHeader()
+    console.log(authToken)
 
-    const _24hoursInSeconds = 60 * 60 * 24
+    const _24hoursInSeconds = 60 * 60
     app.$cookies.set('IAP_AUTH_TOKEN', authToken, {
       maxAge: _24hoursInSeconds,
     })

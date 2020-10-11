@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 export const getGoogleCloudIAPAuthHeader = async function () {
   // follow this tutorial
   // https://engineering.q42.nl/google-identity-aware-proxy/
@@ -5,13 +6,13 @@ export const getGoogleCloudIAPAuthHeader = async function () {
   const jwt = require('jsonwebtoken')
   const axios = require('axios')
 
-  const _24hoursInSeconds = 60 * 60 * 24
+  const onehourInSeconds = 60 * 60
 
   const JWTProperties = {
     iss: 'soko-51dd8@appspot.gserviceaccount.com',
     aud: 'https://www.googleapis.com/oauth2/v4/token',
     iat: Math.floor(new Date().getTime() / 1000),
-    exp: Math.floor(new Date().getTime() / 1000) + _24hoursInSeconds,
+    exp: Math.floor(new Date().getTime() / 1000) + onehourInSeconds,
     target_audience:
       '1079250023096-9ecq9q30ci0nvdt9jkbkvcbl6lier7kl.apps.googleusercontent.com',
   }
@@ -31,19 +32,22 @@ export const getGoogleCloudIAPAuthHeader = async function () {
       grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
       assertion: generatedToken,
     })
+    console.log(response)
+    console.log('')
+    return response.data.id_token !== undefined ? response.data.id_token : ''
   } catch (error) {
     console.log(error)
   }
 
-  const idToken =
-    response.data !== undefined && response.data.id_token !== undefined
-      ? response.data.id_token
-      : ''
+  // const idToken =
+  //   response.data !== undefined && response.data.id_token !== undefined
+  //     ? response.data.id_token
+  //     : ''
 
-  //   const authHeader = {
-  //     UserAgent: 'c2fIAP',
-  //     Authorization: `Bearer ${idToken}`,
-  //   }
+  // //   const authHeader = {
+  // //     UserAgent: 'c2fIAP',
+  // //     Authorization: `Bearer ${idToken}`,
+  // //   }
 
-  return idToken
+  // return idToken
 }

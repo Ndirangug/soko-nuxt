@@ -19,7 +19,7 @@ export default function (_ctx) {
         : 'https://soko-graphql.uc.r.appspot.com/graphql',
 
     httpLinkOptions: {
-      credentials: 'same-origin',
+      credentials: 'include',
     },
 
     tokenName: 'IAP_AUTH_TOKEN',
