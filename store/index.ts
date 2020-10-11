@@ -1,6 +1,6 @@
 import { Store } from 'vuex'
 import { initialiseStores } from '~/utils/store-accessor'
-import { getGoogleCloudIAPAuthHeader } from '~/utils/authorization'
+import { getGoogleCloudIAPAuthToken } from '~/utils/authorization'
 
 const initializer = (store: Store<any>) => initialiseStores(store)
 
@@ -14,7 +14,7 @@ export const actions = {
     // do it once more like so..
     initialiseStores(store)
 
-    const authToken = await getGoogleCloudIAPAuthHeader()
+    const authToken = await getGoogleCloudIAPAuthToken()
     process.env.AUTH_TOKEN = authToken
 
   },

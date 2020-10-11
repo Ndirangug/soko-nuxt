@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-export const getGoogleCloudIAPAuthHeader = async function () {
+export const getGoogleCloudIAPAuthToken = async function () {
   // follow this tutorial
   // https://engineering.q42.nl/google-identity-aware-proxy/
 
