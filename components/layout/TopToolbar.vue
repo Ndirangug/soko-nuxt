@@ -22,6 +22,8 @@
 
       <v-spacer></v-spacer>
 
+      <TopToolBarSearch class="ml-4 mr-n1" :dark="dark" />
+
       <!--  ***  my account dropown *** -->
       <MyAccountDropdown :dark="dark" />
 

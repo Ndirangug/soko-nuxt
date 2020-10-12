@@ -24,5 +24,7 @@ export default Vue.extend({
       return cartStore.cartItemsCount
     },
   },
+
+  layout: 'cart',
 })
 </script>
