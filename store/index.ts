@@ -16,6 +16,5 @@ export const actions = {
 
     const authToken = await getGoogleCloudIAPAuthToken()
     process.env.AUTH_TOKEN = authToken
-
   },
 }
