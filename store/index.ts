@@ -1,6 +1,7 @@
 import { Store } from 'vuex'
 import { initialiseStores } from '~/utils/store-accessor'
 import { getGoogleCloudIAPAuthToken } from '~/utils/authorization'
+import { cartStore } from '~/store'
 
 const initializer = (store: Store<any>) => initialiseStores(store)
 
@@ -10,11 +11,15 @@ export * from '~/utils/store-accessor'
 export const actions = {
   // @ts-ignore
   // eslint-disable-next-line no-empty-pattern
-  async nuxtServerInit({}, { store }) {
+  async nuxtServerInit({}, { store, app }) {
     // do it once more like so..
     initialiseStores(store)
 
     const authToken = await getGoogleCloudIAPAuthToken()
     process.env.AUTH_TOKEN = authToken
+
+    const apolloClient = app.apolloProvider.defaultClient
+
+    await cartStore.initializeCartItems({ apolloClient, customerId: 2 })
   },
 }

@@ -3,15 +3,6 @@ import { Customer } from '~/types/types'
 
 @Module({ name: 'auth', stateFactory: true, namespaced: true })
 export default class Auth extends VuexModule {
-  //   wheels = 2               -state
-  //   @Mutation                -mutation
-  //   incrWheels(extra: number) {
-  //     this.wheels += extra
-  //   }
-  //   get axles() {            -getter
-  //     return this.wheels / 2
-  //   }
-
   customer: Customer = {}
   loggedIn = false
 

@@ -1,0 +1,19 @@
+query CartItems($customerId: Int!) {
+  customer(customerID: $customerId) {
+    cartItems {
+      cartItemID
+      customer {
+        customerID
+      }
+      product {
+        productID
+      }
+      configurableOptions {
+        configurableOptionID
+        name
+        thumbnailUrl
+      }
+      dateAddedToCart
+    }
+  }
+}

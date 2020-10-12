@@ -473,3 +473,5 @@ export type ProductReviewsQueryVariables = {
   sort: ReviewsSortOptions
   pagination: Pagination
 }
+
+export type CartItemsQueryVariables = CustomerQueryVariables

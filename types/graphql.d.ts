@@ -71,3 +71,11 @@ declare module '*/product_reviews.graphql' {
 
   export default defaultDocument
 }
+
+declare module '*/cart_items.graphql' {
+  import { DocumentNode } from 'graphql'
+  const defaultDocument: DocumentNode
+  export const CartItems: DocumentNode
+
+  export default defaultDocument
+}
