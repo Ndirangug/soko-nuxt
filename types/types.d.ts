@@ -93,6 +93,7 @@ export interface Product {
   inventoryRemaining?: number
   categories?: Category[]
   tags: string[]
+  isFavorited: boolean
 }
 
 export interface PackageContent {
@@ -178,11 +179,12 @@ export interface ProductReviewReply {
 }
 
 export interface CartItem {
-  cartItemId?: number
-  customer?: Customer
-  product?: Product
-  configurableOptions?: ConfigurableOption[]
-  dateAddedToCart?: Date
+  cartItemId: number
+  customer: Customer
+  product: Product
+  configurableOptions: ConfigurableOption[]
+  dateAddedToCart: Date
+  quantity: number
 }
 
 export interface Order {
