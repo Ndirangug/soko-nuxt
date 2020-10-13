@@ -1,10 +1,15 @@
 <template>
-  <div>
-    <h1>Cart</h1>
-    <div v-for="(cartItem, i) in cartItems" :key="i">
-      <p>{{ i }}</p>
-      {{ cartItem }}
+  <div
+    class="cart-root-container d-flex flex-column justify-start align-stretch"
+  >
+    <div class="top-banner">
+      <CartBanner />
     </div>
+
+    <div class="top-nav"></div>
+    <div class="the-cart"></div>
+    <div class="bottom-nav"></div>
+    <div class="recently-viewed"></div>
   </div>
 </template>
 

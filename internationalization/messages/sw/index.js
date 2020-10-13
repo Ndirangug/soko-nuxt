@@ -10,8 +10,9 @@ import { currency } from './currency'
 import { links } from './links'
 import { home } from './home'
 import { about } from './about'
+import { cart } from './cart'
 
-export const sw = {
+export const en = {
   auth,
   products,
   // keys to the navigation object should match the keys in the NavDrawer data.icons object
@@ -25,4 +26,5 @@ export const sw = {
   links,
   home,
   about,
+  cart,
 }

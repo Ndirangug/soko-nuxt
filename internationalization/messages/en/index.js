@@ -10,6 +10,7 @@ import { currency } from './currency'
 import { links } from './links'
 import { home } from './home'
 import { about } from './about'
+import { cart } from './cart'
 
 export const en = {
   auth,
@@ -25,4 +26,5 @@ export const en = {
   links,
   home,
   about,
+  cart,
 }
