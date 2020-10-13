@@ -12,11 +12,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { PropType } from 'vue'
+import { ProductReview } from '~/types/types'
+
 export default Vue.extend({
   props: {
     reviews: {
-      type: Array,
+      type: Array as PropType<Array<ProductReview>>,
       required: true,
     },
   },

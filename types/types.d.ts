@@ -83,6 +83,7 @@ export interface Product {
   dimensions?: ProductDimensions
   configurables?: Configurable[]
   productReviews?: ProductReview[]
+  packageContents: PackageContent[]
   seller?: Seller
   brand: string
   productOverallRating?: ProductOverallRating
@@ -92,6 +93,12 @@ export interface Product {
   inventoryRemaining?: number
   categories?: Category[]
   tags: string[]
+}
+
+export interface PackageContent {
+  packageContentID: string
+  item: string
+  quantity: number
 }
 
 export interface ProductDimensions {

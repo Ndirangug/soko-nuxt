@@ -14,11 +14,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { PropType } from 'vue'
+
 export default Vue.extend({
   props: {
     tags: {
-      type: Array,
+      type: Array as PropType<Array<String>>,
       required: true,
     },
   },

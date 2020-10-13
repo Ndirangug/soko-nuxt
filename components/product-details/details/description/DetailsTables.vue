@@ -78,13 +78,14 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropOptions } from 'vue'
+import Vue, { PropOptions, PropType } from 'vue'
 import { Specifications } from '~/types/ui'
+import { PackageContent } from '~/types/types'
 
 export default Vue.extend({
   props: {
     keyFeatures: {
-      type: Array,
+      type: Array as PropType<Array<String>>,
       required: true,
     },
 
@@ -94,7 +95,7 @@ export default Vue.extend({
     } as PropOptions<Specifications>,
 
     packageContents: {
-      type: Array,
+      type: Array as PropType<Array<PackageContent>>,
       required: true,
     },
   },

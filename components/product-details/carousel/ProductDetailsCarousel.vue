@@ -57,17 +57,16 @@
 
 <script lang="ts">
 import { mdiMinus } from '@mdi/js'
-import Vue from 'vue'
+import Vue, { PropType } from 'vue'
 
 export default Vue.extend({
   props: {
     images: {
-      // TODO: HOW to annotate array type vue prop
-      type: Array,
+      type: Array as PropType<Array<String>>,
       required: true,
     },
     thumbnails: {
-      type: Array,
+      type: Array as PropType<Array<String>>,
       required: true,
     },
   },

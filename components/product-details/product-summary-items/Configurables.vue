@@ -34,14 +34,14 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { PropType } from 'vue'
 import { Configurable, ConfigurableOption } from '~/types/types'
 import { EventBus } from '~/utils/event-bus'
 
 export default Vue.extend({
   props: {
     configurables: {
-      type: Array,
+      type: Array as PropType<Array<Configurable>>,
       required: true,
     },
   },
