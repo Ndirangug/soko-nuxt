@@ -25,6 +25,10 @@
     <div class="details">
       <DetailsTabs :product-id="productDetails.productID" />
     </div>
+
+    <div class="pair-it-up-with"></div>
+    <div class="more-from-this-seller"></div>
+    <div class="sponsored"></div>
   </div>
 </template>
 
