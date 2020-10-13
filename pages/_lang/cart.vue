@@ -2,13 +2,13 @@
   <div
     class="cart-root-container d-flex flex-column justify-start align-stretch"
   >
-    <div class="top-banner">
+    <div class="top-banner bg-grey">
       <CartBanner />
     </div>
 
-    <div class="top-nav"></div>
-    <div class="the-cart"></div>
-    <div class="bottom-nav"></div>
+    <div class="top-nav bg-grey"></div>
+    <div class="the-cart bg-grey"></div>
+    <div class="bottom-nav bg-grey"></div>
     <div class="recently-viewed"></div>
   </div>
 </template>
@@ -33,3 +33,13 @@ export default Vue.extend({
   layout: 'cart',
 })
 </script>
+
+<style lang="scss" scoped>
+.bg-grey {
+  background-color: $grey-background;
+}
+
+.top-nav {
+  height: 200px;
+}
+</style>
