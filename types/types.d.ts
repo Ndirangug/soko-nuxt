@@ -148,6 +148,7 @@ export interface ConfigurableOption {
   configurableOptionId: number
   name: string
   thumbnailUrl: string
+  configurable: Configurable
 }
 
 export interface ProductOverallRating {

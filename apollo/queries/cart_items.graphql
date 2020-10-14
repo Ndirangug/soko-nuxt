@@ -7,13 +7,21 @@ query CartItems($customerId: Int!) {
       }
       product {
         productID
+        title
+        thumbnails
+        price
       }
       configurableOptions {
         configurableOptionID
         name
         thumbnailUrl
+        configurable {
+          configurableID
+          configurableType
+        }
       }
       dateAddedToCart
+      quantity
     }
   }
 }
