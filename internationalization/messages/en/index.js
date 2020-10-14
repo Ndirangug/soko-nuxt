@@ -11,6 +11,8 @@ import { links } from './links'
 import { home } from './home'
 import { about } from './about'
 import { cart } from './cart'
+import { configurables } from './configurables'
+import { productSuggestions } from './productSuggestions'
 
 export const en = {
   auth,
@@ -27,4 +29,6 @@ export const en = {
   home,
   about,
   cart,
+  configurables,
+  productSuggestions,
 }
