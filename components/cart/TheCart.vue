@@ -1,6 +1,6 @@
 <template>
   <div
-    class="the-cart-container d-flex flex-column justify-start align-stretch flex-md-row justify-md-space-between align-md-center"
+    class="the-cart-container d-flex flex-column justify-start align-stretch flex-md-row justify-md-space-between align-md-start"
   >
     <div class="cart-items-table" :style="{ width: `${cartItemsWidth}%` }">
       <CartItemsTable />

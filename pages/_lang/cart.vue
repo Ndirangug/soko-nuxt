@@ -26,21 +26,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { cartStore } from '~/store'
 
 export default Vue.extend({
-  data() {
-    return {}
-  },
-  computed: {
-    cartItems() {
-      return cartStore.cartItems
-    },
-    cartItemsCount() {
-      return cartStore.cartItemsCount
-    },
-  },
-
   layout: 'cart',
 })
 </script>

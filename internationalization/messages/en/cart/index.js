@@ -1,7 +1,7 @@
 export const cart = {
   my_cart: 'my cart',
   back_to_shopping: 'back to shopping',
-  item: 'item',
+  items: 'items',
   quantity: 'quantity',
   unit_price: 'unit price',
   total: 'total',
