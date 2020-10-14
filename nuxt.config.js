@@ -65,6 +65,7 @@ export default {
     'nuxt-i18n',
     '@nuxtjs/style-resources',
     'cookie-universal-nuxt',
+    '@nuxtjs/dayjs',
   ],
   /*
    ** nuxt-i18n module configuration
@@ -77,6 +78,15 @@ export default {
       fallbackLocale: 'en',
       messages,
     },
+  },
+  /*
+   ** @nuxtjs/dayjs module configuration
+   ** See https://github.com/nuxt-community/dayjs-module
+   */
+  dayjs: {
+    locales: ['en-gb', 'sw'],
+    defaultLocale: 'en-gb',
+    plugins: ['timezone'],
   },
   /*
    ** Apollo module configuration

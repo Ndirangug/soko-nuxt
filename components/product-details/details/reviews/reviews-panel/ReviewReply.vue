@@ -9,8 +9,13 @@
         {{ reply.seller.sellerName }}
       </p>
       <p class="date mb-0 text-subtitle-2 text-sm-subtitle-1">
-        <!-- {{ new Intl.DateTimeFormat('en-GB').format(reply.date) }} -->
-        {{ reply.date }}
+        {{
+          new Intl.DateTimeFormat('en-GB', {
+            dateStyle: 'short',
+            timeStyle: 'medium',
+            hour12: true,
+          }).format($dayjs(reply.date).toDate())
+        }}
       </p>
     </div>
 

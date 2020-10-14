@@ -32,8 +32,13 @@
 
         <div class="date text-subtitle-2 text-sm-subtitle-1">
           <p class="mb-0">
-            <!-- {{ new Intl.DateTimeFormat('en-GB').format(customerReview.date) }} -->
-            {{ customerReview.date }}
+            {{
+              new Intl.DateTimeFormat('en-GB', {
+                dateStyle: 'short',
+                timeStyle: 'medium',
+                hour12: true,
+              }).format($dayjs(customerReview.date).toDate())
+            }}
           </p>
         </div>
       </div>

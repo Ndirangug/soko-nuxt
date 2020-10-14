@@ -31,6 +31,7 @@
       "./types/libs",
       "./types/gql",
       "./types/ui",
+      "@nuxtjs/dayjs",
     ]
   },
   "exclude": [
