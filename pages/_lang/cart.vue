@@ -6,9 +6,20 @@
       <CartBanner />
     </div>
 
-    <div class="top-nav bg-grey"></div>
-    <div class="the-cart bg-grey"></div>
-    <div class="bottom-nav bg-grey"></div>
+    <div class="cart-section bg-grey px-1 px-sm-8 px-md-16 pt-12 pb-10">
+      <div class="top-nav">
+        <CartBackButton :text="$t('cart.back_to_shopping')" />
+      </div>
+
+      <div class="the-cart my-4 my-sm-6 my-md-8">
+        <TheCart />
+      </div>
+
+      <div class="bottom-nav">
+        <CartBackButton :text="$t('cart.continue_shopping')" />
+      </div>
+    </div>
+
     <div class="recently-viewed"></div>
   </div>
 </template>
@@ -37,9 +48,5 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .bg-grey {
   background-color: $grey-background;
-}
-
-.top-nav {
-  height: 200px;
 }
 </style>
