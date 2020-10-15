@@ -3,40 +3,56 @@
     class="cart-items-table-container d-flex flex-column justify-start align-center"
   >
     <div class="table-layout">
-      <v-simple-table class="cart-items-table">
-        <thead>
-          <tr>
-            <th
+      <v-container class="cart-items-table">
+        <div class="header">
+          <v-row>
+            <v-col
               class="text-body-1 text-capitalize font-weight-medium black--text"
+              cols="12"
+              md="7"
             >
               {{ $t('cart.items') }}
-            </th>
-            <th
-              class="text-body-1 text-capitalize font-weight-medium black--text"
+              {{ `(${cartItemsCount})` }}
+            </v-col>
+            <v-col
+              v-if="$vuetify.breakpoint.mdAndUp"
+              class="text-body-1 text-capitalize font-weight-medium black--text text-center ml-n2"
+              cols="auto"
+              md="1"
             >
               {{ $t('cart.quantity') }}
-            </th>
-            <th
-              class="text-body-1 text-capitalize font-weight-medium black--text"
+            </v-col>
+            <v-col
+              v-if="$vuetify.breakpoint.mdAndUp"
+              class="text-body-1 text-capitalize font-weight-medium black--text text-center"
+              cols="auto"
+              md="2"
             >
               {{ $t('cart.unit_price') }}
-            </th>
-            <th
-              class="text-body-1 text-capitalize font-weight-medium black--text"
+              {{ `(${$t('currency')})` }}
+            </v-col>
+            <v-col
+              v-if="$vuetify.breakpoint.mdAndUp"
+              class="text-body-1 text-capitalize font-weight-medium black--text text-center"
+              cols="auto"
+              md="2"
             >
               {{ $t('cart.total') }}
-            </th>
-          </tr>
-        </thead>
+              {{ `(${$t('currency')})` }}
+            </v-col>
+          </v-row>
+        </div>
 
-        <tbody>
+        <v-divider class="divider" />
+
+        <div class="body">
           <CartItemRow
             v-for="(cartItem, i) in cartItems"
             :key="i"
             :cart-item="cartItem"
           />
-        </tbody>
-      </v-simple-table>
+        </div>
+      </v-container>
     </div>
 
     <!-- <div v-else class="cards-layout"></div> -->
@@ -62,6 +78,11 @@ export default Vue.extend({
 .cart-items-table-container {
   .cart-items-table {
     background-color: $grey-background;
+  }
+
+  .divider {
+    border-color: rgba(0, 0, 0, 0.5);
+    border-width: 2px 0 0 0;
   }
 }
 </style>

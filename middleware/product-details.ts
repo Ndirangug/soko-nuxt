@@ -6,7 +6,10 @@ const productDetails: Middleware = ({ route, redirect, store }) => {
     trimTrailingSlash(route.path) === '/product-details' ||
     trimTrailingSlash(route.path) === `/${store.$i18n.locale}/product-details`
   ) {
-    return redirect(`/${store.$i18n.locale}/product-details/description`)
+    return redirect({
+      path: `/${store.$i18n.locale}/product-details/description`,
+      query: { ...route.query },
+    })
   }
 }
 

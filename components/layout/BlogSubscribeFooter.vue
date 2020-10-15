@@ -1,6 +1,8 @@
 <template>
   <div>
+    <v-skeleton-loader v-if="$apollo.loading" />
     <div
+      v-else
       class="blog d-flex justify-center align-center flex-column py-8 px-2 pa-md-16"
     >
       <h2 class="text-capitalize text-h4 text-md-h3">

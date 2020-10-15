@@ -6,7 +6,7 @@
       <CartBanner />
     </div>
 
-    <div class="cart-section bg-grey px-1 px-sm-8 px-md-16 pt-12 pb-10">
+    <div class="cart-section bg-grey px-1 px-sm-8 px-md-6 px-lg-16 pt-12 pb-10">
       <div class="top-nav">
         <CartBackButton :text="$t('cart.back_to_shopping')" />
       </div>

@@ -23,7 +23,8 @@
     </v-scroll-x-transition>
 
     <div class="details">
-      <DetailsTabs :product-id="productDetails.productID" />
+      <v-skeleton-loader v-if="$apollo.loading" type="image" />
+      <DetailsTabs v-else :product-id="productDetails.productID" />
     </div>
 
     <div class="pair-it-up-with"></div>
