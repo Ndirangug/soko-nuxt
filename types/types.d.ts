@@ -485,3 +485,8 @@ export type ProductReviewsQueryVariables = {
 }
 
 export type CartItemsQueryVariables = CustomerQueryVariables
+
+export type CheckVoucherQueryVariables = {
+  voucherCode: string
+  produdctIds?: string[]
+}

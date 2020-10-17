@@ -8,14 +8,14 @@
     >
       <!-- TODO EXTRACT FAVORITE BUTTON INTO A COMPONENT -->
       <v-btn
-        :icon="$vuetify.breakpoint.smAndDown"
+        :icon="$vuetify.breakpoint.xs"
         small
-        :text="$vuetify.breakpoint.mdAndUp"
-        class="cart-item-action favorite mr-2 mr-md-0"
+        :text="$vuetify.breakpoint.smAndUp"
+        class="cart-item-action favorite mr-2 mr-sm-0"
       >
         <v-icon color="red">{{ icons.favorite }}</v-icon>
         <span
-          v-if="$vuetify.breakpoint.mdAndUp"
+          v-if="$vuetify.breakpoint.smAndUp"
           class="text-capitalize text-caption black--text ml-1"
         >
           {{ $t('cart.add_to_favorites') }}
@@ -24,13 +24,13 @@
 
       <v-btn
         small
-        :icon="$vuetify.breakpoint.smAndDown"
-        :text="$vuetify.breakpoint.mdAndUp"
-        class="cart-item-action delete mr-2 mr-md-0"
+        :icon="$vuetify.breakpoint.xs"
+        :text="$vuetify.breakpoint.smAndUp"
+        class="cart-item-action delete mr-2 mr-sm-0"
       >
         <v-icon>{{ icons.delete }}</v-icon>
         <span
-          v-if="$vuetify.breakpoint.mdAndUp"
+          v-if="$vuetify.breakpoint.smAndUp"
           class="text-capitalize text-caption ml-1"
         >
           {{ $t('cart.remove_from_cart') }}

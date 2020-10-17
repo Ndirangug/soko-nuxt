@@ -2,10 +2,14 @@
   <div
     class="order-summary-vat-container d-flex justify-space-between align-center"
   >
-    <p class="text-subtitle-2 text-md-body-2 font-italic text-uppercase">
+    <p
+      class="text-subtitle-2 font-weight-regular text-md-body-2 font-italic text-uppercase"
+    >
       {{ $t('cart.vat') }}
     </p>
-    <p class="text-subtitle-2 text-md-body-2 text-capitalize">
+    <p
+      class="text-subtitle-2 font-weight-regular text-md-body-2 text-capitalize"
+    >
       {{ new Intl.NumberFormat('en-US').format(vat) }}
     </p>
   </div>

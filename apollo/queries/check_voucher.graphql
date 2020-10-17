@@ -1,0 +1,14 @@
+query CheckVoucher($voucherCode: String!, $produdctIds: [String!]) {
+  checkVoucher(voucherCode: $voucherCode, productIds: $produdctIds) {
+    voucherID
+    voucherCode
+    description
+    seller {
+      sellerID
+    }
+    discount {
+      amount
+      discountType
+    }
+  }
+}

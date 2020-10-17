@@ -79,3 +79,11 @@ declare module '*/cart_items.graphql' {
 
   export default defaultDocument
 }
+
+declare module '*/check_voucher.graphql' {
+  import { DocumentNode } from 'graphql'
+  const defaultDocument: DocumentNode
+  export const CheckVoucher: DocumentNode
+
+  export default defaultDocument
+}

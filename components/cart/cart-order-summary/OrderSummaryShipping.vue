@@ -2,13 +2,15 @@
   <div
     class="order-summary-shipping-container d-flex justify-space-between align-center"
   >
-    <p class="text-subtitle-2 text-md-body-2 text-capitalize">
+    <p
+      class="text-subtitle-2 font-weight-regular text-md-body-2 text-capitalize"
+    >
       {{ $t('cart.shipping') }}
     </p>
 
     <p
       v-if="shippingFee !== null"
-      class="text-subtitle-2 text-md-body-2 text-capitalize"
+      class="text-subtitle-2 font-weight-regular text-md-body-2 text-capitalize"
     >
       {{ new Intl.NumberFormat('en-US').format(shippingFee) }}
     </p>

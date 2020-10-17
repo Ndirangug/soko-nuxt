@@ -1,12 +1,22 @@
 <template>
   <div
-    class="cart-summary-container d-flex flex-column justify-start align-center px-4 px-lg-6 pt-12 pb-9 elevation-10"
+    class="cart-summary-container d-flex flex-column justify-start align-center px-4 px-lg-6 pt-12 pb-9"
+    :class="{
+      'bg-grey': $vuetify.breakpoint.smAndDown,
+      'elevation-10': $vuetify.breakpoint.mdAndUp,
+    }"
   >
-    <h3 class="text-subtitle-2 text-md-h6 font-weight-bold text-uppercase">
+    <h3
+      v-if="$vuetify.breakpoint.mdAndUp"
+      class="text-subtitle-2 text-md-h6 font-weight-bold text-uppercase"
+    >
       {{ $t('cart.order_summary') }}
     </h3>
 
-    <v-divider class="title-divider mt-4 mb-3 full-width" />
+    <v-divider
+      v-if="$vuetify.breakpoint.mdAndUp"
+      class="title-divider mt-4 mb-3 full-width"
+    />
 
     <div class="subtotal full-width">
       <OrderSummarySubtotal :subtotal="subtotal" />
@@ -29,7 +39,7 @@
     <div
       class="voucher-section d-flex flex-column justify-center align-stretch full-width"
     >
-      <OrderSummaryVoucherInput class="mb-4 mb-md-6" />
+      <OrderSummaryVoucherInput class="mb-7" />
       <OrderSummaryVoucherAmount
         :discount="discount"
         :voucher-amount="voucherAmount"
@@ -43,10 +53,12 @@
     </div>
 
     <div class="shipping-fees-not-calculated-alert full-width">
-      <ShippingFeesNotCalculatedAlert class="mb-6" />
+      <ShippingFeesNotCalculatedAlert />
     </div>
 
-    <div class="checkout-btn d-flex justify-center align-center full-width">
+    <div
+      class="checkout-btn d-flex justify-center align-center full-width mt-10"
+    >
       <v-btn tile outlined color="primary">
         <span class="mr-2 mr-sm-4 mr-md-2 mr-lg-4">
           {{ $t('cart.proceed_to_checkout') }}
@@ -109,5 +121,9 @@ export default Vue.extend({
   .full-width {
     width: 100%;
   }
+}
+
+.bg-grey {
+  background-color: $grey-background !important;
 }
 </style>

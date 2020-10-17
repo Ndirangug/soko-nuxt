@@ -3,7 +3,7 @@
     class="order-summary-voucher-input-container d-flex flex-column justify-center align-stretch"
   >
     <p
-      class="voucher-query text-caption text-md-subtitle-2 font-weight-regular font-italic mb-1"
+      class="voucher-query tex t-subtitle-2 font-weight-regular font-italic mb-1"
     >
       {{ $t('cart.do_you_have_voucher') }}
     </p>
@@ -14,7 +14,7 @@
       </template>
     </v-text-field>
 
-    <v-btn tile color="primary" class="align-self-end px-2 px-md-4">
+    <v-btn tile color="primary" class="align-self-end px-6">
       {{ $t('cart.apply') }}
     </v-btn>
   </div>
