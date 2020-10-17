@@ -7,7 +7,7 @@
     </div>
 
     <div class="cart-summary" :style="{ width: `${cartSummaryWidth}%` }">
-      <CartSummary />
+      <CartOrderSummary />
     </div>
   </div>
 </template>

@@ -7,7 +7,7 @@
         <div class="header">
           <v-row>
             <v-col
-              class="text-body-1 text-capitalize font-weight-medium black--text"
+              class="text-body-1 text-capitalize font-weight-bold black--text"
               cols="12"
               md="7"
             >
@@ -16,7 +16,7 @@
             </v-col>
             <v-col
               v-if="$vuetify.breakpoint.mdAndUp"
-              class="text-body-1 text-capitalize font-weight-medium black--text text-center ml-n2"
+              class="text-body-1 text-capitalize font-weight-bold black--text text-center ml-n2"
               cols="auto"
               md="1"
             >
@@ -24,7 +24,7 @@
             </v-col>
             <v-col
               v-if="$vuetify.breakpoint.mdAndUp"
-              class="text-body-1 text-capitalize font-weight-medium black--text text-center"
+              class="text-body-1 text-capitalize font-weight-bold black--text text-center"
               cols="auto"
               md="2"
             >
@@ -33,7 +33,7 @@
             </v-col>
             <v-col
               v-if="$vuetify.breakpoint.mdAndUp"
-              class="text-body-1 text-capitalize font-weight-medium black--text text-center"
+              class="text-body-1 text-capitalize font-weight-bold black--text text-center"
               cols="auto"
               md="2"
             >
