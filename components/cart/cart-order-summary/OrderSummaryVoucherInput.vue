@@ -8,21 +8,77 @@
       {{ $t('cart.do_you_have_voucher') }}
     </p>
 
-    <v-text-field filled full-width>
+    <v-text-field v-model="voucherCode" filled full-width>
       <template v-slot:label>
         <div class="text-capitalize">{{ $t('cart.enter_code') }}</div>
       </template>
     </v-text-field>
 
-    <v-btn tile color="primary" class="align-self-end px-6">
+    <v-btn
+      tile
+      color="primary"
+      class="align-self-end px-6"
+      :loading="$apollo.loading"
+      @click="applyVoucher"
+    >
       {{ $t('cart.apply') }}
     </v-btn>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({})
+import Vue, { PropType } from 'vue'
+import { CheckVoucher } from '~/apollo/queries/check_voucher.graphql'
+import { CheckVoucherQueryVariables, Voucher } from '~/types/types'
+
+export default Vue.extend({
+  props: {
+    produdctIds: {
+      type: Array as PropType<Array<Number>>,
+      required: false,
+      default() {
+        return []
+      },
+    },
+  },
+  data(): { [keys: string]: any; voucher: Voucher | null } {
+    return {
+      voucherCode: '',
+      voucher: null,
+    }
+  },
+
+  watch: {
+    voucher(value: Voucher | null) {
+      console.log('voucher-update')
+      console.log(value)
+      this.$emit('voucher-update', value)
+    },
+  },
+  methods: {
+    async applyVoucher() {
+      let voucher: Voucher | null = null
+      const queryVariables: CheckVoucherQueryVariables = {
+        voucherCode: this.voucherCode,
+      }
+
+      try {
+        // @ts-ignore
+        const result = await this.$apollo.query({
+          query: CheckVoucher,
+          variables: queryVariables,
+        })
+
+        voucher = result.data.checkVoucher
+      } catch (error) {
+        console.log(error)
+        console.log(error.message)
+      }
+
+      this.voucher = voucher
+    },
+  },
+})
 </script>
 
 <style lang="scss" scoped>

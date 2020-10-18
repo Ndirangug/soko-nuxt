@@ -39,7 +39,10 @@
     <div
       class="voucher-section d-flex flex-column justify-center align-stretch full-width"
     >
-      <OrderSummaryVoucherInput class="mb-7" />
+      <OrderSummaryVoucherInput
+        class="mb-7"
+        @voucher-update="onVoucherUpdate($event)"
+      />
       <OrderSummaryVoucherAmount
         :discount="discount"
         :voucher-amount="voucherAmount"
@@ -72,13 +75,15 @@
 <script lang="ts">
 import { mdiChevronRight } from '@mdi/js'
 import Vue from 'vue'
+import { Voucher } from '~/types/types'
 
 export default Vue.extend({
-  data() {
+  data(): { [keys: string]: any; voucher: Voucher | null } {
     return {
       icons: {
         chevronRight: mdiChevronRight,
       },
+      voucher: null,
     }
   },
   computed: {
@@ -92,13 +97,28 @@ export default Vue.extend({
       return this.subtotal + this.vat
     },
     voucherAmount(): number {
-      return 5000
+      let amount = 0
+
+      if (this.voucher !== null) {
+        amount =
+          this.voucher.discount.discountType === 'PERCENTAGE'
+            ? this.estimatedTotal * (this.voucher.discount.amount / 100) // calculate percentage discount on estimatedTotal
+            : this.estimatedTotal - this.voucher.discount.amount
+      }
+
+      return amount
     },
     total(): number {
-      return this.subtotal - this.voucherAmount
+      return this.estimatedTotal - this.voucherAmount
     },
     discount(): string {
-      return '5%'
+      return this.voucher !== null ? this.voucher.description : ''
+    },
+  },
+
+  methods: {
+    onVoucherUpdate(voucher: Voucher | null) {
+      this.voucher = voucher
     },
   },
 })

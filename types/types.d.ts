@@ -271,22 +271,16 @@ export interface ModeOfRefund {
 }
 
 export interface Voucher {
-  voucherID?: number
-  voucherCode?: string
+  voucherID: number
+  voucherCode: string
   rule?: string // TODO  consider this
-  description?: string
+  description: string
   productsApplicable?: Product[]
-  seller?: Seller[]
-  dateStarted?: Date
-  dateExpire?: Date
-  voucherType?: VoucherType
-  discount?: Discount
-  applyOnOrder?: boolean
-}
-
-export enum VoucherType {
-  EXCLUSIVE,
-  INCLUSIVE,
+  seller: Seller[]
+  dateStarted: Date
+  dateExpire: Date
+  discount: Discount
+  applyOnOrder: boolean
 }
 
 export interface Discount {

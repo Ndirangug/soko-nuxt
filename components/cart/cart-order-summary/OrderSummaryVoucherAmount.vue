@@ -8,7 +8,7 @@
       </p>
 
       <p
-        v-if="discount !== null"
+        v-if="discount !== ''"
         class="text-subtitle-2 text-md-body-2 font-weight-light font-italic mb-0"
       >
         (
@@ -30,7 +30,7 @@ import Vue from 'vue'
 export default Vue.extend({
   props: {
     discount: {
-      type: String,
+      type: [String],
       required: true,
     },
     voucherAmount: {
@@ -43,6 +43,8 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .label {
+  max-width: 70%;
+
   p {
     &:first-of-type {
       &:first-letter {
