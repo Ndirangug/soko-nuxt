@@ -18,7 +18,7 @@
       tile
       color="primary"
       class="align-self-end px-6"
-      :loading="$apollo.loading"
+      :loading="loading"
       @click="applyVoucher"
     >
       {{ $t('cart.apply') }}
@@ -45,6 +45,7 @@ export default Vue.extend({
     return {
       voucherCode: '',
       voucher: null,
+      loading: false,
     }
   },
 
@@ -57,6 +58,7 @@ export default Vue.extend({
   },
   methods: {
     async applyVoucher() {
+      this.loading = true
       let voucher: Voucher | null = null
       const queryVariables: CheckVoucherQueryVariables = {
         voucherCode: this.voucherCode,
@@ -76,6 +78,7 @@ export default Vue.extend({
       }
 
       this.voucher = voucher
+      this.loading = false
     },
   },
 })
