@@ -27,9 +27,26 @@
       <DetailsTabs v-else :product-id="productDetails.productID" />
     </div>
 
-    <div class="pair-it-up-with"></div>
-    <div class="more-from-this-seller"></div>
-    <div class="sponsored"></div>
+    <div class="pair-it-up-with pt-8 pt-md-8">
+      <v-skeleton-loader v-if="$apollo.loading" type="image" />
+      <PairItUpWith v-else :product-id="parseInt(productDetails.productID)" />
+    </div>
+
+    <div class="more-from-this-seller pt-8 pt-md-8">
+      <v-skeleton-loader v-if="$apollo.loading" type="image" />
+      <MoreFromThisSeller
+        v-else
+        :product-id="parseInt(productDetails.productID)"
+        :seller-name="productDetails.seller.sellerName"
+        :seller-id="parseInt(productDetails.seller.sellerID)"
+      />
+    </div>
+
+    <div class="sponsored pt-8 pt-md-8">
+      <v-skeleton-loader v-if="$apollo.loading" type="image" />
+      <v-skeleton-loader v-if="$apollo.loading" type="image" />
+      <Sponsored :product-id="parseInt(productDetails.productID)" />
+    </div>
   </div>
 </template>
 
@@ -50,7 +67,7 @@ export default Vue.extend({
       variables(): ProductDetailsSummaryQueryVariables {
         return {
           // @ts-ignore
-          productID: this.productID,
+          productId: this.productID,
         }
       },
     },
@@ -108,6 +125,30 @@ export default Vue.extend({
       console.log('add to cart')
       // @ts-ignore
       console.log(this.customerInput)
+
+      // const configurableOptions: ConfigurableOption[] = []
+
+      // // @ts-ignore
+      // for (const key in this.customerInput.configurables) {
+      //   configurableOptions.push({
+      //     // @ts-ignore
+      //     name: this.customerInput.configurables[key],
+      //     // @ts-ignore
+      //     configurable: { configurableType: key },
+      //   })
+      // }
+
+      // const cartItem: CartItem = {
+      //   // @ts-ignore
+      //   cartItemId: null,
+      //   customer: { customerID: authStore.customer.customerID },
+      //   // @ts-ignore
+      //   product: { productID: this.productID },
+      //   configurableOptions,
+      //   dateAddedToCart: new Date(Date.now()),
+      //   // @ts-ignore
+      //   quantity: this.customerInput.quantity,
+      // }
     },
   },
 

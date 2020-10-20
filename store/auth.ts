@@ -3,6 +3,7 @@ import { Customer } from '~/types/types'
 
 @Module({ name: 'auth', stateFactory: true, namespaced: true })
 export default class Auth extends VuexModule {
+  // TODO This is populated with firebase login
   customer: Customer = {}
   loggedIn = false
 

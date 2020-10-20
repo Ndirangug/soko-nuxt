@@ -132,10 +132,10 @@ export interface DynamicFilter {
 }
 
 export interface ProductView {
-  productViewId?: number
-  startView?: Date
-  stopView?: Date
-  product?: Product
+  productViewId: number
+  startView: Date
+  stopView: Date
+  product: Product
 }
 
 export interface Configurable {
@@ -415,6 +415,8 @@ export type SortOptions =
   | 'PRODUCT_RATING'
   | 'SELLER_RATING'
 
+export type DateSortOptions = 'NEWEST_FIRST' | 'OLDEST_FIRST'
+
 export type ReviewsSortOptions = 'POSITIVE_FIRST' | 'NEGATIVE_FIRST'
 
 export enum AuthMethod {
@@ -452,6 +454,11 @@ export interface ConfigurableInput {
   customerPreferrence?: string
 }
 
+export interface SponsoredContext {
+  productId: number
+  customerId: number
+}
+
 // Query Variables
 
 export type ProductsQueryVariables = {
@@ -466,7 +473,7 @@ export type CustomerQueryVariables = { customerID: number }
 
 export type BlogPostQueryVariables = { blogPostID: number }
 
-export type ProductDetailsQueryVariables = { productID: number }
+export type ProductDetailsQueryVariables = { productId: number }
 export type ProductDetailsSummaryQueryVariables = ProductDetailsQueryVariables
 export type ProductDescriptionQueryVariables = ProductDetailsQueryVariables
 
@@ -483,4 +490,20 @@ export type CartItemsQueryVariables = CustomerQueryVariables
 export type CheckVoucherQueryVariables = {
   voucherCode: string
   produdctIds?: string[]
+}
+
+export type RecentlyViewedQueryVariables = {
+  customerId: number
+  startDate: Date
+  endDate: Date
+  sort: DateSortOptions
+}
+
+export type SponsoredQueryVariables = { sponsoredContext: SponsoredContext }
+
+export type MoreFromSameSellerQueryVariables = ProductDetailsQueryVariables
+
+export type PairItUpWithQueryVariables = {
+  customerId: number
+  productId: number
 }

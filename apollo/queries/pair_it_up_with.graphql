@@ -1,0 +1,14 @@
+query PairItUpWith($customerId: Int!, $productId: Int!) {
+  productDetails(productID: $productId) {
+    pairItUpWith(customerId: $customerId) {
+      productID
+      title
+      price
+      discount {
+        amount
+        discountType
+      }
+      thumbnails
+    }
+  }
+}

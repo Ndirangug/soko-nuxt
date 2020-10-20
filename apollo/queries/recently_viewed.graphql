@@ -1,0 +1,17 @@
+query RecentlyViewed($customerId: Int!, $startDate: DateTime!, $endDate: DateTime!, $sort: DateSortOptions!) {
+  customer(customerID: $customerId) {
+    viewedProducts(startDate: $startDate, endDate: $endDate, sort: $sort) {
+      stopView
+      product {
+        productID
+        title
+        price
+        discount {
+          amount
+          discountType
+        }
+        thumbnails
+      }
+    }
+  }
+}

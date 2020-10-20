@@ -1,0 +1,14 @@
+query MoreFromSameSeller($productId: Int!) {
+  productDetails(productID: $productId) {
+    moreFromSameSeller{
+      productID
+    title
+    price
+    discount {
+      amount
+      discountType
+    }
+    thumbnails
+    }
+  }
+}

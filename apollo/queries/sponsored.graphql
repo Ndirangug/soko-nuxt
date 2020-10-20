@@ -1,0 +1,12 @@
+query Sponsored($sponsoredContext: SponsoredContext!) {
+  sponsored(context: $sponsoredContext) {
+    productID
+    title
+    price
+    discount {
+      amount
+      discountType
+    }
+    thumbnails
+  }
+}

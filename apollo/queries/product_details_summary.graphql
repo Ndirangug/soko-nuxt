@@ -1,5 +1,5 @@
-query ProductDetailsSummary($productID: Int!) {
-  productDetails(productID: $productID) {
+query ProductDetailsSummary($productId: Int!) {
+  productDetails(productID: $productId) {
     productID
     title
     shortDescription

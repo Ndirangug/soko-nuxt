@@ -87,3 +87,35 @@ declare module '*/check_voucher.graphql' {
 
   export default defaultDocument
 }
+
+declare module '*/pair_it_up_with.graphql' {
+  import { DocumentNode } from 'graphql'
+  const defaultDocument: DocumentNode
+  export const PairItUpWith: DocumentNode
+
+  export default defaultDocument
+}
+
+declare module '*/recently_viewed.graphql' {
+  import { DocumentNode } from 'graphql'
+  const defaultDocument: DocumentNode
+  export const RecentlyViewed: DocumentNode
+
+  export default defaultDocument
+}
+
+declare module '*/sponsored.graphql' {
+  import { DocumentNode } from 'graphql'
+  const defaultDocument: DocumentNode
+  export const Sponsored: DocumentNode
+
+  export default defaultDocument
+}
+
+declare module '*/more_from_same_seller.graphql' {
+  import { DocumentNode } from 'graphql'
+  const defaultDocument: DocumentNode
+  export const MoreFromSameSeller: DocumentNode
+
+  export default defaultDocument
+}

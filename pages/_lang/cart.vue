@@ -20,7 +20,9 @@
       </div>
     </div>
 
-    <div class="recently-viewed"></div>
+    <div class="recently-viewed pt-8 pt-md-8">
+      <CartRecentlyViewed />
+    </div>
   </div>
 </template>
 
