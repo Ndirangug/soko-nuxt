@@ -13,8 +13,9 @@ import { about } from './about'
 import { cart } from './cart'
 import { configurables } from './configurables'
 import { productSuggestions } from './productSuggestions'
+import { checkout } from './checkout'
 
-export const en = {
+export const sw = {
   auth,
   products,
   // keys to the navigation object should match the keys in the NavDrawer data.icons object
@@ -31,4 +32,5 @@ export const en = {
   cart,
   configurables,
   productSuggestions,
+  checkout,
 }

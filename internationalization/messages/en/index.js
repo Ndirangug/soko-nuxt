@@ -13,6 +13,7 @@ import { about } from './about'
 import { cart } from './cart'
 import { configurables } from './configurables'
 import { productSuggestions } from './productSuggestions'
+import { checkout } from './checkout'
 
 export const en = {
   auth,
@@ -31,4 +32,5 @@ export const en = {
   cart,
   configurables,
   productSuggestions,
+  checkout,
 }
