@@ -39,4 +39,5 @@ export const checkout = {
   place_order: 'place order',
   your_order: 'your order',
   modify_cart: 'modify cart',
+  continue: 'continue',
 }
