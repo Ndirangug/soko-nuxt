@@ -1,8 +1,12 @@
 <template>
   <div>
     <h1>Checkout</h1>
-    <nuxt-child />
   </div>
 </template>
 
-// TODO replace child routes with just simple components
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
+  layout: 'checkout',
+})
+</script>

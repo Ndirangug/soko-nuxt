@@ -3,9 +3,10 @@ export const checkout = {
   fees: 'fees',
   returns: 'returns',
   and: 'and',
-  need_help: 'need help',
+  need_help: 'need help?',
   call: 'call',
-  or_use_the_online_chat: 'or use the online chat',
+  or: 'or',
+  use_the_online_chat: 'use the online chat',
   back: 'back',
   secure_checkout: 'secure checkout',
   delivery_adddress: 'delivery adddress',
@@ -25,7 +26,6 @@ export const checkout = {
   pay_online_information:
     'your order will be processed once payment is confirmed',
   with: 'with',
-  or: 'or',
   mpesa_instructions:
     'Enter your phone number below and click pay. An "enter pin" prompt will be automatically sent to the phone number you provided',
   mpesa_alternative_instructions: '',

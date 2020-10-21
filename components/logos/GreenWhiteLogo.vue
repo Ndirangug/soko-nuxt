@@ -1,11 +1,13 @@
 <template>
   <div id="logo">
     <h1
-      :class="{
-        'white--text': dark,
-        'black--text': !dark,
-        'text-h4': $vuetify.breakpoint.smAndDown,
-      }"
+      :class="[
+        {
+          'white--text': dark,
+          'black--text': !dark,
+        },
+        ...classes,
+      ]"
     >
       L<span class="primary--text">O</span>REM
     </h1>
@@ -13,12 +15,22 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { PropType } from 'vue'
+
 export default Vue.extend({
   props: {
     dark: {
       type: Boolean,
-      required: true,
+      required: false,
+      default: false,
+    },
+    classes: {
+      type: Array as PropType<Array<String>>,
+      required: false,
+      default() {
+        // @ts-ignore
+        return [{ 'text-h4': this.$vuetify.breakpoint.smAndDown }]
+      },
     },
   },
 })

@@ -58,13 +58,13 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mdiLock, mdiFace, mdiEye, mdiEyeOff } from '@mdi/js'
+import { mdiLock, mdiEye, mdiEyeOff, mdiAccount } from '@mdi/js'
 
 export default Vue.extend({
   data() {
     return {
       icons: {
-        user: mdiFace,
+        user: mdiAccount,
         lock: mdiLock,
         password_see: mdiEyeOff,
       },

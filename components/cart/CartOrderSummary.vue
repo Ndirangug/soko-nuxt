@@ -62,7 +62,7 @@
     <div
       class="checkout-btn d-flex justify-center align-center full-width mt-10"
     >
-      <v-btn tile outlined color="primary">
+      <v-btn tile outlined color="primary" @click="proceedToCheckout">
         <span class="mr-2 mr-sm-4 mr-md-2 mr-lg-4">
           {{ $t('cart.proceed_to_checkout') }}
         </span>
@@ -119,6 +119,11 @@ export default Vue.extend({
   methods: {
     onVoucherUpdate(voucher: Voucher | null) {
       this.voucher = voucher
+    },
+
+    proceedToCheckout() {
+      // TODO implement this
+      this.$router.push(this.localePath('/checkout'))
     },
   },
 })

@@ -14,6 +14,7 @@ import { cart } from './cart'
 import { configurables } from './configurables'
 import { productSuggestions } from './productSuggestions'
 import { checkout } from './checkout'
+import { help } from './help'
 
 export const sw = {
   auth,
@@ -33,4 +34,5 @@ export const sw = {
   configurables,
   productSuggestions,
   checkout,
+  help,
 }
