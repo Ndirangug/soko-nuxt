@@ -2,16 +2,19 @@
   <v-app class="check-layout-root">
     <CheckoutAppBar />
 
-    <div class="back-button pl-3 pl-sm-6 pl-md-8 pl-lg-16">
-      <v-btn text @click="goBack">
-        <v-icon>{{ icons.back }} </v-icon>
-      </v-btn>
+    <div
+      class="back-button ml-0 ml-sm-4 ml-md-6 ml-lg-12"
+      :class="[`back-button-mt-${$vuetify.breakpoint.name}`]"
+    >
+      <v-btn :small="$vuetify.breakpoint.smAndDown" text @click="goBack">
+        <v-icon class="mr-1">{{ icons.back }} </v-icon>
 
-      <span>{{ $t('checkout.back') }}</span>
+        <span>{{ $t('checkout.back') }}</span>
+      </v-btn>
     </div>
 
     <h1
-      class="text-h6 text-md-h4 font-weight-medium pl-3 pl-sm-6 pl-md-8 pl-lg-16 my-4 my-md-8"
+      class="text-h6 text-md-h4 text-capitalize font-weight-medium ml-4 ml-sm-6 ml-md-8 ml-lg-16 mt-2 mb-4 mt-md-8 mb-md-8"
     >
       {{ $t('checkout.secure_checkout') }}
     </h1>
@@ -48,7 +51,23 @@ export default Vue.extend({
   background: $grey-background;
 }
 
-.back-button {
-  margin-top: 3vw;
+.back-button-mt-xl {
+  margin-top: 5vw;
+}
+
+.back-button-mt-lg {
+  margin-top: 5vw;
+}
+
+.back-button-mt-md {
+  margin-top: 7vw;
+}
+
+.back-button-mt-sm {
+  margin-top: 12vw;
+}
+
+.back-button-mt-xs {
+  margin-top: 24vw;
 }
 </style>
