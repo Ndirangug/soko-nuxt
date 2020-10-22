@@ -11,7 +11,7 @@ export interface Customer {
   email?: string
   phone?: string
   avatarUrl?: string
-  addresses?: Address[]
+  addresses?: CustomerAddress[]
   authToken?: string
   gender?: Gender
   dateOfBirth?: Date
@@ -35,13 +35,16 @@ export enum Gender {
   FEMALE,
 }
 
-export interface Address {
+export interface CustomerAddress {
   addressID?: number
-  firstLine?: string
-  secondLine?: string
+  firstName?: string
+  lastName?: string
+  phone?: string
   county?: string
-  city?: string
+  town?: string
   area?: string
+  gpsLocation?: Location
+  additionalInformation: string
   customer?: Customer
   shippingOptions?: ShippingOption[]
 }
@@ -298,6 +301,27 @@ export interface ShippingOption {
   estimatedDeliveryDate?: Date
 }
 
+export interface PickupStation {
+  pickupStationID: number
+  name: string
+  phone: string
+  county: string
+  town: string
+  area: string
+  gpsLocation: Location
+  operator: PickupStationOperator
+}
+
+export interface PickupStationOperator {
+  pickupStationOperatorID: number
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+  avatarUrl: string
+  pickupStation: PickupStation
+}
+
 export interface Package {
   packageID?: number
   orderItems?: OrderItem[]
@@ -469,7 +493,7 @@ export type ProductsQueryVariables = {
 
 export type CategoriesQueryVariables = { pagination: Pagination }
 
-export type CustomerQueryVariables = { customerID: number }
+export type CustomerQueryVariables = { customerId: number }
 
 export type BlogPostQueryVariables = { blogPostID: number }
 
@@ -507,3 +531,5 @@ export type PairItUpWithQueryVariables = {
   customerId: number
   productId: number
 }
+
+export type CustomerAddressesQueryVariables = CustomerQueryVariables

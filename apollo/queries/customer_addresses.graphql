@@ -1,0 +1,14 @@
+query CustomerAddresses($customerId: Int!) {
+  customer(customerID: $customerId) {
+    addresses {
+      addressID
+      firstName
+      lastName
+      phone
+      county
+      town
+      area
+      additionalInformation
+    }
+  }
+}

@@ -40,4 +40,7 @@ export const checkout = {
   your_order: 'your order',
   modify_cart: 'modify cart',
   continue: 'continue',
+  no_address: "you haven't added any address to your account yet",
+  add_new: 'add new',
+  select_address: 'select address',
 }

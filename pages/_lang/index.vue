@@ -25,7 +25,7 @@ export default {
       query: Customer,
       prefetch: true,
       variables() {
-        return { customerID: 6 }
+        return { customerId: 6 }
       },
     },
   },

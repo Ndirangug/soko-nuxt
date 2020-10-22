@@ -1,5 +1,5 @@
-query Customer($customerID: Int!){
-  customer(customerID: $customerID){
+query Customer($customerId: Int!){
+  customer(customerID: $customerId){
     firstName
     lastName
     email

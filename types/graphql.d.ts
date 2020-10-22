@@ -119,3 +119,11 @@ declare module '*/more_from_same_seller.graphql' {
 
   export default defaultDocument
 }
+
+declare module '*/customer_addresses.graphql' {
+  import { DocumentNode } from 'graphql'
+  const defaultDocument: DocumentNode
+  export const CustomerAddresses: DocumentNode
+
+  export default defaultDocument
+}
