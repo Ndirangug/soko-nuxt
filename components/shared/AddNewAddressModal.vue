@@ -1,6 +1,12 @@
 <template>
   <v-row class="new-address-modal-container" justify="center">
-    <v-dialog v-model="dialog" persistent max-width="600px">
+    <v-dialog
+      v-model="dialog"
+      :fullscreen="$vuetify.breakpoint.xs"
+      :hide-overlay="$vuetify.breakpoint.xs"
+      persistent
+      max-width="600px"
+    >
       <template v-slot:activator="{ on, attrs }">
         <slot name="activator" :attrs="attrs" :on="on">
           <v-btn color="primary" v-bind="attrs" v-on="on">

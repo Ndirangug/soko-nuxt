@@ -12,4 +12,6 @@ export const forms = {
   cancel: 'cancel',
   setDefault: 'set default',
   useCurrentLocation: 'use your current location',
+  chooseCountyFirst: 'Choose county first',
+  requiredFieldIndicator: '*indicates required field',
 }

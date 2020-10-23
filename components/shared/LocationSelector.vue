@@ -1,35 +1,41 @@
 <template>
   <v-row>
-    <v-col cols="11">
-      <v-autocomplete
-        v-model="location"
-        :label="`${$t('forms.area')} *`"
-        filled
-        :loading="isLoading"
-        auto-select-first
-        hide-no-data
-        :search-input.sync="search"
-        :items="items"
-      ></v-autocomplete>
-    </v-col>
+    <v-col cols="12 py-0">
+      <div class="d-flex justify-center align-center">
+        <v-autocomplete
+          v-model="location"
+          filled
+          :loading="isLoading"
+          auto-select-first
+          hide-no-data
+          :search-input.sync="search"
+          :items="items"
+          class="input mx-auto"
+          dense
+        >
+          <template v-slot:label>
+            <div class="text-capitalize">{{ $t('forms.area') }}*</div>
+          </template>
+        </v-autocomplete>
 
-    <v-col cols="1">
-      <v-tooltip top>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            color="primary"
-            icon
-            v-bind="attrs"
-            @click="fetchCurrentLocation"
-            v-on="on"
-          >
-            <v-icon>{{ icons.location }}</v-icon>
-          </v-btn>
-        </template>
-        <span class="text-sentence">
-          {{ $t('forms.useCurrentLocation') }}
-        </span>
-      </v-tooltip>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              color="primary"
+              icon
+              v-bind="attrs"
+              class="mt-n8"
+              @click="fetchCurrentLocation"
+              v-on="on"
+            >
+              <v-icon>{{ icons.location }}</v-icon>
+            </v-btn>
+          </template>
+          <span class="text-sentence">
+            {{ $t('forms.useCurrentLocation') }}
+          </span>
+        </v-tooltip>
+      </div>
     </v-col>
   </v-row>
 </template>
@@ -106,3 +112,9 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style lang="scss" scoped>
+.input {
+  max-width: 400px;
+}
+</style>
