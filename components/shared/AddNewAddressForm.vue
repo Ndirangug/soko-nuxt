@@ -15,13 +15,16 @@
       <v-btn icon dark @click="closeDialog">
         <v-icon>mdi-close</v-icon>
       </v-btn>
+
       <v-toolbar-title
-        class="text-capitalize text-body-1 text-md-h6 font-weight-medium"
+        class="text-capitalize text-body-1 text-md-h6 font-weight-medium pl-0"
       >
         {{ $t('checkout.add_a_new_address') }}
       </v-toolbar-title>
+
       <v-spacer></v-spacer>
-      <v-toolbar-items>
+
+      <v-toolbar-items class="mr-n2">
         <v-btn dark text @click="saveAddress"> {{ $t('forms.save') }} </v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -124,6 +127,7 @@
           :county="formInput.county"
           :town="formInput.town"
           :area.sync="formInput.area"
+          :gps-location.sync="formInput.gpsLocation"
           class="area"
         />
 
@@ -169,6 +173,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { AddNewCustomerAddress } from '~/apollo/mutations/add_new_customer_address.graphql'
+import { authStore } from '~/store'
+import { AddAddressMutationVariables } from '~/types/types'
 import { CountyAndTowns } from '~/types/ui'
 
 export default Vue.extend({
@@ -187,6 +194,7 @@ export default Vue.extend({
         county: '',
         town: '',
         area: '',
+        gpsLocation: { latitude: 0, longitude: 0 },
         additionalInformation: '',
       },
     }
@@ -228,10 +236,25 @@ export default Vue.extend({
       this.$emit('update:dialog', false)
     },
 
-    saveDialog() {
+    async saveAddress() {
       // TODO DO MUTATION HERE
       // TODO PROGRESS DIALOG NESTED
-      console.log('saving address')
+      const mutationVariables: AddAddressMutationVariables = {
+        customerId:
+          authStore.customer.customerID !== undefined
+            ? authStore.customer.customerID
+            : 0,
+        address: { ...this.formInput },
+      }
+
+      // TODO Check for error state. Possibly introducee a standard mutation response type
+      // @ts-ignore
+      const result = await this.$apollo.mutate({
+        mutation: AddNewCustomerAddress,
+        variables: mutationVariables,
+      })
+      console.log(result)
+
       this.closeDialog()
     },
   },

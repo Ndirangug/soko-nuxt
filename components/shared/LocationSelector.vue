@@ -3,7 +3,7 @@
     <v-col cols="12 py-0">
       <div class="d-flex justify-center align-center">
         <v-autocomplete
-          v-model="location"
+          v-model="locationString"
           filled
           :loading="isLoading"
           auto-select-first
@@ -41,8 +41,10 @@
 </template>
 
 <script lang="ts">
+import Vue, { PropOptions } from 'vue'
 import { mdiMapMarker } from '@mdi/js'
-import Vue from 'vue'
+import { Location } from '~/types/types'
+
 export default Vue.extend({
   props: {
     county: {
@@ -57,13 +59,18 @@ export default Vue.extend({
       type: String,
       required: true,
     },
+    gpsLocation: {
+      type: Object,
+      required: true,
+    } as PropOptions<Location | {}>,
   },
   data(): { [keys: string]: any; items: string[] } {
     return {
       icons: {
         location: mdiMapMarker,
       },
-      location: '',
+      locationString: '',
+      newGpsLocation: '',
       isLoading: false,
       items: [],
       search: null,
@@ -71,8 +78,9 @@ export default Vue.extend({
   },
 
   watch: {
-    location(value: string) {
+    locationString(value: string) {
       this.$emit('update:area', value)
+      this.$emit('update:gps-location', this.newGpsLocation)
     },
 
     search(_: string) {
@@ -96,6 +104,7 @@ export default Vue.extend({
         // validateFetchedLocation()
         this.items = ['loc4', 'loc5', 'loc6']
         this.isLoading = false
+        // openPanel()
       }, 5000)
     },
 
@@ -107,6 +116,7 @@ export default Vue.extend({
         // validateFetchedLocation()
         this.items = ['loc1', 'loc2', 'loc3']
         this.isLoading = false
+        // openPanel()
       }, 5000)
     },
   },

@@ -1,0 +1,16 @@
+mutation AddNewCustomerAddress($customerId: Int!, $address: AddressInput!) {
+  addAddress(customerID: $customerId, address: $address) {
+    addressID
+    firstName
+    lastName
+    phone
+    county
+    town
+    area
+    gpsLocation {
+      latitude
+      longitude
+    }
+    additionalInformation
+  }
+}

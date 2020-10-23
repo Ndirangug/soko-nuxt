@@ -325,10 +325,10 @@ export interface PickupStationOperator {
 export interface Package {
   packageID?: number
   orderItems?: OrderItem[]
-  location?: location
+  location?: Location
 }
 
-export interface location {
+export interface Location {
   latitude?: number
   longitude?: number
 }
@@ -535,3 +535,20 @@ export type PairItUpWithQueryVariables = {
 export type CustomerAddressesQueryVariables =
   | CustomerQueryVariables
   | { customerId: number; defaultOnly: boolean }
+
+export interface AddAddressMutationVariables {
+  customerId: number
+  address: {
+    firstName: string
+    lastName: string
+    phone: string
+    county: string
+    town: string
+    area: string
+    gpsLocation: {
+      latitude: number
+      longitude: number
+    }
+    additionalInformation: string
+  }
+}

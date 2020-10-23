@@ -127,3 +127,11 @@ declare module '*/customer_addresses.graphql' {
 
   export default defaultDocument
 }
+
+declare module '*/add_new_customer_address.graphql' {
+  import { DocumentNode } from 'graphql'
+  const defaultDocument: DocumentNode
+  export const AddNewCustomerAddress: DocumentNode
+
+  export default defaultDocument
+}
