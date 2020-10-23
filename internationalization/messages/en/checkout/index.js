@@ -43,4 +43,5 @@ export const checkout = {
   no_address: "you haven't added any address to your account yet",
   add_new: 'add new',
   select_address: 'select address',
+  add_a_new_address: 'add a new address',
 }

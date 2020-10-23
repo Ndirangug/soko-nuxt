@@ -1,0 +1,15 @@
+export const forms = {
+  firstName: 'first name',
+  lastName: 'last name',
+  phone: 'phone',
+  password: 'password',
+  email: 'email',
+  county: 'county',
+  town: 'town',
+  area: 'area',
+  additionalInformation: 'additional information',
+  save: 'save',
+  cancel: 'cancel',
+  setDefault: 'set default',
+  useCurrentLocation: 'use your current location',
+}

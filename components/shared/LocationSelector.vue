@@ -1,0 +1,108 @@
+<template>
+  <v-row>
+    <v-col cols="11">
+      <v-autocomplete
+        v-model="location"
+        :label="`${$t('forms.area')} *`"
+        filled
+        :loading="isLoading"
+        auto-select-first
+        hide-no-data
+        :search-input.sync="search"
+        :items="items"
+      ></v-autocomplete>
+    </v-col>
+
+    <v-col cols="1">
+      <v-tooltip top>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            color="primary"
+            icon
+            v-bind="attrs"
+            @click="fetchCurrentLocation"
+            v-on="on"
+          >
+            <v-icon>{{ icons.location }}</v-icon>
+          </v-btn>
+        </template>
+        <span class="text-sentence">
+          {{ $t('forms.useCurrentLocation') }}
+        </span>
+      </v-tooltip>
+    </v-col>
+  </v-row>
+</template>
+
+<script lang="ts">
+import { mdiMapMarker } from '@mdi/js'
+import Vue from 'vue'
+export default Vue.extend({
+  props: {
+    county: {
+      type: String,
+      required: true,
+    },
+    town: {
+      type: String,
+      required: true,
+    },
+    area: {
+      type: String,
+      required: true,
+    },
+  },
+  data(): { [keys: string]: any; items: string[] } {
+    return {
+      icons: {
+        location: mdiMapMarker,
+      },
+      location: '',
+      isLoading: false,
+      items: [],
+      search: null,
+    }
+  },
+
+  watch: {
+    location(value: string) {
+      this.$emit('update:area', value)
+    },
+
+    search(_: string) {
+      // Items have already been loaded
+      if (this.items.length > 0) return
+
+      // Items have already been requested
+      if (this.isLoading) return
+
+      // Lazily load input items
+      this.searchLocation()
+    },
+  },
+
+  methods: {
+    fetchCurrentLocation() {
+      this.isLoading = true
+      //  TODO ACTUALLY IMPLEMENT THIS: LOCATION FETCHING based on current location
+
+      setTimeout(() => {
+        // validateFetchedLocation()
+        this.items = ['loc4', 'loc5', 'loc6']
+        this.isLoading = false
+      }, 5000)
+    },
+
+    searchLocation() {
+      this.isLoading = true
+
+      // TODO probably query google maps api with the provided county, town, and search term, not considering current location
+      setTimeout(() => {
+        // validateFetchedLocation()
+        this.items = ['loc1', 'loc2', 'loc3']
+        this.isLoading = false
+      }, 5000)
+    },
+  },
+})
+</script>

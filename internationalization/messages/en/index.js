@@ -15,6 +15,7 @@ import { configurables } from './configurables'
 import { productSuggestions } from './productSuggestions'
 import { checkout } from './checkout'
 import { help } from './help'
+import { forms } from './forms'
 
 export const en = {
   auth,
@@ -35,4 +36,5 @@ export const en = {
   productSuggestions,
   checkout,
   help,
+  forms,
 }

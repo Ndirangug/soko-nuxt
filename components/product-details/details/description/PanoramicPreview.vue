@@ -1,7 +1,7 @@
 <template>
   <v-responsive :width="previewWidth" :height="previewHeight" class="mx-auto">
     <client-only>
-      <v-tooltip attach=".three-sixty-preview" internal-activator absolute top>
+      <v-tooltip attach=".three-sixty-preview" top>
         <template v-slot:activator="{ on, attrs }">
           <Pano
             v-bind="attrs"
@@ -10,7 +10,7 @@
             v-on="on"
           />
         </template>
-        <span>{{ $t('productDetails.three_sixty_tip') }}</span>
+        {{ $t('productDetails.three_sixty_tip') }}
       </v-tooltip>
     </client-only>
   </v-responsive>

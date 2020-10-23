@@ -532,4 +532,6 @@ export type PairItUpWithQueryVariables = {
   productId: number
 }
 
-export type CustomerAddressesQueryVariables = CustomerQueryVariables
+export type CustomerAddressesQueryVariables =
+  | CustomerQueryVariables
+  | { customerId: number; defaultOnly: boolean }

@@ -68,6 +68,6 @@ export default Vue.extend({
 }
 
 .back-button-mt-xs {
-  margin-top: 24vw;
+  margin-top: 25vw;
 }
 </style>

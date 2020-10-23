@@ -2,7 +2,7 @@
   <div class="choose-address-step-container">
     <v-skeleton-loader v-if="noAddress == undefined" type="image" />
     <NoAddressLayout v-else-if="noAddress" />
-    <DefaultAddressLayout v-else />
+    <DefaultAddressLayout v-else :address="customer.addresses[0]" />
   </div>
 </template>
 
@@ -24,6 +24,7 @@ export default Vue.extend({
             authStore.customer.customerID !== undefined
               ? authStore.customer.customerID
               : 0,
+          defaultOnly: true,
         }
       },
     },

@@ -9,3 +9,8 @@ export interface CustomerReviewSegment {
   starRating: number
   reviewMessage: string
 }
+
+export interface CountyAndTowns {
+  name: string
+  towns: string[]
+}
