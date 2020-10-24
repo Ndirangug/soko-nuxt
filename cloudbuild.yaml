@@ -1,9 +1,9 @@
 steps:
-- name: node
+- name: node:12.x 
   entrypoint: yarn
   args: ['install']
 
-- name: node
+- name: node:12.x 
   entrypoint: yarn
   args: ['run', 'build']
   
