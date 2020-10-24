@@ -21,6 +21,7 @@ export default function (_ctx) {
     httpLinkOptions: {
       headers: {
         Authorization: `Bearer ${process.env.AUTH_TOKEN}`,
+        Origin: process.env.NUXT_HOST,
       },
     },
   }
