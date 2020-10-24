@@ -175,7 +175,4 @@ export default {
     height: '5px',
     continuous: true,
   },
-  publicRuntimeConfig: {
-    AUTH_TOKEN: '',
-  },
 }

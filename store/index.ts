@@ -1,7 +1,7 @@
 import { Store } from 'vuex'
 import { initialiseStores } from '~/utils/store-accessor'
 import { getGoogleCloudIAPAuthToken } from '~/utils/authorization'
-import { cartStore } from '~/store'
+import { cartStore, authStore } from '~/store'
 
 const initializer = (store: Store<any>) => initialiseStores(store)
 
@@ -11,13 +11,14 @@ export * from '~/utils/store-accessor'
 export const actions = {
   // @ts-ignore
   // eslint-disable-next-line no-empty-pattern
-  async nuxtServerInit({}, { store, app, $config }) {
+  async nuxtServerInit({}, { store, app }) {
     // do it once more like so..
     initialiseStores(store)
 
     const authToken = await getGoogleCloudIAPAuthToken()
-    $config.AUTH_TOKEN = authToken
+    authStore.setIapToken(authToken)
     console.log(`auth token ${authToken}`)
+    console.log(`auth token from store ${authStore.iapToken}`)
 
     app.$cookies.set('AUTH_TOKEN', authToken, {
       path: '/',

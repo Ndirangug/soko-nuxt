@@ -1,14 +1,13 @@
 /* eslint-disable no-console */
 import { onError } from 'apollo-link-error'
+import { authStore } from '~/store'
 
-export default function ({ $config }) {
+export default function ({ _ctx }) {
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     // TODO Maybe add better error handling
     console.error(graphQLErrors)
     console.error(networkError)
   })
-
-  console.log($config)
 
   return {
     link: errorLink,
@@ -22,7 +21,7 @@ export default function ({ $config }) {
 
     httpLinkOptions: {
       headers: {
-        Authorization: `Bearer ${$config.AUTH_TOKEN}`,
+        Authorization: `Bearer ${authStore.iapToken}`,
         Origin: process.env.NUXT_HOST,
       },
     },
