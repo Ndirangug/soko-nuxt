@@ -17,6 +17,7 @@ export const actions = {
 
     const authToken = await getGoogleCloudIAPAuthToken()
     $config.AUTH_TOKEN = authToken
+    console.log(`auth token ${authToken}`)
 
     app.$cookies.set('AUTH_TOKEN', authToken, {
       path: '/',
