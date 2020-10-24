@@ -17,6 +17,7 @@ export const actions = {
 
     const authToken = await getGoogleCloudIAPAuthToken()
     $config.AUTH_TOKEN = authToken
+
     app.$cookies.set('AUTH_TOKEN', authToken, {
       path: '/',
       maxAge: 60 * 60,
