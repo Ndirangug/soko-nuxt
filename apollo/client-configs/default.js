@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { onError } from 'apollo-link-error'
 
-export default function (_ctx) {
+export default function (ctx) {
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     // TODO Maybe add better error handling
     console.error(graphQLErrors)
@@ -20,7 +20,7 @@ export default function (_ctx) {
 
     httpLinkOptions: {
       headers: {
-        Authorization: `Bearer ${process.env.AUTH_TOKEN}`,
+        Authorization: `Bearer ${ctx.$config.AUTH_TOKEN}`,
         Origin: process.env.NUXT_HOST,
       },
     },
