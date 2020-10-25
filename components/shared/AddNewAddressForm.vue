@@ -14,7 +14,7 @@
 
     <v-toolbar v-else dark color="primary" absolute min-width="100%">
       <v-btn icon dark @click="closeDialog">
-        <v-icon>mdi-close</v-icon>
+        <v-icon>{{ icons.close }}</v-icon>
       </v-btn>
 
       <v-toolbar-title
@@ -173,6 +173,7 @@
 </template>
 
 <script lang="ts">
+import { mdiClose } from '@mdi/js'
 import Vue from 'vue'
 import { AddNewCustomerAddress } from '~/apollo/mutations/add_new_customer_address.graphql'
 import { authStore } from '~/store'
@@ -197,6 +198,9 @@ export default Vue.extend({
         area: '',
         gpsLocation: { latitude: 0, longitude: 0 },
         additionalInformation: '',
+      },
+      icons: {
+        close: mdiClose,
       },
     }
   },
