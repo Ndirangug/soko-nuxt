@@ -18,11 +18,6 @@ export const actions = {
     const authToken = await getGoogleCloudIAPAuthToken()
     process.env.IAP_TOKEN = authToken
 
-    app.$cookies.set('AUTH_TOKEN', authToken, {
-      path: '/',
-      maxAge: 60 * 60,
-    })
-
     const apolloClient = app.apolloProvider.defaultClient
 
     // TODO: Get customerId from cookie
