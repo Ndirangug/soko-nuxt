@@ -38,6 +38,7 @@
     "graphql-tag": "^2.11.0",
     "jsonwebtoken": "^8.5.1",
     "nuxt": "^2.14.0",
+    "nuxt-env": "^0.1.0",
     "nuxt-i18n": "^6.13.12",
     "nuxt-ssr-screen-size": "github:hugojerez/nuxt-ssr-screen-size",
     "vue-pannellum": "^0.5.1",

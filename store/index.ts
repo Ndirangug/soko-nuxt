@@ -1,7 +1,7 @@
 import { Store } from 'vuex'
 import { initialiseStores } from '~/utils/store-accessor'
 import { getGoogleCloudIAPAuthToken } from '~/utils/authorization'
-import { cartStore, authStore } from '~/store'
+import { cartStore } from '~/store'
 
 const initializer = (store: Store<any>) => initialiseStores(store)
 
@@ -16,10 +16,7 @@ export const actions = {
     initialiseStores(store)
 
     const authToken = await getGoogleCloudIAPAuthToken()
-    authStore.setIapToken(authToken)
-    console.log(`auth token ${authToken}`)
-    console.log('----')
-    console.log(`auth token from store ${authStore.iapToken}`)
+    process.env.IAP_TOKEN = authToken
 
     app.$cookies.set('AUTH_TOKEN', authToken, {
       path: '/',
@@ -28,6 +25,7 @@ export const actions = {
 
     const apolloClient = app.apolloProvider.defaultClient
 
+    // TODO: Get customerId from cookie
     await cartStore.initializeCartItems({ apolloClient, customerId: 2 })
   },
 }

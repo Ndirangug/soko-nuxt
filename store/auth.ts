@@ -6,17 +6,11 @@ export default class Auth extends VuexModule {
   // TODO This is populated with firebase login
   customer: Customer = {}
   loggedIn = false
-  iapToken = ''
 
   @Mutation
   logIn(customer: Customer) {
     this.loggedIn = true
     this.customer = customer
-  }
-
-  @Mutation
-  setIapToken(token: string){
-    this.iapToken = token
   }
 
   @Mutation

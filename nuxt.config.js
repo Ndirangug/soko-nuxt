@@ -77,6 +77,12 @@ export default {
     '@nuxtjs/style-resources',
     'cookie-universal-nuxt',
     '@nuxtjs/dayjs',
+    [
+      'nuxt-env',
+      {
+        keys: [{ key: 'IAP_TOKEN', default: '' }],
+      },
+    ],
   ],
   /*
    ** nuxt-i18n module configuration
@@ -174,5 +180,12 @@ export default {
     color: 'black',
     height: '5px',
     continuous: true,
+  },
+
+  publicRuntimeConfig: {
+    GRAPHQL_ENDPOINT:
+      process.env.NODE_ENV !== 'production'
+        ? 'http://localhost:8080/graphql'
+        : 'https://soko-graphql.uc.r.appspot.com/graphql',
   },
 }
