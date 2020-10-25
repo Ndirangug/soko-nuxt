@@ -2,6 +2,7 @@
   <v-card
     :shaped="$vuetify.breakpoint.smAndUp"
     class="add-new-addrdess-form-container pa-8"
+    :raised="$vuetify.breakpoint.smAndUp"
   >
     <v-card-title v-if="$vuetify.breakpoint.smAndUp" class="header">
       <span
@@ -11,7 +12,7 @@
       </span>
     </v-card-title>
 
-    <v-toolbar v-else dark color="primary">
+    <v-toolbar v-else dark color="primary" absolute min-width="100%">
       <v-btn icon dark @click="closeDialog">
         <v-icon>mdi-close</v-icon>
       </v-btn>
@@ -32,7 +33,7 @@
     <v-divider v-if="$vuetify.breakpoint.smAndUp" />
 
     <v-card-text class="pb-1">
-      <v-container class="pb-0">
+      <v-container class="mt-16 mt-sm-0 pb-0">
         <v-row class="name" justify="center">
           <v-col class="first-name py-0" cols="12" sm="6">
             <v-text-field
