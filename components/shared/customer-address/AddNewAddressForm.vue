@@ -12,23 +12,11 @@
       </span>
     </v-card-title>
 
-    <v-toolbar v-else dark color="primary" absolute min-width="100%">
-      <v-btn icon dark @click="closeDialog">
-        <v-icon>{{ icons.close }}</v-icon>
-      </v-btn>
-
-      <v-toolbar-title
-        class="text-capitalize text-body-1 text-md-h6 font-weight-medium pl-0"
-      >
-        {{ $t('checkout.add_a_new_address') }}
-      </v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-toolbar-items class="mr-n2">
-        <v-btn dark text @click="saveAddress"> {{ $t('forms.save') }} </v-btn>
-      </v-toolbar-items>
-    </v-toolbar>
+    <AddNewAddressToolbar
+      v-else
+      @close-dialog="closeDialog"
+      @save-address="saveAddress"
+    />
 
     <v-divider v-if="$vuetify.breakpoint.smAndUp" />
 
@@ -173,7 +161,6 @@
 </template>
 
 <script lang="ts">
-import { mdiClose } from '@mdi/js'
 import Vue from 'vue'
 import { AddNewCustomerAddress } from '~/apollo/mutations/add_new_customer_address.graphql'
 import { authStore } from '~/store'
@@ -198,9 +185,6 @@ export default Vue.extend({
         area: '',
         gpsLocation: { latitude: 0, longitude: 0 },
         additionalInformation: '',
-      },
-      icons: {
-        close: mdiClose,
       },
     }
   },
