@@ -12,14 +12,16 @@
           :items="items"
           class="input mx-auto"
           dense
+          label="anything"
+          :hint="$t('forms.areaTip')"
         >
-          <template v-slot:label>
+          <template #label>
             <div class="text-capitalize">{{ $t('forms.area') }}*</div>
           </template>
         </v-autocomplete>
 
         <v-tooltip top>
-          <template v-slot:activator="{ on, attrs }">
+          <template #activator="{ on, attrs }">
             <v-btn
               color="primary"
               icon

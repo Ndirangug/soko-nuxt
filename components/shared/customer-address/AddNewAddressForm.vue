@@ -30,8 +30,9 @@
               filled
               class="input mx-auto"
               dense
+              label="anything"
             >
-              <template v-slot:label>
+              <template #label>
                 <div class="text-capitalize">{{ $t('forms.firstName') }}*</div>
               </template>
             </v-text-field>
@@ -44,9 +45,10 @@
               filled
               class="input mx-auto"
               dense
+              label="anything"
             >
-              <template v-slot:label>
-                <div class="text-capitalize">{{ $t('forms.lastName') }}*</div>
+              <template #label>
+                <span class="text-capitalize">{{ $t('forms.lastName') }}*</span>
               </template>
             </v-text-field>
           </v-col>
@@ -60,8 +62,10 @@
               filled
               class="input mx-auto"
               dense
+              label="anything"
+              type="tel"
             >
-              <template v-slot:label>
+              <template #label>
                 <div class="text-capitalize">{{ $t('forms.phone') }}*</div>
               </template>
             </v-text-field>
@@ -78,8 +82,9 @@
               filled
               class="input mx-auto"
               dense
+              label="anything"
             >
-              <template v-slot:label>
+              <template #label>
                 <div class="text-capitalize">{{ $t('forms.county') }}*</div>
               </template>
             </v-autocomplete>
@@ -96,13 +101,15 @@
               filled
               class="input mx-auto"
               dense
+              label="anything"
             >
-              <template v-slot:label>
-                <div class="text-capitalize">{{ $t('forms.town') }}</div>
+              <template #label>
+                <div class="text-capitalize">{{ $t('forms.town') }}*</div>
               </template>
 
-              <template v-slot:no-data>
+              <template #no-data>
                 <div
+                  v-if="formInput.county == ''"
                   class="text-capitalize text-subtitle-2 text-md-subtitle-1 font-weight-regular pl-2"
                 >
                   {{ $t('forms.chooseCountyFirst') }}
@@ -129,8 +136,9 @@
               class="input mx-auto"
               dense
               auto-grow
+              label="anything"
             >
-              <template v-slot:label>
+              <template #label>
                 <div class="text-capitalize">
                   {{ $t('forms.additionalInformation') }}
                 </div>
@@ -157,6 +165,8 @@
         {{ $t('forms.save') }}
       </v-btn>
     </v-card-actions>
+
+    <LinearProgressDialog :active="isSaving" />
   </v-card>
 </template>
 
@@ -186,6 +196,7 @@ export default Vue.extend({
         gpsLocation: { latitude: 0, longitude: 0 },
         additionalInformation: '',
       },
+      isSaving: false,
     }
   },
   computed: {
@@ -228,6 +239,7 @@ export default Vue.extend({
     async saveAddress() {
       // TODO DO MUTATION HERE
       // TODO PROGRESS DIALOG NESTED
+      this.isSaving = true
       const mutationVariables: AddAddressMutationVariables = {
         customerId:
           authStore.customer.customerID !== undefined
@@ -244,6 +256,7 @@ export default Vue.extend({
       })
       console.log(result)
 
+      this.isSaving = false
       this.closeDialog()
     },
   },
