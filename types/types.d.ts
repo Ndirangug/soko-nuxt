@@ -295,14 +295,18 @@ export type DiscountType = 'PERCENTAGE' | 'ABSOLUTE'
 
 export interface ShippingOption {
   shippingOptionId?: number
-  cost?: number
-  description?: string
-  title?: string
-  estimatedDeliveryDate?: Date
+  cost: number
+  description: string
+  estimatedDeliveryDateMin: Date
+  estimatedDeliveryDateMax: Date
+  deliveryType: DeliveryType
+  pickupStation: PickupStation
 }
 
+export type DeliveryType = 'DOORSTEP' | 'PICKUP_STATION'
+
 export interface PickupStation {
-  pickupStationID: number
+  nationalID: number
   name: string
   phone: string
   county: string
@@ -551,4 +555,9 @@ export interface AddAddressMutationVariables {
     }
     additionalInformation: string
   }
+}
+
+export type ShippingOptionsQueryVariables = {
+  customerId: number
+  addressId: number
 }

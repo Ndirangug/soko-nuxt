@@ -1,0 +1,22 @@
+query ShippingOptions($customerId: Int!, $addressId: Int!) {
+  customer(customerID: $customerId) {
+    addresses(addressID: $addressId) {
+      shippingOptions {
+        shippingOptionID
+        cost
+        description
+        estimatedDeliveryDateMin
+        estimatedDeliveryDateMax
+        deliveryType
+        pickupStation {
+          pickupStationID
+          name
+          phone
+          area
+          town
+          county
+        }
+      }
+    }
+  }
+}

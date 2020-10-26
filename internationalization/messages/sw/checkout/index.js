@@ -3,9 +3,10 @@ export const checkout = {
   fees: 'fees',
   returns: 'returns',
   and: 'and',
-  need_help: 'need help',
+  need_help: 'need help?',
   call: 'call',
-  or_use_the_online_chat: 'or use the online chat',
+  or: 'or',
+  use_the_online_chat: 'use the online chat',
   back: 'back',
   secure_checkout: 'secure checkout',
   delivery_adddress: 'delivery adddress',
@@ -13,10 +14,12 @@ export const checkout = {
   additional_delivery_information: 'additional delivery information',
   delivery_method: 'delivery method',
   deliver_to_home_or_office: 'deliver to home or office',
-  home_office_delivery_tip:
-    'our delivery agent will call you to pick up your package at the address you provide once it arrives',
+  doorstep_tip:
+    'On the day your package arrives, our delivery agent will call to arrange how to get your package to you: whether at home, office or any other place you agree.',
   delivered_between: 'delivered between',
   pickup_station: 'pickup station',
+  pickup_tip:
+    'On the day your package arrives at the  pickup station you will be notified both by text and email.You can then go pickup it up anytime',
   payment_method: 'payment method',
   secure_convenient_payment_tip:
     'pay online securely and conveniently using any one of our payment options, all cashless',
@@ -25,7 +28,6 @@ export const checkout = {
   pay_online_information:
     'your order will be processed once payment is confirmed',
   with: 'with',
-  or: 'or',
   mpesa_instructions:
     'Enter your phone number below and click pay. An "enter pin" prompt will be automatically sent to the phone number you provided',
   mpesa_alternative_instructions: '',
@@ -39,4 +41,9 @@ export const checkout = {
   place_order: 'place order',
   your_order: 'your order',
   modify_cart: 'modify cart',
+  continue: 'continue',
+  no_address: "you haven't added any address to your account yet",
+  add_new: 'add new',
+  select_address: 'select address',
+  add_a_new_address: 'add a new address',
 }

@@ -30,7 +30,7 @@
       "nuxt-i18n",
       "./types/libs",
       "./types/ui",
-      "@nuxtjs/dayjs",
+      "@nuxtjs/dayjs",    
     ]
   },
   "exclude": [

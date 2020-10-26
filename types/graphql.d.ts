@@ -135,3 +135,11 @@ declare module '*/add_new_customer_address.graphql' {
 
   export default defaultDocument
 }
+
+declare module '*/shipping_options.graphql' {
+  import { DocumentNode } from 'graphql'
+  const defaultDocument: DocumentNode
+  export const ShippingOptions: DocumentNode
+
+  export default defaultDocument
+}

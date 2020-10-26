@@ -7,9 +7,14 @@ export const forms = {
   county: 'county',
   town: 'town',
   area: 'area',
+  areaTip:
+    'Could be the name of a landmark, building or anything that would help identify your location.',
   additionalInformation: 'additional information',
   save: 'save',
   cancel: 'cancel',
   setDefault: 'set default',
   useCurrentLocation: 'use your current location',
+  chooseCountyFirst: 'Choose county first',
+  requiredFieldIndicator: '*indicates required field',
+  saving: 'saving',
 }
