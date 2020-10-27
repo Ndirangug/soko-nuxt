@@ -9,6 +9,7 @@
       class="input"
       dense
       label="aything"
+      :disabled="disabled"
     >
       <template #label>
         <div class="text-capitalize">{{ $t('forms.pickup_station') }}</div>
@@ -39,6 +40,10 @@ export default Vue.extend({
       type: Object,
       required: true,
     } as PropOptions<ShippingOption | {}>,
+    disabled: {
+      type: Boolean,
+      required: true,
+    },
   },
 
   data(): { [keys: string]: any; model: ShippingOption | {} } {

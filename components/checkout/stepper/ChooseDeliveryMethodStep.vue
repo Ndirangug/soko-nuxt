@@ -5,39 +5,49 @@
         <v-radio color="primary" value="DOORSTEP">
           <template v-slot:label>
             <div
-              class="shipping-option-title text-subtitle-2 text-md-subtitle-1 font-weight-medium"
+              class="shipping-option-title text-subtitle-2 text-md-subtitle-1 font-weight-medium black--text"
             >
               {{ $t('checkout.deliver_to_home_or_office') }}
             </div>
           </template>
         </v-radio>
 
-        <ShippingOptionDetails
-          v-if="homeShippingOption !== undefined"
-          :shipping-option="homeShippingOption"
-        />
-        <v-skeleton-loader v-else type="image" />
+        <div class="ml-4 ml-sm-6 ml-md-8">
+          <ShippingOptionDetails
+            v-if="homeShippingOption !== undefined"
+            :shipping-option="homeShippingOption"
+            :disabled="!doorstepDeilveryChosen"
+          />
+          <v-skeleton-loader v-else type="image" />
+        </div>
       </div>
 
-      <div class="pickup-option">
+      <div
+        class="pickup-option mt-3 mt-md-4"
+        :class="{ 'text--disabled': !pickupStationDeilveryChosen }"
+      >
         <v-radio color="primary" value="PICKUP_STATION">
           <template v-slot:label>
             <div
-              class="shipping-option-title text-subtitle-2 text-md-subtitle-1 font-weight-medium"
+              class="shipping-option-title text-subtitle-2 text-md-subtitle-1 font-weight-medium black--text"
             >
               {{ $t('checkout.pickup_station') }}
             </div>
           </template>
         </v-radio>
 
-        <SelectPickUpStation
-          :shipping-options="pickupShippingOptions"
-          :selected-pickup-station.sync="selectedPickupStation"
-        />
-        <ShippingOptionDetails
-          v-if="selectedPickupStation != {}"
-          :shipping-option="selectedPickupStation"
-        />
+        <div class="ml-4 ml-sm-6 ml-md-8">
+          <SelectPickUpStation
+            :shipping-options="pickupShippingOptions"
+            :selected-pickup-station.sync="selectedPickupStation"
+            :disabled="!pickupStationDeilveryChosen"
+          />
+          <ShippingOptionDetails
+            v-if="selectedPickupStation != {} && pickupStationDeilveryChosen"
+            :shipping-option="selectedPickupStation"
+            :disabled="!pickupStationDeilveryChosen"
+          />
+        </div>
       </div>
     </v-radio-group>
   </div>
@@ -49,11 +59,6 @@ import { ShippingOptions } from '~/apollo/queries/shipping_options.graphql'
 import { ShippingOption, ShippingOptionsQueryVariables } from '~/types/types'
 import { DeliveryTypes } from '~/types/enums'
 import { authStore } from '~/store'
-
-// enum DeliveryTypes {
-//   DOORSTEP = 'DOORSTEP',
-//   PICKUP_STATION = 'PICKUP_STATION',
-// }
 
 export default Vue.extend({
   // @ts-ignore

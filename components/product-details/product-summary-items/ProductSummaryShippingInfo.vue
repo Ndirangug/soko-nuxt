@@ -2,7 +2,7 @@
   <div>
     <div
       v-if="!$vuetify.breakpoint.md"
-      class="shipping mt-6 pa-4 pa-md-3 pa-lg-3 shipping-smAndDown"
+      class="shipping mt-6 pa-4 pa-md-3 shipping-smAndDown"
       :class="{ 'shipping-smAndDown': $vuetify.breakpoint.smAndDown }"
     >
       <h6
