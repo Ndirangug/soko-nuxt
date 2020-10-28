@@ -1,18 +1,11 @@
 <template>
   <div class="choose-delivery-method-step-container">
-    <v-radio-group v-model="model" mandatory column>
-      <div class="doorstep-option">
-        <v-radio color="primary" value="DOORSTEP">
-          <template v-slot:label>
-            <div
-              class="shipping-option-title text-subtitle-2 text-md-subtitle-1 font-weight-medium black--text"
-            >
-              {{ $t('checkout.deliver_to_home_or_office') }}
-            </div>
-          </template>
-        </v-radio>
-
-        <div class="ml-4 ml-sm-6 ml-md-8">
+    <RadioGroupOptions
+      :radio-options="radioOptions"
+      :selected-option.sync="selectedOption"
+    >
+      <template #content0>
+        <div class="doorstep-delivery-description">
           <ShippingOptionDetails
             v-if="homeShippingOption !== undefined"
             :shipping-option="homeShippingOption"
@@ -20,23 +13,10 @@
           />
           <v-skeleton-loader v-else type="image" />
         </div>
-      </div>
+      </template>
 
-      <div
-        class="pickup-option mt-3 mt-md-4"
-        :class="{ 'text--disabled': !pickupStationDeilveryChosen }"
-      >
-        <v-radio color="primary" value="PICKUP_STATION">
-          <template v-slot:label>
-            <div
-              class="shipping-option-title text-subtitle-2 text-md-subtitle-1 font-weight-medium black--text"
-            >
-              {{ $t('checkout.pickup_station') }}
-            </div>
-          </template>
-        </v-radio>
-
-        <div class="ml-4 ml-sm-6 ml-md-8">
+      <template #content1>
+        <div class="pickup-station-delivery-description">
           <SelectPickUpStation
             :shipping-options="pickupShippingOptions"
             :selected-pickup-station.sync="selectedPickupStation"
@@ -48,8 +28,8 @@
             :disabled="!pickupStationDeilveryChosen"
           />
         </div>
-      </div>
-    </v-radio-group>
+      </template>
+    </RadioGroupOptions>
   </div>
 </template>
 
@@ -59,6 +39,7 @@ import { ShippingOptions } from '~/apollo/queries/shipping_options.graphql'
 import { ShippingOption, ShippingOptionsQueryVariables } from '~/types/types'
 import { DeliveryTypes } from '~/types/enums'
 import { authStore } from '~/store'
+import { RadioOption } from '~/types/ui'
 
 export default Vue.extend({
   // @ts-ignore
@@ -80,7 +61,7 @@ export default Vue.extend({
 
   data(): { [keys: string]: any; selectedPickupStation: ShippingOption | {} } {
     return {
-      model: '',
+      selectedOption: '',
       addressId: 4,
       selectedPickupStation: {},
     }
@@ -89,12 +70,12 @@ export default Vue.extend({
   computed: {
     doorstepDeilveryChosen(): boolean {
       // @ts-ignore
-      return this.model === DeliveryTypes.DOORSTEP
+      return this.selectedOption === DeliveryTypes.DOORSTEP
     },
 
     pickupStationDeilveryChosen(): boolean {
       // @ts-ignore
-      return this.model === DeliveryTypes.PICKUP_STATION
+      return this.selectedOption === DeliveryTypes.PICKUP_STATION
     },
 
     homeShippingOption(): ShippingOption | undefined {
@@ -120,6 +101,19 @@ export default Vue.extend({
       }
 
       return options
+    },
+
+    radioOptions(): RadioOption[] {
+      return [
+        {
+          label: this.$t('checkout.deliver_to_home_or_office').toString(),
+          value: DeliveryTypes.DOORSTEP,
+        },
+        {
+          label: this.$t('checkout.pickup_station').toString(),
+          value: DeliveryTypes.PICKUP_STATION,
+        },
+      ]
     },
   },
 

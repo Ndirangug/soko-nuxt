@@ -14,3 +14,13 @@ export interface CountyAndTowns {
   name: string
   towns: string[]
 }
+
+export interface RadioOption {
+  label: string
+  value: string
+}
+
+export interface PaymentMethodBadge {
+  src: string
+  alt: string
+}

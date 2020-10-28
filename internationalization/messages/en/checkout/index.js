@@ -33,10 +33,16 @@ export const checkout = {
   mpesa_alternative_instructions: '',
   not_working: 'not working',
   pay_now: 'pay now',
+  pay_online_tip:
+    'Pay online securely and conveniently. Your order will be processed once payment is  confirmed',
   pay_on_delivery: 'pay on delivery',
-  pay_on_delivery_tip: 'pay once you have received your package',
+  pay_on_delivery_tip:
+    'pay once you have received your package. You will pay our delivery agent either in cash, mobile money or card while collecting your package.',
   prepayment_tip:
-    'kindly note that not certain orders may not qualify for this option',
+    'kindly note that certain orders may not qualify for cash on delivery',
+  prepayment_reason:
+    'For orders above kshs 5000 we prefer to have you pay online or if paying on delivery use a cashless method ',
+  preferred_method_tip: 'cashless, secure, convenient',
   see_why: 'see why',
   place_order: 'place order',
   your_order: 'your order',

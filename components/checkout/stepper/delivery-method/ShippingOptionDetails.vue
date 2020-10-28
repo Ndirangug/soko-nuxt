@@ -50,7 +50,7 @@
     </p>
 
     <p
-      class="cost text-subtitle-2 text-md-subtitle-1 font-weight-bold primary--text"
+      class="cost text-subtitle-2 text-md-subtitle-1 font-weight-bold primary--text mb-0"
       :class="{ 'text--disabled': disabled }"
     >
       {{ $t('currency') }} {{ shippingOption.cost }}

@@ -195,10 +195,10 @@ export default Vue.extend({
         pinterest: mdiPinterest,
         twitter: mdiTwitter,
         payment_methods: [
-          '/footer/payment-icons/lipa_na_mpesa.png',
-          '/footer/payment-icons/mc_vrt_rev.svg',
-          '/footer/payment-icons/visa.svg',
-          '/footer/payment-icons/Money_Flat_Icon.svg',
+          '/payment-icons/lipa_na_mpesa.png',
+          '/payment-icons/mc_vrt_rev.svg',
+          '/payment-icons/visa.svg',
+          '/payment-icons/Money_Flat_Icon.svg',
         ],
       },
     }

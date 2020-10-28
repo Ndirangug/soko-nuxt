@@ -17,4 +17,6 @@ export const forms = {
   chooseCountyFirst: 'Choose county first',
   requiredFieldIndicator: '*indicates required field',
   saving: 'saving',
+  pickup_station: 'pickup station',
+  no_pickup_station: 'no pickup stations found in this area',
 }

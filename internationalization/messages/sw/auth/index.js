@@ -1,5 +1,5 @@
 export const auth = {
-  login: 'Ingia',
+  login: 'Log In',
   create_account: 'Create Account',
   logintip:
     'Login to access your orders, your history, enjoy a personalized experience and more',
