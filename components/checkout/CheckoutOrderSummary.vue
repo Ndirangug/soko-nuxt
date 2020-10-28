@@ -43,10 +43,7 @@
     <div
       class="voucher-section d-flex flex-column justify-center align-stretch full-width mt-1"
     >
-      <OrderSummaryVoucherInput
-        class="mb-7"
-        @voucher-update="onVoucherUpdate($event)"
-      />
+      <OrderSummaryVoucherInput class="mb-7" :voucher.sync="voucher" />
       <OrderSummaryVoucherAmount
         :discount="discount"
         :voucher-amount="voucherAmount"
@@ -161,12 +158,6 @@ export default Vue.extend({
     EventBus.$on('update:shipping-fee', (value: number) => {
       this.shippingFee = value
     })
-  },
-
-  methods: {
-    onVoucherUpdate(voucher: Voucher | null) {
-      this.voucher = voucher
-    },
   },
 })
 </script>

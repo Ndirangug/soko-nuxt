@@ -8,7 +8,12 @@
       {{ $t('cart.do_you_have_voucher') }}
     </p>
 
-    <v-text-field v-model="voucherCode" filled full-width>
+    <v-text-field
+      v-model="voucherCode"
+      filled
+      full-width
+      :disabled="voucherApplied"
+    >
       <template v-slot:label>
         <div class="text-capitalize">{{ $t('cart.enter_code') }}</div>
       </template>
@@ -19,15 +24,16 @@
       color="primary"
       class="align-self-end px-6"
       :loading="loading"
-      @click="applyVoucher"
+      @click="voucherApplied ? removeVoucher : applyVoucher"
     >
-      {{ $t('cart.apply') }}
+      <span v-if="!voucherApplied"> {{ $t('cart.apply') }}</span>
+      <span v-else>{{ $t('cart.remove_voucher') }}</span>
     </v-btn>
   </div>
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue'
+import Vue, { PropType, PropOptions } from 'vue'
 import { CheckVoucher } from '~/apollo/queries/check_voucher.graphql'
 import { CheckVoucherQueryVariables, Voucher } from '~/types/types'
 
@@ -40,22 +46,19 @@ export default Vue.extend({
         return []
       },
     },
+    voucher: {
+      type: Object,
+      required: true,
+    } as PropOptions<Voucher | null>,
   },
-  data(): { [keys: string]: any; voucher: Voucher | null } {
+  data() {
     return {
       voucherCode: '',
-      voucher: null,
       loading: false,
+      voucherApplied: false,
     }
   },
 
-  watch: {
-    voucher(value: Voucher | null) {
-      console.log('voucher-update')
-      console.log(value)
-      this.$emit('voucher-update', value)
-    },
-  },
   methods: {
     async applyVoucher() {
       this.loading = true
@@ -72,13 +75,24 @@ export default Vue.extend({
         })
 
         voucher = result.data.checkVoucher
+        // TODO check if returned valid voucher
+        this.updateVoucher(voucher)
       } catch (error) {
         console.log(error)
         console.log(error.message)
+      } finally {
+        this.loading = false
       }
+    },
 
-      this.voucher = voucher
-      this.loading = false
+    removeVoucher() {
+      this.updateVoucher(null)
+      this.voucherCode = ''
+    },
+
+    updateVoucher(value: Voucher | null) {
+      this.$emit('update:voucher', value)
+      this.voucherApplied = value != null
     },
   },
 })

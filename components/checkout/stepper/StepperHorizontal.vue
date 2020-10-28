@@ -5,7 +5,7 @@
         <v-stepper-step
           :complete-icon="icons.complete"
           class="address-header"
-          :class="{ 'ml-n8': $vuetify.breakpoint.xs }"
+          :class="{ 'ml-n10': $vuetify.breakpoint.xs }"
           :complete="model > 1"
           step="1"
         >
@@ -48,7 +48,7 @@
         <v-stepper-step
           :complete-icon="icons.complete"
           class="payment-method-header"
-          :class="{ 'mr-n8': $vuetify.breakpoint.xs }"
+          :class="{ 'mr-n10': $vuetify.breakpoint.xs }"
           :complete="done"
           step="4"
         >
@@ -95,7 +95,13 @@
 </template>
 
 <script lang="ts">
-import { mdiCash, mdiCheck, mdiMapMarker, mdiPackage } from '@mdi/js'
+import {
+  mdiBasketFill,
+  mdiCash,
+  mdiCheck,
+  mdiMapMarker,
+  mdiPackage,
+} from '@mdi/js'
 import Vue from 'vue'
 export default Vue.extend({
   data() {
@@ -107,6 +113,7 @@ export default Vue.extend({
         address: mdiMapMarker,
         delivery: mdiPackage,
         payment: mdiCash,
+        order: mdiBasketFill,
       },
     }
   },

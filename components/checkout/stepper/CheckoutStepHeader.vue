@@ -7,7 +7,7 @@
     }"
   >
     <h6
-      class="text-uppercase text-subtitle-2 text-md-h6 font-weight-medium"
+      class="text-uppercase text-caption text-sm-subtitle-2 text-md-h6 font-weight-medium"
       :class="{ 'text-center': labelOnly }"
     >
       {{ label }}

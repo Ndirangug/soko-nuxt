@@ -39,10 +39,7 @@
     <div
       class="voucher-section d-flex flex-column justify-center align-stretch full-width"
     >
-      <OrderSummaryVoucherInput
-        class="mb-7"
-        @voucher-update="onVoucherUpdate($event)"
-      />
+      <OrderSummaryVoucherInput class="mb-7" :voucher.sync="voucher" />
       <OrderSummaryVoucherAmount
         :discount="discount"
         :voucher-amount="voucherAmount"
@@ -99,7 +96,7 @@ export default Vue.extend({
     voucherAmount(): number {
       let amount = 0
 
-      if (this.voucher !== null) {
+      if (this.voucher !== null && this.voucher !== undefined) {
         amount =
           this.voucher.discount.discountType === 'PERCENTAGE'
             ? this.estimatedTotal * (this.voucher.discount.amount / 100) // calculate percentage discount on estimatedTotal
@@ -117,10 +114,6 @@ export default Vue.extend({
   },
 
   methods: {
-    onVoucherUpdate(voucher: Voucher | null) {
-      this.voucher = voucher
-    },
-
     proceedToCheckout() {
       // TODO implement this
       this.$router.push(this.localePath('/checkout'))

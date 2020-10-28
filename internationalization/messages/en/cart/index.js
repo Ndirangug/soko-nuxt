@@ -22,4 +22,5 @@ export const cart = {
   shipping_fees_not_yet_calculated: '* shipping fees not yet calculated',
   proceed_to_checkout: 'proceed to checkout',
   continue_shopping: 'continue shopping',
+  remove_voucher: 'remove voucher',
 }
