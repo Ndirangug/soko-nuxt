@@ -52,4 +52,5 @@ export const checkout = {
   add_new: 'add new',
   select_address: 'select address',
   add_a_new_address: 'add a new address',
+  available_payment_options: 'available payment options',
 }

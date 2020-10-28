@@ -7,8 +7,14 @@
       {{ description }}
     </p>
 
-    <div v-if="paymentOption == 'PAY_ONLINE'" class="preferred-method-notice">
-      <p class="text-sentence mb-0 text-subtitle-2 font-italic">
+    <div
+      v-if="paymentOption == 'PAY_ONLINE'"
+      class="preferred-method-notice d-flex flex-wrap"
+    >
+      <p
+        class="text-sentence mb-0 text-subtitle-2 font-italic"
+        :class="{ 'text--disabled': disabled }"
+      >
         {{ $t('checkout.preferred_method') }}
       </p>
 
@@ -16,10 +22,11 @@
         <template #activator="{ on, attrs }">
           <v-btn
             small
-            class="mt-n2"
+            class="mt-n1 ml-1"
             color="success"
             icon
             v-bind="attrs"
+            :disabled="disabled"
             v-on="on"
           >
             <v-icon>{{ icons.question }}</v-icon>
@@ -36,7 +43,10 @@
       v-if="paymentOption == 'PAY_ON_DELIVERY'"
       class="prepayment-alert d-flex flex-wrap"
     >
-      <p class="text-sentence mb-0 text-subtitle-2 warning--text font-italic">
+      <p
+        class="text-sentence mb-0 text-subtitle-2 warning--text font-italic"
+        :class="{ 'text--disabled': disabled }"
+      >
         {{ $t('checkout.prepayment_tip') }}
       </p>
 
@@ -44,10 +54,11 @@
         <template #activator="{ on, attrs }">
           <v-btn
             small
-            class="mt-n2"
+            class="mt-n1 ml-1"
             color="warning"
             icon
             v-bind="attrs"
+            :disabled="disabled"
             v-on="on"
           >
             <v-icon>{{ icons.question }}</v-icon>
@@ -61,6 +72,13 @@
     </div>
 
     <v-container class="payment-methods-showcase">
+      <p
+        class="text-sentence available-options text-subtitle-2 text-md-subtitle-1 font-weight-medium black--text mt-2 mb-1"
+        :class="{ 'text--disabled': disabled }"
+      >
+        {{ $t('checkout.available_payment_options') }}:
+      </p>
+
       <v-row>
         <v-col
           v-for="(paymentMethod, i) in paymentMethods"
