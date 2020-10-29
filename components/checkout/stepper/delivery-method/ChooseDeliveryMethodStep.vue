@@ -93,7 +93,7 @@ export default Vue.extend({
       let shippingOption
 
       // @ts-ignore
-      if (!this.$apollo.loading) {
+      if (!this.$apollo.loading && this.customer.addresses[0] !== undefined) {
         // by default, first entry in the returned shippingOptions array is the doorstep delivery option
         // @ts-ignore
         shippingOption = this.customer.addresses[0].shippingOptions[0]
@@ -106,7 +106,7 @@ export default Vue.extend({
       let options = []
 
       // @ts-ignore
-      if (!this.$apollo.loading) {
+      if (!this.$apollo.loading && this.customer.addresses[0] !== undefined) {
         // @ts-ignore
         options = this.customer.addresses[0].shippingOptions.slice(1)
       }
@@ -163,6 +163,17 @@ export default Vue.extend({
           fee = null
           EventBus.$emit('update:shipping-fee', fee)
           break
+      }
+    },
+
+    selectedPickupStation(value: ShippingOption | {}) {
+      if (
+        value !== {} &&
+        // @ts-ignore
+        this.selectedOption === DeliveryTypes.PICKUP_STATION
+      ) {
+        // @ts-ignore
+        EventBus.$emit('update:shipping-fee', value.cost)
       }
     },
   },

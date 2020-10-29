@@ -1,5 +1,5 @@
 <template>
-  <div class="checkout-order-summary-container pa-4 pa-lg-4">
+  <div class="checkout-order-summary-container pa-5 pa-lg-8">
     <h3
       v-if="$vuetify.breakpoint.mdAndUp"
       class="text-subtitle-2 text-md-h6 font-weight-bold text-uppercase"
@@ -13,7 +13,7 @@
 
     <v-divider
       v-if="$vuetify.breakpoint.mdAndUp"
-      class="title-divider mt-4 full-width"
+      class="title-divider mt-2 full-width"
     />
 
     <div class="cart-items-summary py-3">
@@ -41,7 +41,7 @@
     </div>
 
     <div
-      class="voucher-section d-flex flex-column justify-center align-stretch full-width"
+      class="voucher-section d-flex flex-column justify-center align-stretch full-width mt-1"
     >
       <OrderSummaryVoucherInput
         class="mb-7"
@@ -69,7 +69,7 @@
     <div
       class="modify-cart-btn d-flex justify-center align-center full-width mt-10"
     >
-      <v-btn tile text color="primary" @click="modifyCart">
+      <v-btn tile text color="primary" :to="localePath('/cart')">
         <span class="mr-2 mr-sm-4 mr-md-2 mr-lg-4">
           {{ $t('checkout.modify_cart') }}
         </span>
@@ -120,7 +120,14 @@ export default Vue.extend({
       return vatSum
     },
     estimatedTotal(): number {
-      return this.subtotal + this.vat
+      const shipping =
+        this.shippingFee !== null && this.shippingFee !== undefined
+          ? this.shippingFee
+          : 0
+      console.log(this.shippingFee)
+      console.log(shipping)
+
+      return this.subtotal + this.vat + shipping
     },
     voucherAmount(): number {
       let amount = 0
@@ -150,7 +157,7 @@ export default Vue.extend({
     },
   },
 
-  created() {
+  mounted() {
     EventBus.$on('update:shipping-fee', (value: number) => {
       this.shippingFee = value
     })
@@ -166,7 +173,6 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .checkout-order-summary-container {
-  height: 768px;
   background-color: white;
   width: 100%;
 

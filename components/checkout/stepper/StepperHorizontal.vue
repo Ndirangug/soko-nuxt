@@ -33,10 +33,24 @@
 
         <v-stepper-step
           :complete-icon="icons.complete"
+          class="delivery-method-header"
+          :complete="model > 3"
+          step="3"
+        >
+          <CheckoutStepHeader
+            label-only
+            :label="$t('checkout.confirm_order')"
+          />
+        </v-stepper-step>
+
+        <v-divider></v-divider>
+
+        <v-stepper-step
+          :complete-icon="icons.complete"
           class="payment-method-header"
           :class="{ 'mr-n8': $vuetify.breakpoint.xs }"
           :complete="done"
-          step="3"
+          step="4"
         >
           <CheckoutStepHeader
             label-only
@@ -61,7 +75,16 @@
           />
         </v-stepper-content>
 
-        <v-stepper-content class="payment-method-content" step="3">
+        <v-stepper-content class="confirm-order" step="3">
+          <CheckoutOrderSummary />
+
+          <StepNavigation
+            @continue-clicked="onContinueClicked"
+            @back-clicked="onBackClicked"
+          />
+        </v-stepper-content>
+
+        <v-stepper-content class="payment-method-content" step="4">
           <ChoosePaymentMethodStep />
 
           <StepNavigation hide-continue @back-clicked="onBackClicked" />
