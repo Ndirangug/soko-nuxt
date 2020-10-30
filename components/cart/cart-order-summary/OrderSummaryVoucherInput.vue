@@ -24,7 +24,7 @@
       color="primary"
       class="align-self-end px-6"
       :loading="loading"
-      @click="voucherApplied ? removeVoucher : applyVoucher"
+      @click="voucherApplied ? removeVoucher() : applyVoucher()"
     >
       <span v-if="!voucherApplied"> {{ $t('cart.apply') }}</span>
       <span v-else>{{ $t('cart.remove_voucher') }}</span>

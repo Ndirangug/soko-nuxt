@@ -1,5 +1,5 @@
 <template>
-  <div class="checkout-order-summary-container pa-5 pa-lg-8">
+  <div class="checkout-order-summary-container px-2 px-sm-8 pa-md-5 pa-lg-8">
     <h3
       v-if="$vuetify.breakpoint.mdAndUp"
       class="text-subtitle-2 text-md-h6 font-weight-bold text-uppercase"
@@ -17,10 +17,12 @@
     />
 
     <div class="cart-items-summary py-3">
-      <CheckoutCartItemsSummary />
+      <CheckoutCartItemsSummary
+        :class="{ 'elevation-1': $vuetify.breakpoint.smAndDown }"
+      />
     </div>
 
-    <v-divider class="section-divider full-width mt-n1 mb-2" />
+    <v-divider class="section-divider full-width mt-4 mt-md-n1 mb-4 mb-md-2" />
 
     <div class="subtotal full-width">
       <OrderSummarySubtotal :subtotal="subtotal" />
@@ -34,7 +36,7 @@
       <OrderSummaryShipping :shipping-fee="shippingFee" />
     </div>
 
-    <v-divider class="section-divider full-width mt-n1 mb-2" />
+    <v-divider class="section-divider full-width mt-1 mt-md-n1 mb-3 mb-md-2" />
 
     <div class="estimated-total full-width">
       <OrderSummaryEstimatedTotal :estimated-total="estimatedTotal" />
@@ -133,7 +135,7 @@ export default Vue.extend({
         amount =
           this.voucher.discount.discountType === 'PERCENTAGE'
             ? this.estimatedTotal * (this.voucher.discount.amount / 100) // calculate percentage discount on estimatedTotal
-            : this.estimatedTotal - this.voucher.discount.amount
+            : this.voucher.discount.amount
       }
 
       return amount
