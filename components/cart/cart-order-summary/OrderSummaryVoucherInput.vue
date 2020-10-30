@@ -29,6 +29,18 @@
       <span v-if="!voucherApplied"> {{ $t('cart.apply') }}</span>
       <span v-else>{{ $t('cart.remove_voucher') }}</span>
     </v-btn>
+
+    <v-snackbar
+      color="warning"
+      :timeout="snackbarTimeout"
+      :value="showSnackbar"
+      absolute
+      bottom
+      shaped
+      class="snackbar"
+    >
+      {{ snackbarMessage }}
+    </v-snackbar>
   </div>
 </template>
 
@@ -56,6 +68,9 @@ export default Vue.extend({
       voucherCode: '',
       loading: false,
       voucherApplied: false,
+      showSnackbar: false,
+      snackbarMessage: '',
+      snackbarTimeout: 3000,
     }
   },
 
@@ -80,6 +95,10 @@ export default Vue.extend({
       } catch (error) {
         console.log(error)
         console.log(error.message)
+        this.snackbarMessage = error.message
+        this.showSnackbar = true
+
+        this.resetSnackbar()
       } finally {
         this.loading = false
       }
@@ -93,6 +112,13 @@ export default Vue.extend({
     updateVoucher(value: Voucher | null) {
       this.$emit('update:voucher', value)
       this.voucherApplied = value != null
+    },
+
+    resetSnackbar() {
+      setTimeout(() => {
+        this.showSnackbar = false
+        this.snackbarMessage = ''
+      }, this.snackbarTimeout)
     },
   },
 })
@@ -112,6 +138,11 @@ export default Vue.extend({
 .order-summary-voucher-input-container {
   .v-messages {
     min-height: 4px;
+  }
+
+  .v-snack__wrapper {
+    min-width: 250px !important;
+    max-width: 800px !important;
   }
 }
 </style>
